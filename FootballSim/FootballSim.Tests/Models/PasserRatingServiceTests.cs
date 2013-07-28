@@ -47,5 +47,19 @@ namespace FootballSim.Tests.Models
             var sut = new PasserRatingService();
             Assert.That(sut.GetRating(350, 200, 2500, 20, 350), Is.EqualTo(58.9));
         }
+
+        [Test]
+        public void RatingIsZeroBecauseAttempsIsZero()
+        {
+            var sut = new PasserRatingService();
+            Assert.That(sut.GetRating(0, 0, 0, 0, 0), Is.EqualTo(0));
+        }
+
+        [Test]
+        public void RatingIsZeroBecauseAttempsIsNegative()
+        {
+            var sut = new PasserRatingService();
+            Assert.That(sut.GetRating(-1, 0, 0, 0, 0), Is.EqualTo(0));
+        }
     }
 }

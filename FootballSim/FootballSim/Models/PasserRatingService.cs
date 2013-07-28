@@ -24,6 +24,10 @@ namespace FootballSim.Models
         /// <returns>The passer rating as a double</returns>
         public double GetRating(double atts, double comps, double yds, double tds, double ints)
         {
+            if (atts <= 0)
+            {
+                return 0;
+            }
             var calcs = new List<double>
             {
                 (comps / atts - .3) * 5, // Percentage of completions.
