@@ -14,7 +14,7 @@ namespace FootballSim.Models
         private const Double Max = 2.375;
 
         /// <summary>
-        /// Calculates a passer (QB) rating based on the given inputs.
+        /// Calculates a passer (QB) rating based on the g iven inputs.
         /// </summary>
         /// <param name="atts">The number of passing attempts</param>
         /// <param name="comps">The number of passing completions</param>

@@ -49,14 +49,14 @@ namespace FootballSim.Tests.Models
         }
 
         [Test]
-        public void RatingIsZeroBecauseAttempsIsZero()
+        public void RatingIsZeroBecauseAttemptsIsZero()
         {
             var sut = new PasserRatingService();
             Assert.That(sut.GetRating(0, 0, 0, 0, 0), Is.EqualTo(0));
         }
 
         [Test]
-        public void RatingIsZeroBecauseAttempsIsNegative()
+        public void RatingIsZeroBecauseAttemptsIsNegative()
         {
             var sut = new PasserRatingService();
             Assert.That(sut.GetRating(-1, 0, 0, 0, 0), Is.EqualTo(0));

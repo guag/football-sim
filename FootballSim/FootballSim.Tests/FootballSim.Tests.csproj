@@ -98,6 +98,8 @@
   <ItemGroup>
     <Compile Include="BaseTestFixture.cs" />
     <Compile Include="Models\PasserRatingServiceTests.cs" />
+    <Compile Include="Models\PlayerFactoryTests.cs" />
+    <Compile Include="Models\NameGeneratorServiceTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\HomeControllerTest.cs" />
   </ItemGroup>

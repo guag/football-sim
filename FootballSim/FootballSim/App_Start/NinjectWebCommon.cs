@@ -56,6 +56,8 @@ namespace FootballSim.App_Start
         private static void RegisterServices(IKernel kernel)
         {
             kernel.Bind<IPasserRatingService>().To<PasserRatingService>();
+            kernel.Bind<INameGeneratorService>().To<NameGeneratorService>();
+            kernel.Bind<IPlayerFactory>().To<PlayerFactory>();
         }
     }
 }

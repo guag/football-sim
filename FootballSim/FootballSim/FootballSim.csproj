@@ -179,7 +179,14 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\ILeague.cs" />
+    <Compile Include="Models\ILocation.cs" />
+    <Compile Include="Models\IPosition.cs" />
+    <Compile Include="Models\NameGeneratorService.cs" />
     <Compile Include="Models\PasserRatingService.cs" />
+    <Compile Include="Models\IPlayer.cs" />
+    <Compile Include="Models\ITeam.cs" />
+    <Compile Include="Models\PlayerFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
