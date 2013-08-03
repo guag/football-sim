@@ -97,6 +97,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseTestFixture.cs" />
+    <Compile Include="Models\HometownGeneratorServiceTests.cs" />
     <Compile Include="Models\PasserRatingServiceTests.cs" />
     <Compile Include="Models\PlayerFactoryTests.cs" />
     <Compile Include="Models\NameGeneratorServiceTests.cs" />

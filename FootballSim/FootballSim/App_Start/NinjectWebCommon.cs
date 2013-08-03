@@ -1,4 +1,5 @@
 using FootballSim.Models;
+using Ninject.Syntax;
 
 [assembly: WebActivator.PreApplicationStartMethod(typeof(FootballSim.App_Start.NinjectWebCommon), "Start")]
 [assembly: WebActivator.ApplicationShutdownMethodAttribute(typeof(FootballSim.App_Start.NinjectWebCommon), "Stop")]
@@ -15,7 +16,7 @@ namespace FootballSim.App_Start
 
     public static class NinjectWebCommon
     {
-        private static readonly Bootstrapper bootstrapper = new Bootstrapper();
+        private static readonly Bootstrapper Bootstrapper = new Bootstrapper();
 
         /// <summary>
         /// Starts the application
@@ -24,7 +25,7 @@ namespace FootballSim.App_Start
         {
             DynamicModuleUtility.RegisterModule(typeof(OnePerRequestHttpModule));
             DynamicModuleUtility.RegisterModule(typeof(NinjectHttpModule));
-            bootstrapper.Initialize(CreateKernel);
+            Bootstrapper.Initialize(CreateKernel);
         }
 
         /// <summary>
@@ -32,7 +33,7 @@ namespace FootballSim.App_Start
         /// </summary>
         public static void Stop()
         {
-            bootstrapper.ShutDown();
+            Bootstrapper.ShutDown();
         }
 
         /// <summary>
@@ -53,10 +54,11 @@ namespace FootballSim.App_Start
         /// Load your modules or register your services here!
         /// </summary>
         /// <param name="kernel">The kernel.</param>
-        private static void RegisterServices(IKernel kernel)
+        private static void RegisterServices(IBindingRoot kernel)
         {
             kernel.Bind<IPasserRatingService>().To<PasserRatingService>();
             kernel.Bind<INameGeneratorService>().To<NameGeneratorService>();
+            kernel.Bind<IHometownGeneratorService>().To<HometownGeneratorService>();
             kernel.Bind<IPlayerFactory>().To<PlayerFactory>();
         }
     }

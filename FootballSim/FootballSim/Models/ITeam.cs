@@ -6,7 +6,7 @@ namespace FootballSim.Models
     {
         string City { get; set; }
         string Name { get; set; }
-        IEnumerable<IPlayer> Roster { get; set; }
+        IEnumerable<Player> Roster { get; set; }
         ILocation Location { get; set; }
     }
 }

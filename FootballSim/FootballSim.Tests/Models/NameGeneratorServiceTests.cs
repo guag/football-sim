@@ -5,9 +5,6 @@ namespace FootballSim.Tests.Models
     [TestClass]
     public class NameGeneratorServiceTests : BaseTestFixture
     {
-        [TestMethod]
-        public void TestMethod1()
-        {
-        }
+
     }
 }

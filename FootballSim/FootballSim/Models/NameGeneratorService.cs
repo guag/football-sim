@@ -5,12 +5,18 @@ namespace FootballSim.Models
 
     public interface INameGeneratorService
     {
-        string GetRandomName();
+        string GetRandomFirstName();
+        string GetRandomLastName();
     }
 
     public class NameGeneratorService : INameGeneratorService
     {
-        public string GetRandomName()
+        public string GetRandomFirstName()
+        {
+            throw new NotImplementedException();
+        }
+
+        public string GetRandomLastName()
         {
             throw new NotImplementedException();
         }

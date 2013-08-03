@@ -1,24 +1,31 @@
-using System;
-
 namespace FootballSim.Models
 {
     public interface IPlayerFactory
     {
-        IPlayer Create(IPosition position);
+        Player Create(IPosition position, ITeam team = null);
     }
 
     public class PlayerFactory : IPlayerFactory
     {
         private readonly INameGeneratorService _nameGenerator;
+        private readonly IHometownGeneratorService _hometownGenerator;
 
-        public PlayerFactory(INameGeneratorService nameGenerator)
+        public PlayerFactory(INameGeneratorService nameGenerator, IHometownGeneratorService hometownGenerator)
         {
             _nameGenerator = nameGenerator;
+            _hometownGenerator = hometownGenerator;
         }
 
-        public IPlayer Create(IPosition position)
+        public Player Create(IPosition position, ITeam team = null)
         {
-            throw new NotImplementedException();
+            return new Player
+            {
+                Position = position,
+                Team = team,
+                FirstName = _nameGenerator.GetRandomFirstName(),
+                LastName = _nameGenerator.GetRandomLastName(),
+                Hometown = _hometownGenerator.GetRandomHometown()
+            };
         }
     }
 }
