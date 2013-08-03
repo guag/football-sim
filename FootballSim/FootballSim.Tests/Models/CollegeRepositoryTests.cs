@@ -3,7 +3,7 @@
 namespace FootballSim.Tests.Models
 {
     [TestFixture]
-    public class HometownRepositoryTests : BaseTestFixture
+    public class CollegeRepositoryTests : BaseTestFixture
     {
         // TODO
     }

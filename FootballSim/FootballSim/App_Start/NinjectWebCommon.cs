@@ -1,4 +1,5 @@
 using FootballSim.Models;
+using FootballSim.Models.Positions;
 using Ninject.Syntax;
 
 [assembly: WebActivator.PreApplicationStartMethod(typeof(FootballSim.App_Start.NinjectWebCommon), "Start")]
@@ -58,8 +59,21 @@ namespace FootballSim.App_Start
         {
             kernel.Bind<IPasserRatingService>().To<PasserRatingService>();
             kernel.Bind<INameGeneratorService>().To<NameGeneratorService>();
-            kernel.Bind<IHometownGeneratorService>().To<HometownGeneratorService>();
+            kernel.Bind<IHometownRepository>().To<HometownRepository>();
+            kernel.Bind<ICollegeRepository>().To<CollegeRepository>();
+            #region IPositionRepository
+
+            var positionFactory = new PositionRepository();
+            positionFactory.AddPosition(new Quarterback());
+            positionFactory.AddPosition(new Halfback());
+            // TODO: add other positions here
+            kernel.Bind<IPositionRepository>().ToConstant(positionFactory);
+
+            #endregion
             kernel.Bind<IPlayerFactory>().To<PlayerFactory>();
+            kernel.Bind<IMultiplePlayerFactory>().To<MultiplePlayerFactory>();
+            kernel.Bind<IDraftClass>().To<DraftClass>();
+            kernel.Bind<IDraftClassFactory>().To<DraftClassFactory>();
         }
     }
 }

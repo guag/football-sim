@@ -1,4 +1,6 @@
-﻿namespace FootballSim.Models
+﻿using FootballSim.Models.Positions;
+
+namespace FootballSim.Models
 {
     public class Player
     {
@@ -7,5 +9,6 @@
         public IPosition Position { get; set; }
         public ITeam Team { get; set; }
         public ILocation Hometown { get; set; }
+        public string College { get; set; }
     }
 }

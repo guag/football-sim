@@ -2,12 +2,12 @@
 
 namespace FootballSim.Models
 {
-    public interface IHometownGeneratorService
+    public interface IHometownRepository
     {
         ILocation GetRandomHometown();
     }
 
-    public class HometownGeneratorService : IHometownGeneratorService
+    public class HometownRepository : IHometownRepository
     {
         public ILocation GetRandomHometown()
         {

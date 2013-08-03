@@ -179,15 +179,23 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
-    <Compile Include="Models\HometownGeneratorService.cs" />
+    <Compile Include="Models\DraftClass.cs" />
+    <Compile Include="Models\DraftClassFactory.cs" />
+    <Compile Include="Models\HometownRepository.cs" />
+    <Compile Include="Models\CollegeRepository.cs" />
     <Compile Include="Models\ILeague.cs" />
     <Compile Include="Models\ILocation.cs" />
-    <Compile Include="Models\IPosition.cs" />
+    <Compile Include="Models\MultiplePlayerFactory.cs" />
+    <Compile Include="Models\Positions\EmptyPosition.cs" />
+    <Compile Include="Models\Positions\Halfback.cs" />
+    <Compile Include="Models\Positions\IPosition.cs" />
     <Compile Include="Models\NameGeneratorService.cs" />
     <Compile Include="Models\PasserRatingService.cs" />
     <Compile Include="Models\Player.cs" />
     <Compile Include="Models\ITeam.cs" />
     <Compile Include="Models\PlayerFactory.cs" />
+    <Compile Include="Models\Positions\PositionRepository.cs" />
+    <Compile Include="Models\Positions\Quarterback.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

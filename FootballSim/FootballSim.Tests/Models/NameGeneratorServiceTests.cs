@@ -1,10 +1,10 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using NUnit.Framework;
 
 namespace FootballSim.Tests.Models
 {
-    [TestClass]
+    [TestFixture]
     public class NameGeneratorServiceTests : BaseTestFixture
     {
-
+        // TODO
     }
 }
