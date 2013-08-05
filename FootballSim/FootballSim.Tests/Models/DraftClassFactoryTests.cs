@@ -15,21 +15,34 @@ namespace FootballSim.Tests.Models
         {
             var sut = new DraftClassFactory(Mock<IMultiplePlayerFactory>().Object);
             var year = DateTime.Now;
-            var draft = sut.Create(year);
+            var draft = sut.Create(year, 10);
 
             Assert.That(draft.Year, Is.EqualTo(year));
         }
 
         [Test]
-        public void Players_Are_Set()
+        public void Create_500_Players()
         {
             var playerFactory = Mock<IMultiplePlayerFactory>();
             var sut = new DraftClassFactory(playerFactory.Object);
             var players = new List<Player> { new Player(), new Player() };
             playerFactory.Setup(p => p.Create(500, It.IsAny<IPosition>(), It.IsAny<ITeam>())).Returns(players);
-            var draft = sut.Create(default(DateTime));
+            var draft = sut.Create(default(DateTime), 500);
 
             playerFactory.Verify(p => p.Create(500, It.IsAny<IPosition>(), It.IsAny<ITeam>()));
+            Assert.That(draft.Players, Is.EquivalentTo(players));
+        }
+
+        [Test]
+        public void Create_1000_Players()
+        {
+            var playerFactory = Mock<IMultiplePlayerFactory>();
+            var sut = new DraftClassFactory(playerFactory.Object);
+            var players = new List<Player> { new Player(), new Player() };
+            playerFactory.Setup(p => p.Create(1000, It.IsAny<IPosition>(), It.IsAny<ITeam>())).Returns(players);
+            var draft = sut.Create(default(DateTime), 1000);
+
+            playerFactory.Verify(p => p.Create(1000, It.IsAny<IPosition>(), It.IsAny<ITeam>()));
             Assert.That(draft.Players, Is.EquivalentTo(players));
         }
     }

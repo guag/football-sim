@@ -1,6 +1,5 @@
 using FootballSim.Models;
 using FootballSim.Models.Positions;
-using Ninject.Syntax;
 
 [assembly: WebActivator.PreApplicationStartMethod(typeof(FootballSim.App_Start.NinjectWebCommon), "Start")]
 [assembly: WebActivator.ApplicationShutdownMethodAttribute(typeof(FootballSim.App_Start.NinjectWebCommon), "Stop")]
@@ -55,25 +54,28 @@ namespace FootballSim.App_Start
         /// Load your modules or register your services here!
         /// </summary>
         /// <param name="kernel">The kernel.</param>
-        private static void RegisterServices(IBindingRoot kernel)
+        private static void RegisterServices(IKernel kernel)
         {
             kernel.Bind<IPasserRatingService>().To<PasserRatingService>();
+            kernel.Bind<IRandomNumberService>().To<RandomNumberService>();
             kernel.Bind<INameGeneratorService>().To<NameGeneratorService>();
             kernel.Bind<IHometownRepository>().To<HometownRepository>();
             kernel.Bind<ICollegeRepository>().To<CollegeRepository>();
-            #region IPositionRepository
-
-            var positionFactory = new PositionRepository();
-            positionFactory.AddPosition(new Quarterback());
-            positionFactory.AddPosition(new Halfback());
-            // TODO: add other positions here
-            kernel.Bind<IPositionRepository>().ToConstant(positionFactory);
-
-            #endregion
+            RegisterPositionFactory(kernel);
             kernel.Bind<IPlayerFactory>().To<PlayerFactory>();
             kernel.Bind<IMultiplePlayerFactory>().To<MultiplePlayerFactory>();
             kernel.Bind<IDraftClass>().To<DraftClass>();
             kernel.Bind<IDraftClassFactory>().To<DraftClassFactory>();
+        }
+
+        private static void RegisterPositionFactory(IKernel kernel)
+        {
+            var factory = new PositionRepository(kernel.Get<IRandomNumberService>());
+            factory.AddPosition(new Quarterback());
+            factory.AddPosition(new Halfback());
+            factory.AddPosition(new WideReceiver());
+            factory.AddPosition(new TightEnd());
+            kernel.Bind<IPositionRepository>().ToConstant(factory);
         }
     }
 }

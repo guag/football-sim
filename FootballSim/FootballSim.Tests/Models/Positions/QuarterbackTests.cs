@@ -13,6 +13,12 @@ namespace FootballSim.Tests.Models.Positions
         }
 
         [Test]
+        public void Type_Is_Quarterback()
+        {
+            Assert.That(new Quarterback().Type, Is.EqualTo(PositionType.Quarterback));
+        }
+
+        [Test]
         public void Side_Is_Offense()
         {
             Assert.That(new Quarterback().Side, Is.EqualTo(Side.Offense));

@@ -1,4 +1,5 @@
-﻿using FootballSim.Models.Positions;
+﻿using FootballSim.Models;
+using FootballSim.Models.Positions;
 using NUnit.Framework;
 
 namespace FootballSim.Tests.Models.Positions
@@ -9,7 +10,7 @@ namespace FootballSim.Tests.Models.Positions
         [Test]
         public void Position_Nonexistent_So_Return_EmptyPosition()
         {
-            var sut = new PositionRepository();
+            var sut = new PositionRepository(null);
             sut.AddPosition(new Halfback());
 
             var position = sut.GetPosition(PositionType.Quarterback);
@@ -19,7 +20,7 @@ namespace FootballSim.Tests.Models.Positions
         [Test]
         public void Get_Position_That_Exists()
         {
-            var sut = new PositionRepository();
+            var sut = new PositionRepository(null);
             var qb = new Quarterback();
             sut.AddPosition(qb);
 
@@ -30,7 +31,7 @@ namespace FootballSim.Tests.Models.Positions
         [Test]
         public void Get_Random_But_No_Positions_Exist_So_Return_EmptyPosition()
         {
-            var sut = new PositionRepository();
+            var sut = new PositionRepository(null);
 
             var position = sut.GetRandomPosition();
             Assert.That(position, Is.TypeOf<EmptyPosition>());
@@ -39,13 +40,17 @@ namespace FootballSim.Tests.Models.Positions
         [Test]
         public void Get_Random_Position()
         {
-            var sut = new PositionRepository();
+            var randomService = Mock<IRandomNumberService>();
+            var sut = new PositionRepository(randomService.Object);
             sut.AddPosition(new Halfback());
-            sut.AddPosition(new FakePosition());
+            var fake = new FakePosition();
+            sut.AddPosition(fake);
             sut.AddPosition(new Quarterback());
+            randomService.Setup(r => r.GetRandomInt(0, 3)).Returns(1);
 
             var position = sut.GetRandomPosition();
-            Assert.That(position, Is.Not.TypeOf<EmptyPosition>());
+            randomService.Verify(r => r.GetRandomInt(0, 3));
+            Assert.That(position, Is.EqualTo(fake));
         }
     }
 

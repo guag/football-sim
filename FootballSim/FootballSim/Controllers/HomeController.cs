@@ -1,32 +1,27 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
+using FootballSim.Models;
 
 namespace FootballSim.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly IDraftClassFactory _draftFactory;
+
+        public HomeController(IDraftClassFactory draftFactory)
+        {
+            _draftFactory = draftFactory;
+        }
+
         public ActionResult Index()
         {
-            ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
-
-            return View();
+            return RedirectToAction("DraftClass");
         }
 
-        public ActionResult About()
+        public ActionResult DraftClass(int year = 2013, int numPlayers = 1000)
         {
-            ViewBag.Message = "Your app description page.";
 
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
+            return View(_draftFactory.Create(new DateTime(year, 1, 1), numPlayers));
         }
     }
 }

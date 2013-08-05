@@ -15,7 +15,9 @@ namespace FootballSim.Models.Positions
     {
         None,
         Quarterback,
-        Halfback
+        Halfback,
+        WideReceiver,
+        TightEnd
     }
 
     public enum Side

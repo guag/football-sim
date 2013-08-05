@@ -13,6 +13,12 @@ namespace FootballSim.Tests.Models.Positions
         }
 
         [Test]
+        public void Type_Is_Halfback()
+        {
+            Assert.That(new Halfback().Type, Is.EqualTo(PositionType.Halfback));
+        }
+
+        [Test]
         public void Side_Is_Offense()
         {
             Assert.That(new Halfback().Side, Is.EqualTo(Side.Offense));

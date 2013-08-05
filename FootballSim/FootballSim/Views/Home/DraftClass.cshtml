@@ -1,0 +1,29 @@
+﻿@model FootballSim.Models.IDraftClass
+
+@{
+    ViewBag.Title = "Draft Class of " + Model.Year.Year;
+}
+
+<h2>@ViewBag.Title</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Position</th>
+            <th>College</th>
+            <th>Hometown</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var player in Model.Players)
+        {
+            <tr>
+                <td>@player.LastName, @player.FirstName</td>
+                <td>@player.Position.Name</td>
+                <td>@player.College</td>
+                <td>@player.Hometown.City, @player.Hometown.State</td>
+            </tr>
+        }
+    </tbody>
+</table>

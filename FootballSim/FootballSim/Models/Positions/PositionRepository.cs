@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 
 namespace FootballSim.Models.Positions
@@ -12,8 +11,14 @@ namespace FootballSim.Models.Positions
 
     public class PositionRepository : IPositionRepository
     {
+        private readonly IRandomNumberService _randomService;
         private readonly IList<IPosition> _positions = new List<IPosition>();
         private readonly IPosition _emptyPosition = new EmptyPosition();
+
+        public PositionRepository(IRandomNumberService randomService)
+        {
+            _randomService = randomService;
+        }
 
         public void AddPosition(IPosition positionClass)
         {
@@ -26,12 +31,9 @@ namespace FootballSim.Models.Positions
         /// <returns>The random position</returns>
         public IPosition GetRandomPosition()
         {
-            if (_positions.Count == 0)
-            {
-                return _emptyPosition;
-            }
-            var rand = new Random().Next(0, _positions.Count - 1);
-            return _positions[rand];
+            return (_positions.Count == 0) ?
+                _emptyPosition :
+                _positions[_randomService.GetRandomInt(0, _positions.Count)];
         }
 
         /// <summary>
