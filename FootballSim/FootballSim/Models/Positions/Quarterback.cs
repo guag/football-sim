@@ -17,22 +17,22 @@
             get { return Side.Offense; }
         }
 
-        public double MinWeight
+        public int MinWeight
         {
             get { return 155; }
         }
 
-        public double MaxWeight
+        public int MaxWeight
         {
             get { return 265; }
         }
 
-        public double MinHeight
+        public int MinHeight
         {
             get { return 65; }
         }
 
-        public double MaxHeight
+        public int MaxHeight
         {
             get { return 82; }
         }

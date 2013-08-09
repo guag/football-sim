@@ -15,9 +15,9 @@
         {
             get { return Side.None; }
         }
-        public double MinWeight { get; set; }
-        public double MaxWeight { get; set; }
-        public double MinHeight { get; set; }
-        public double MaxHeight { get; set; }
+        public int MinWeight { get; set; }
+        public int MaxWeight { get; set; }
+        public int MinHeight { get; set; }
+        public int MaxHeight { get; set; }
     }
 }

@@ -98,19 +98,25 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseTestFixture.cs" />
+    <Compile Include="Controllers\PlayerControllerTests.cs" />
     <Compile Include="Models\CollegeRepositoryTests.cs" />
     <Compile Include="Models\DraftClassFactoryTests.cs" />
     <Compile Include="Models\DraftClassTests.cs" />
     <Compile Include="Models\HometownGeneratorServiceTests.cs" />
     <Compile Include="Models\LocationTests.cs" />
+    <Compile Include="Models\MeasurablesGeneratorTests.cs" />
+    <Compile Include="Models\MeasurablesTests.cs" />
     <Compile Include="Models\PasserRatingServiceTests.cs" />
     <Compile Include="Models\PlayerFactoryTests.cs" />
     <Compile Include="Models\NameGeneratorServiceTests.cs" />
+    <Compile Include="Models\Positions\CenterTests.cs" />
     <Compile Include="Models\Positions\EmptyPositionTests.cs" />
+    <Compile Include="Models\Positions\GuardTests.cs" />
     <Compile Include="Models\Positions\HalfbackTests.cs" />
     <Compile Include="Models\Positions\PositionRepositoryTests.cs" />
     <Compile Include="Models\Positions\QuarterbackTests.cs" />
     <Compile Include="Models\MultiplePlayerFactoryTests.cs" />
+    <Compile Include="Models\Positions\TackleTests.cs" />
     <Compile Include="Models\Positions\TightEndTests.cs" />
     <Compile Include="Models\Positions\WideReceiverTests.cs" />
     <Compile Include="Models\RandomNumberServiceTests.cs" />

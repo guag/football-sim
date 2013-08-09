@@ -62,6 +62,7 @@ namespace FootballSim.App_Start
             kernel.Bind<IHometownRepository>().To<HometownRepository>();
             kernel.Bind<ICollegeRepository>().To<CollegeRepository>();
             RegisterPositionFactory(kernel);
+            kernel.Bind<IMeasurablesGenerator>().To<MeasurablesGenerator>();
             kernel.Bind<IPlayerFactory>().To<PlayerFactory>();
             kernel.Bind<IMultiplePlayerFactory>().To<MultiplePlayerFactory>();
             kernel.Bind<IDraftClass>().To<DraftClass>();
@@ -75,6 +76,9 @@ namespace FootballSim.App_Start
             factory.AddPosition(new Halfback());
             factory.AddPosition(new WideReceiver());
             factory.AddPosition(new TightEnd());
+            factory.AddPosition(new Tackle());
+            factory.AddPosition(new Guard());
+            factory.AddPosition(new Center());
             kernel.Bind<IPositionRepository>().ToConstant(factory);
         }
     }

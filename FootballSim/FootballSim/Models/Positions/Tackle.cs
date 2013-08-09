@@ -1,15 +1,15 @@
 ﻿namespace FootballSim.Models.Positions
 {
-    public struct WideReceiver : IPosition
+    public class Tackle : IPosition
     {
         public PositionType Type
         {
-            get { return PositionType.WideReceiver; }
+            get { return PositionType.Tackle; }
         }
 
         public string Name
         {
-            get { return "Wide Receiver"; }
+            get { return "Tackle"; }
         }
 
         public Side Side
@@ -19,22 +19,22 @@
 
         public int MinWeight
         {
-            get { return 155; }
+            get { return 260; }
         }
 
         public int MaxWeight
         {
-            get { return 265; }
+            get { return 400; }
         }
 
         public int MinHeight
         {
-            get { return 65; }
+            get { return 70; }
         }
 
         public int MaxHeight
         {
-            get { return 80; }
+            get { return 86; }
         }
     }
 }

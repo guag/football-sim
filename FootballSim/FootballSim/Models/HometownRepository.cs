@@ -4,7 +4,7 @@ namespace FootballSim.Models
 {
     public interface IHometownRepository
     {
-        ILocation GetRandomHometown();
+        Location GetRandomHometown();
     }
 
     /// <summary>
@@ -19,16 +19,16 @@ namespace FootballSim.Models
             _randomService = randomService;
         }
 
-        private readonly IList<ILocation> _locations = new List<ILocation>
+        private readonly IList<Location> _locations = new List<Location>
                                               {
-                                                  new Location("Ronkonkoma", "NY"),
-                                                  new Location("Harrisburg", "PA"),
-                                                  new Location("Dallas", "TX"),
-                                                  new Location("St. Louis", "MO"),
-                                                  new Location("Sacramento", "CA")
+                                                  new Location{ City = "Ronkonkoma", State = "NY" },
+                                                  new Location{ City="Harrisburg", State="PA" },
+                                                  new Location{ City="Dallas", State="TX" },
+                                                  new Location{ City="St. Louis",State= "MO" },
+                                                  new Location{ City="Sacramento", State= "CA" }
                                               };
 
-        public ILocation GetRandomHometown()
+        public Location GetRandomHometown()
         {
             return _locations[_randomService.GetRandomInt(0, _locations.Count)];
         }

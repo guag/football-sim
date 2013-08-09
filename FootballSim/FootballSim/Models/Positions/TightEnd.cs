@@ -17,22 +17,22 @@ namespace FootballSim.Models.Positions
             get { return Side.Offense; }
         }
 
-        public double MinWeight
+        public int MinWeight
         {
             get { return 220; }
         }
 
-        public double MaxWeight
+        public int MaxWeight
         {
             get { return 280; }
         }
 
-        public double MinHeight
+        public int MinHeight
         {
-            get { return 68; }
+            get { return 70; }
         }
 
-        public double MaxHeight
+        public int MaxHeight
         {
             get { return 84; }
         }

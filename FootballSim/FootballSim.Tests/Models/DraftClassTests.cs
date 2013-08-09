@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using FootballSim.Models;
 using NUnit.Framework;
 
@@ -9,18 +8,18 @@ namespace FootballSim.Tests.Models
     public class DraftClassTests : BaseTestFixture
     {
         [Test]
-        public void Ctor_Sets_Players()
+        public void Players_Test()
         {
             var players = new List<Player> { new Player(), new Player() };
-            var sut = new DraftClass(players, default(DateTime));
+            var sut = new DraftClass { Players = players };
             Assert.That(sut.Players, Is.EquivalentTo(players));
         }
 
         [Test]
-        public void Ctor_Sets_Year()
+        public void Year_Test()
         {
-            var year = DateTime.Now;
-            var sut = new DraftClass(default(IEnumerable<Player>), year);
+            const int year = 2013;
+            var sut = new DraftClass { Year = year };
             Assert.That(sut.Year, Is.EqualTo(year));
         }
     }

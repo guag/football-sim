@@ -14,7 +14,8 @@ namespace FootballSim.Tests.Models
                 Mock<INameGeneratorService>().Object,
                 Mock<IHometownRepository>().Object,
                 Mock<ICollegeRepository>().Object,
-                Mock<IPositionRepository>().Object
+                null,
+                Mock<IMeasurablesGenerator>().Object
             );
             var position = Mock<IPosition>();
             var player = sut.Create(position.Object);
@@ -30,7 +31,8 @@ namespace FootballSim.Tests.Models
                 Mock<INameGeneratorService>().Object,
                 Mock<IHometownRepository>().Object,
                 Mock<ICollegeRepository>().Object,
-                Mock<IPositionRepository>().Object
+                Mock<IPositionRepository>().Object,
+                Mock<IMeasurablesGenerator>().Object
             );
             var team = Mock<ITeam>();
             var player = sut.Create(null, team.Object);
@@ -46,7 +48,8 @@ namespace FootballSim.Tests.Models
                 nameGen.Object,
                 Mock<IHometownRepository>().Object,
                 Mock<ICollegeRepository>().Object,
-                Mock<IPositionRepository>().Object
+                Mock<IPositionRepository>().Object,
+                Mock<IMeasurablesGenerator>().Object
             );
             nameGen.Setup(n => n.GetRandomFirstName()).Returns("Gary");
             nameGen.Setup(n => n.GetRandomLastName()).Returns("Guagliardo");
@@ -66,14 +69,15 @@ namespace FootballSim.Tests.Models
                 Mock<INameGeneratorService>().Object,
                 homeGen.Object,
                 Mock<ICollegeRepository>().Object,
-                Mock<IPositionRepository>().Object
+                Mock<IPositionRepository>().Object,
+                Mock<IMeasurablesGenerator>().Object
             );
-            var hometown = Mock<ILocation>();
-            homeGen.Setup(h => h.GetRandomHometown()).Returns(hometown.Object);
+            var hometown = new Location { City = "Greenbow", State = "AL" };
+            homeGen.Setup(h => h.GetRandomHometown()).Returns(hometown);
             var player = sut.Create();
 
             homeGen.Verify(n => n.GetRandomHometown());
-            Assert.That(player.Hometown, Is.EqualTo(hometown.Object));
+            Assert.That(player.Hometown, Is.EqualTo(hometown));
         }
 
         [Test]
@@ -84,7 +88,8 @@ namespace FootballSim.Tests.Models
                 Mock<INameGeneratorService>().Object,
                 Mock<IHometownRepository>().Object,
                 college.Object,
-                Mock<IPositionRepository>().Object
+                Mock<IPositionRepository>().Object,
+                Mock<IMeasurablesGenerator>().Object
             );
             college.Setup(c => c.GetRandomCollege()).Returns("SBU");
             var player = sut.Create();
@@ -101,7 +106,8 @@ namespace FootballSim.Tests.Models
                 Mock<INameGeneratorService>().Object,
                 Mock<IHometownRepository>().Object,
                 Mock<ICollegeRepository>().Object,
-                positionFactory.Object
+                positionFactory.Object,
+                Mock<IMeasurablesGenerator>().Object
             );
             var position = Mock<IPosition>();
             positionFactory.Setup(p => p.GetRandomPosition()).Returns(position.Object);
@@ -109,6 +115,51 @@ namespace FootballSim.Tests.Models
 
             positionFactory.Verify(p => p.GetRandomPosition());
             Assert.That(player.Position, Is.EqualTo(position.Object));
+        }
+
+        [Test]
+        public void Create_Player_With_Measurables_For_A_Specified_Position()
+        {
+            var measurablesGen = Mock<IMeasurablesGenerator>();
+            var sut = new PlayerFactory(
+                Mock<INameGeneratorService>().Object,
+                Mock<IHometownRepository>().Object,
+                Mock<ICollegeRepository>().Object,
+                null,
+                measurablesGen.Object
+            );
+            var qb = new Quarterback();
+            measurablesGen.Setup(m => m.GetRandomMeasurables(qb))
+                .Returns(new Measurables { Height = 72, Weight = 200 });
+            var player = sut.Create(qb);
+
+            measurablesGen.Verify(m => m.GetRandomMeasurables(qb));
+            Assert.That(player.Measurables.Height, Is.EqualTo(72));
+            Assert.That(player.Measurables.Weight, Is.EqualTo(200));
+        }
+
+        [Test]
+        public void Create_Player_With_Measurables_For_A_Random_Position()
+        {
+            var measurablesGen = Mock<IMeasurablesGenerator>();
+            var positionFactory = Mock<IPositionRepository>();
+            var sut = new PlayerFactory(
+                Mock<INameGeneratorService>().Object,
+                Mock<IHometownRepository>().Object,
+                Mock<ICollegeRepository>().Object,
+                positionFactory.Object,
+                measurablesGen.Object
+            );
+            var qb = new Quarterback();
+            positionFactory.Setup(p => p.GetRandomPosition()).Returns(qb);
+            measurablesGen.Setup(m => m.GetRandomMeasurables(qb))
+                .Returns(new Measurables { Height = 72, Weight = 200 });
+            var player = sut.Create();
+
+            measurablesGen.Verify(m => m.GetRandomMeasurables(qb));
+            positionFactory.Verify(p => p.GetRandomPosition());
+            Assert.That(player.Measurables.Height, Is.EqualTo(72));
+            Assert.That(player.Measurables.Weight, Is.EqualTo(200));
         }
     }
 }

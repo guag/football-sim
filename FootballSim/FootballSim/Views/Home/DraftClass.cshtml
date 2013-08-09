@@ -1,7 +1,7 @@
-﻿@model FootballSim.Models.IDraftClass
+﻿@model FootballSim.Models.DraftClassViewModel
 
 @{
-    ViewBag.Title = "Draft Class of " + Model.Year.Year;
+    ViewBag.Title = "Draft Class of " + Model.Year;
 }
 
 <h2>@ViewBag.Title</h2>
@@ -11,6 +11,8 @@
         <tr>
             <th>Name</th>
             <th>Position</th>
+            <th>Height</th>
+            <th>Weight</th>
             <th>College</th>
             <th>Hometown</th>
         </tr>
@@ -19,8 +21,12 @@
         @foreach (var player in Model.Players)
         {
             <tr>
-                <td>@player.LastName, @player.FirstName</td>
+                <td>
+                    @Html.ActionLink(player.LastName + ", " + player.FirstName, "Index", "Player", new { player.Id }, null)
+                </td>
                 <td>@player.Position.Name</td>
+                <td>@player.Measurables.HeightForDisplay</td>
+                <td>@player.Measurables.Weight</td>
                 <td>@player.College</td>
                 <td>@player.Hometown.City, @player.Hometown.State</td>
             </tr>

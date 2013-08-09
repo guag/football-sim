@@ -1,10 +1,8 @@
-﻿using System;
-
-namespace FootballSim.Models
+﻿namespace FootballSim.Models
 {
     public interface IDraftClassFactory
     {
-        IDraftClass Create(DateTime year, int numPlayers);
+        IDraftClass Create(int year, int numPlayers);
     }
 
     public class DraftClassFactory : IDraftClassFactory
@@ -16,9 +14,13 @@ namespace FootballSim.Models
             _playerFactory = playerFactory;
         }
 
-        public IDraftClass Create(DateTime year, int numPlayers)
+        public IDraftClass Create(int year, int numPlayers)
         {
-            return new DraftClass(_playerFactory.Create(numPlayers), year);
+            return new DraftClass
+            {
+                Players = _playerFactory.Create(numPlayers),
+                Year = year
+            };
         }
     }
 }

@@ -43,27 +43,14 @@ namespace FootballSim.Tests.Models.Positions
             var randomService = Mock<IRandomNumberService>();
             var sut = new PositionRepository(randomService.Object);
             sut.AddPosition(new Halfback());
-            var fake = new FakePosition();
-            sut.AddPosition(fake);
+            var wr = new WideReceiver();
+            sut.AddPosition(wr);
             sut.AddPosition(new Quarterback());
             randomService.Setup(r => r.GetRandomInt(0, 3)).Returns(1);
 
             var position = sut.GetRandomPosition();
             randomService.Verify(r => r.GetRandomInt(0, 3));
-            Assert.That(position, Is.EqualTo(fake));
+            Assert.That(position, Is.EqualTo(wr));
         }
     }
-
-    #region FakePosition class
-    public class FakePosition : IPosition
-    {
-        public PositionType Type { get; set; }
-        public string Name { get; set; }
-        public Side Side { get; set; }
-        public double MinWeight { get; set; }
-        public double MaxWeight { get; set; }
-        public double MinHeight { get; set; }
-        public double MaxHeight { get; set; }
-    }
-    #endregion
 }

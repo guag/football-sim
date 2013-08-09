@@ -43,9 +43,9 @@ namespace FootballSim.Tests.Models.Positions
         }
 
         [Test]
-        public void Max_Height_Is_84()
+        public void Max_Height_Is_80()
         {
-            Assert.That(new WideReceiver().MaxHeight, Is.EqualTo(84));
+            Assert.That(new WideReceiver().MaxHeight, Is.EqualTo(80));
         }
     }
 }

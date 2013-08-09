@@ -37,9 +37,9 @@ namespace FootballSim.Tests.Models.Positions
         }
 
         [Test]
-        public void Min_Height_Is_68()
+        public void Min_Height_Is_70()
         {
-            Assert.That(new TightEnd().MinHeight, Is.EqualTo(68));
+            Assert.That(new TightEnd().MinHeight, Is.EqualTo(70));
         }
 
         [Test]

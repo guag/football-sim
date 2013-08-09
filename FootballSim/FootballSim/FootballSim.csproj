@@ -173,6 +173,13 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\PlayerController.cs" />
+    <Compile Include="Models\DraftClassViewModel.cs" />
+    <Compile Include="Models\Measurables.cs" />
+    <Compile Include="Models\MeasurablesGenerator.cs" />
+    <Compile Include="Models\Positions\Center.cs" />
+    <Compile Include="Models\Positions\Guard.cs" />
+    <Compile Include="Models\Positions\Tackle.cs" />
     <Compile Include="Models\Positions\TightEnd.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -330,6 +337,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\Home\DraftClass.cshtml" />
+    <Content Include="Views\Player\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
