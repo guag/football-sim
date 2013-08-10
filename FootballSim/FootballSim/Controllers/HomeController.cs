@@ -21,11 +21,12 @@ namespace FootballSim.Controllers
 
         public ActionResult DraftClass(int year = 2013, int numPlayers = 1000)
         {
-            // TODO: temporary. move to separate controller.
+            //  TODO: temporary. move to separate controller.
             var draft = _draftFactory.Create(year, numPlayers);
 
             var sortedPlayers = draft.Players
                 .OrderBy(p => p.Position.Type)
+                .ThenByDescending(p => p.CurrentOverallRating)
                 .ThenBy(p => p.LastName);
 
             return View(new DraftClassViewModel

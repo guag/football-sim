@@ -175,8 +175,10 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\PlayerController.cs" />
     <Compile Include="Models\DraftClassViewModel.cs" />
+    <Compile Include="Models\IPlayerBuildingBlock.cs" />
     <Compile Include="Models\Measurables.cs" />
     <Compile Include="Models\MeasurablesGenerator.cs" />
+    <Compile Include="Models\PlayerFactory.cs" />
     <Compile Include="Models\Positions\Center.cs" />
     <Compile Include="Models\Positions\Guard.cs" />
     <Compile Include="Models\Positions\Tackle.cs" />
@@ -195,19 +197,24 @@
     <Compile Include="Models\CollegeRepository.cs" />
     <Compile Include="Models\ILeague.cs" />
     <Compile Include="Models\Location.cs" />
-    <Compile Include="Models\MultiplePlayerFactory.cs" />
+    <Compile Include="Models\MultiplePlayerBuilder.cs" />
     <Compile Include="Models\Positions\EmptyPosition.cs" />
     <Compile Include="Models\Positions\Halfback.cs" />
     <Compile Include="Models\Positions\IPosition.cs" />
-    <Compile Include="Models\NameGeneratorService.cs" />
+    <Compile Include="Models\NameGenerator.cs" />
     <Compile Include="Models\PasserRatingService.cs" />
     <Compile Include="Models\Player.cs" />
     <Compile Include="Models\ITeam.cs" />
-    <Compile Include="Models\PlayerFactory.cs" />
+    <Compile Include="Models\PlayerBuilder.cs" />
     <Compile Include="Models\Positions\PositionRepository.cs" />
     <Compile Include="Models\Positions\Quarterback.cs" />
     <Compile Include="Models\Positions\WideReceiver.cs" />
     <Compile Include="Models\RandomNumberService.cs" />
+    <Compile Include="Models\Ratings\GeneralRatingsGenerator.cs" />
+    <Compile Include="Models\Ratings\IPositionRatingsGenerator.cs" />
+    <Compile Include="Models\Ratings\QuarterbackRatingsGenerator.cs" />
+    <Compile Include="Models\Ratings\RatingsGenerator.cs" />
+    <Compile Include="Models\Ratings\Rating.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
+using FootballSim.Models.Positions;
 
 namespace FootballSim.Models
 {
-    public interface ICollegeRepository
+    public interface ICollegeRepository : IPlayerBuildingBlock
     {
-        string GetRandomCollege();
     }
 
     /// <summary>
@@ -19,18 +19,19 @@ namespace FootballSim.Models
             _randomSercice = randomSercice;
         }
 
-        private readonly IList<string> _colleges = new List<string>
-                                              {
-                                                  "SBU",
-                                                  "Texas",
-                                                  "Rutgers",
-                                                  "Penn State",
-                                                  "TCU"
-                                              };
+        private readonly IList<string> _colleges = 
+            new List<string>
+            {
+                "SBU",
+                "Texas",
+                "Rutgers",
+                "Penn State",
+                "TCU"
+            };
 
-        public string GetRandomCollege()
+        public void Build(Player player, IPosition position = null)
         {
-            return _colleges[_randomSercice.GetRandomInt(0, _colleges.Count)];
+            player.College = _colleges[_randomSercice.GetRandomInt(0, _colleges.Count)];
         }
     }
 }

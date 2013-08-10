@@ -7,18 +7,18 @@
 
     public class DraftClassFactory : IDraftClassFactory
     {
-        private readonly IMultiplePlayerFactory _playerFactory;
+        private readonly IMultiplePlayerBuilder _playerBuilder;
 
-        public DraftClassFactory(IMultiplePlayerFactory playerFactory)
+        public DraftClassFactory(IMultiplePlayerBuilder playerBuilder)
         {
-            _playerFactory = playerFactory;
+            _playerBuilder = playerBuilder;
         }
 
         public IDraftClass Create(int year, int numPlayers)
         {
             return new DraftClass
             {
-                Players = _playerFactory.Create(numPlayers),
+                Players = _playerBuilder.Build(numPlayers),
                 Year = year
             };
         }

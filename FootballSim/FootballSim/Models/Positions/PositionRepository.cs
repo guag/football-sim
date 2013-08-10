@@ -1,23 +1,22 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 
 namespace FootballSim.Models.Positions
 {
-    public interface IPositionRepository
+    public interface IPositionRepository : IPlayerBuildingBlock
     {
-        IPosition GetRandomPosition();
-        IPosition GetPosition(PositionType type);
     }
 
     public class PositionRepository : IPositionRepository
     {
         private readonly IRandomNumberService _randomService;
+        private readonly IMeasurablesGenerator _measurablesGenerator;
         private readonly IList<IPosition> _positions = new List<IPosition>();
         private readonly IPosition _emptyPosition = new EmptyPosition();
 
-        public PositionRepository(IRandomNumberService randomService)
+        public PositionRepository(IRandomNumberService randomService, IMeasurablesGenerator measurablesGenerator)
         {
             _randomService = randomService;
+            _measurablesGenerator = measurablesGenerator;
         }
 
         public void AddPosition(IPosition positionClass)
@@ -25,25 +24,12 @@ namespace FootballSim.Models.Positions
             _positions.Add(positionClass);
         }
 
-        /// <summary>
-        /// Returns an instance of a position picked at random from the internal list.
-        /// </summary>
-        /// <returns>The random position</returns>
-        public IPosition GetRandomPosition()
+        public void Build(Player player, IPosition position = null)
         {
-            return (_positions.Count == 0) ?
-                _emptyPosition :
-                _positions[_randomService.GetRandomInt(0, _positions.Count)];
-        }
-
-        /// <summary>
-        /// Returns the position with the given type name.
-        /// </summary>
-        /// <param name="type">The name of the type to retrieve</param>
-        /// <returns>The position</returns>
-        public IPosition GetPosition(PositionType type)
-        {
-            return _positions.FirstOrDefault(p => p.Type == type) ?? _emptyPosition;
+            player.Position = position ?? (_positions.Count == 0
+                                               ? _emptyPosition
+                                               : _positions[_randomService.GetRandomInt(0, _positions.Count)]);
+            player.Measurables = _measurablesGenerator.GetRandomMeasurables(player.Position);
         }
     }
 }

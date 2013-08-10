@@ -1,5 +1,6 @@
 using FootballSim.Models;
 using FootballSim.Models.Positions;
+using FootballSim.Models.Ratings;
 
 [assembly: WebActivator.PreApplicationStartMethod(typeof(FootballSim.App_Start.NinjectWebCommon), "Start")]
 [assembly: WebActivator.ApplicationShutdownMethodAttribute(typeof(FootballSim.App_Start.NinjectWebCommon), "Stop")]
@@ -58,20 +59,45 @@ namespace FootballSim.App_Start
         {
             kernel.Bind<IPasserRatingService>().To<PasserRatingService>();
             kernel.Bind<IRandomNumberService>().To<RandomNumberService>();
-            kernel.Bind<INameGeneratorService>().To<NameGeneratorService>();
+            kernel.Bind<INameGenerator>().To<NameGenerator>();
             kernel.Bind<IHometownRepository>().To<HometownRepository>();
             kernel.Bind<ICollegeRepository>().To<CollegeRepository>();
-            RegisterPositionFactory(kernel);
             kernel.Bind<IMeasurablesGenerator>().To<MeasurablesGenerator>();
             kernel.Bind<IPlayerFactory>().To<PlayerFactory>();
-            kernel.Bind<IMultiplePlayerFactory>().To<MultiplePlayerFactory>();
+            kernel.Bind<IGeneralRatingsGenerator>().To<GeneralRatingsGenerator>();
+            RegisterRatingsGenerator(kernel);
+            RegisterPositionFactory(kernel);
+            RegisterPlayerBuilder(kernel);
+            kernel.Bind<IMultiplePlayerBuilder>().To<MultiplePlayerBuilder>();
             kernel.Bind<IDraftClass>().To<DraftClass>();
             kernel.Bind<IDraftClassFactory>().To<DraftClassFactory>();
         }
 
+        private static void RegisterRatingsGenerator(IKernel kernel)
+        {
+            var generator = new RatingsGenerator(kernel.Get<IGeneralRatingsGenerator>());
+            // TODO: add position-specific ratings generator classes here.
+            //generator.AddRatingsGenerator(PositionType.Quarterback, new QuarterbackRatingsGenerator());
+            kernel.Bind<IRatingsGenerator>().ToConstant(generator);
+        }
+
+        private static void RegisterPlayerBuilder(IKernel kernel)
+        {
+            var builder = new PlayerBuilder(kernel.Get<IPlayerFactory>());
+            builder.AddBuildingBlock(kernel.Get<INameGenerator>());
+            builder.AddBuildingBlock(kernel.Get<IPositionRepository>());
+            builder.AddBuildingBlock(kernel.Get<IRatingsGenerator>());
+            builder.AddBuildingBlock(kernel.Get<IHometownRepository>());
+            builder.AddBuildingBlock(kernel.Get<ICollegeRepository>());
+            kernel.Bind<IPlayerBuilder>().ToConstant(builder);
+        }
+
         private static void RegisterPositionFactory(IKernel kernel)
         {
-            var factory = new PositionRepository(kernel.Get<IRandomNumberService>());
+            var factory = new PositionRepository(
+                kernel.Get<IRandomNumberService>(),
+                kernel.Get<IMeasurablesGenerator>()
+            );
             factory.AddPosition(new Quarterback());
             factory.AddPosition(new Halfback());
             factory.AddPosition(new WideReceiver());

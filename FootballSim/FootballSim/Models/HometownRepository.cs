@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
+using FootballSim.Models.Positions;
 
 namespace FootballSim.Models
 {
-    public interface IHometownRepository
+    public interface IHometownRepository : IPlayerBuildingBlock
     {
-        Location GetRandomHometown();
     }
 
     /// <summary>
@@ -28,9 +28,9 @@ namespace FootballSim.Models
                                                   new Location{ City="Sacramento", State= "CA" }
                                               };
 
-        public Location GetRandomHometown()
+        public void Build(Player player, IPosition position = null)
         {
-            return _locations[_randomService.GetRandomInt(0, _locations.Count)];
+            player.Hometown = _locations[_randomService.GetRandomInt(0, _locations.Count)];
         }
     }
 }

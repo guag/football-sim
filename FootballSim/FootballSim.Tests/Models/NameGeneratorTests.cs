@@ -2,8 +2,8 @@
 
 namespace FootballSim.Tests.Models
 {
-    //[TestFixture]
-    public class NameGeneratorServiceTests : BaseTestFixture
+    [TestFixture]
+    public class NameGeneratorTests : BaseTestFixture
     {
         // TODO
     }
