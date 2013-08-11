@@ -39,10 +39,6 @@ namespace FootballSim.Models
             if (_lastNames.Count == 0)
             {
                 _lastNames = _loader.LastNames;
-                foreach (var lastName in _lastNames)
-                {
-                    Debug.Write(lastName[0] + lastName.Substring(1).ToLower() + ",");
-                }
             }
             return GetRandomName(_lastNames);
         }
