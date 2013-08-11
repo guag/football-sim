@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace FootballSim.Models
+namespace FootballSim.Models.ViewModels
 {
     public struct DraftClassViewModel
     {

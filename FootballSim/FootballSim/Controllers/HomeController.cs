@@ -1,6 +1,7 @@
 ﻿using System.Web.Mvc;
 using FootballSim.Models;
 using System.Linq;
+using FootballSim.Models.ViewModels;
 
 namespace FootballSim.Controllers
 {
@@ -19,7 +20,7 @@ namespace FootballSim.Controllers
             return RedirectToAction("DraftClass");
         }
 
-        public ActionResult DraftClass(int year = 2013, int numPlayers = 1000)
+        public ActionResult DraftClass(int year = 2013, int numPlayers = 500)
         {
             //  TODO: temporary. move to separate controller.
             var draft = _draftFactory.Create(year, numPlayers);

@@ -174,7 +174,9 @@
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\PlayerController.cs" />
-    <Compile Include="Models\DraftClassViewModel.cs" />
+    <Compile Include="Models\NameFilesLoader.cs" />
+    <Compile Include="Models\ViewModels\DraftClassViewModel.cs" />
+    <Compile Include="Models\NameRetriever.cs" />
     <Compile Include="Models\IPlayerBuildingBlock.cs" />
     <Compile Include="Models\Measurables.cs" />
     <Compile Include="Models\MeasurablesGenerator.cs" />
@@ -201,7 +203,7 @@
     <Compile Include="Models\Positions\EmptyPosition.cs" />
     <Compile Include="Models\Positions\Halfback.cs" />
     <Compile Include="Models\Positions\IPosition.cs" />
-    <Compile Include="Models\NameGenerator.cs" />
+    <Compile Include="Models\NameBuilder.cs" />
     <Compile Include="Models\PasserRatingService.cs" />
     <Compile Include="Models\Player.cs" />
     <Compile Include="Models\ITeam.cs" />
@@ -288,6 +290,12 @@
     <Content Include="Content\themes\base\minified\jquery.ui.tooltip.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Content\csv\fn.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\csv\ln.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="Scripts\jquery-2.0.3.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />

@@ -102,13 +102,14 @@
     <Compile Include="Models\CollegeRepositoryTests.cs" />
     <Compile Include="Models\DraftClassFactoryTests.cs" />
     <Compile Include="Models\DraftClassTests.cs" />
+    <Compile Include="Models\NameRetrieverTests.cs" />
     <Compile Include="Models\HometownGeneratorServiceTests.cs" />
     <Compile Include="Models\LocationTests.cs" />
     <Compile Include="Models\MeasurablesGeneratorTests.cs" />
     <Compile Include="Models\MeasurablesTests.cs" />
     <Compile Include="Models\PasserRatingServiceTests.cs" />
     <Compile Include="Models\PlayerBuilderTests.cs" />
-    <Compile Include="Models\NameGeneratorTests.cs" />
+    <Compile Include="Models\NameBuilderTests.cs" />
     <Compile Include="Models\PlayerFactoryTests.cs" />
     <Compile Include="Models\PlayerTests.cs" />
     <Compile Include="Models\Positions\CenterTests.cs" />

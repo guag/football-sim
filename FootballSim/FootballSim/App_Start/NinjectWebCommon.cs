@@ -46,7 +46,6 @@ namespace FootballSim.App_Start
             var kernel = new StandardKernel();
             kernel.Bind<Func<IKernel>>().ToMethod(ctx => () => new Bootstrapper().Kernel);
             kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
-
             RegisterServices(kernel);
             return kernel;
         }
@@ -59,7 +58,9 @@ namespace FootballSim.App_Start
         {
             kernel.Bind<IPasserRatingService>().To<PasserRatingService>();
             kernel.Bind<IRandomNumberService>().To<RandomNumberService>();
-            kernel.Bind<INameGenerator>().To<NameGenerator>();
+            kernel.Bind<INameFilesLoader>().To<NameFilesLoader>();
+            kernel.Bind<INameRetriever>().To<NameRetriever>();
+            kernel.Bind<INameBuilder>().To<NameBuilder>();
             kernel.Bind<IHometownRepository>().To<HometownRepository>();
             kernel.Bind<ICollegeRepository>().To<CollegeRepository>();
             kernel.Bind<IMeasurablesGenerator>().To<MeasurablesGenerator>();
@@ -84,7 +85,7 @@ namespace FootballSim.App_Start
         private static void RegisterPlayerBuilder(IKernel kernel)
         {
             var builder = new PlayerBuilder(kernel.Get<IPlayerFactory>());
-            builder.AddBuildingBlock(kernel.Get<INameGenerator>());
+            builder.AddBuildingBlock(kernel.Get<INameBuilder>());
             builder.AddBuildingBlock(kernel.Get<IPositionRepository>());
             builder.AddBuildingBlock(kernel.Get<IRatingsGenerator>());
             builder.AddBuildingBlock(kernel.Get<IHometownRepository>());
