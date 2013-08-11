@@ -7,9 +7,9 @@ namespace FootballSim.Tests.Models.Positions
     public class HalfbackTests : BaseTestFixture
     {
         [Test]
-        public void Max_Height_Is_78()
+        public void Max_Height_Is_76()
         {
-            Assert.That(new Halfback().MaxHeight, Is.EqualTo(78));
+            Assert.That(new Halfback().MaxHeight, Is.EqualTo(76));
         }
 
         [Test]
@@ -25,9 +25,9 @@ namespace FootballSim.Tests.Models.Positions
         }
 
         [Test]
-        public void Min_Weight_Is_155()
+        public void Min_Weight_Is_175()
         {
-            Assert.That(new Halfback().MinWeight, Is.EqualTo(155));
+            Assert.That(new Halfback().MinWeight, Is.EqualTo(175));
         }
 
         [Test]

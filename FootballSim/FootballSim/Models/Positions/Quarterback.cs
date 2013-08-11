@@ -21,7 +21,7 @@
 
         public int MinWeight
         {
-            get { return 155; }
+            get { return 175; }
         }
 
         public int MaxWeight
@@ -31,12 +31,12 @@
 
         public int MinHeight
         {
-            get { return 65; }
+            get { return 69; }
         }
 
         public int MaxHeight
         {
-            get { return 82; }
+            get { return 78; }
         }
 
         #endregion

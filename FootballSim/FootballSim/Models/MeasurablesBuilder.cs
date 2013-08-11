@@ -22,8 +22,8 @@ namespace FootballSim.Models
         {
             return new Measurables
                        {
-                           Height = _random.GetRandom(position.MaxHeight),
-                           Weight = _random.GetRandom(position.MaxWeight)
+                           Height = _random.GetRandom(position.MinHeight, position.MaxHeight),
+                           Weight = _random.GetRandom(position.MinWeight, position.MaxWeight)
                        };
         }
 

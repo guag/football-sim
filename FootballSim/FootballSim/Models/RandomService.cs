@@ -5,6 +5,7 @@ namespace FootballSim.Models
     public interface IRandomService
     {
         int GetRandom(int max);
+        int GetRandom(int min, int max);
     }
 
     public class RandomService : IRandomService
@@ -15,7 +16,12 @@ namespace FootballSim.Models
 
         public int GetRandom(int max)
         {
-            return Random.Next(0, max);
+            return Random.Next(max);
+        }
+
+        public int GetRandom(int min, int max)
+        {
+            return Random.Next(min, max);
         }
 
         #endregion
