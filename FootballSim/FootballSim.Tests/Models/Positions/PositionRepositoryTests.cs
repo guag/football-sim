@@ -1,4 +1,5 @@
 ﻿using FootballSim.Models;
+using FootballSim.Models.Player;
 using FootballSim.Models.Positions;
 using NUnit.Framework;
 
@@ -28,12 +29,12 @@ namespace FootballSim.Tests.Models.Positions
             sut.AddPosition(wr);
             sut.AddPosition(new Quarterback());
             var player = new Player();
-            randomService.Setup(r => r.GetRandomInt(0, 3)).Returns(1);
-            var measurables = new Measurables { Height = 70, Weight = 300 };
+            randomService.Setup(r => r.GetRandomInt(3)).Returns(1);
+            var measurables = new Measurables {Height = 70, Weight = 300};
             measurablesService.Setup(m => m.GetRandomMeasurables(wr)).Returns(measurables);
 
             sut.Build(player);
-            randomService.Verify(r => r.GetRandomInt(0, 3));
+            randomService.Verify(r => r.GetRandomInt(3));
             measurablesService.Verify(m => m.GetRandomMeasurables(wr));
             Assert.That(player.Position, Is.EqualTo(wr));
         }
@@ -45,7 +46,7 @@ namespace FootballSim.Tests.Models.Positions
             var sut = new PositionRepository(null, measurablesService.Object);
             var position = new WideReceiver();
             var player = new Player();
-            var measurables = new Measurables { Height = 70, Weight = 300 };
+            var measurables = new Measurables {Height = 70, Weight = 300};
             measurablesService.Setup(m => m.GetRandomMeasurables(position)).Returns(measurables);
 
             sut.Build(player, position);

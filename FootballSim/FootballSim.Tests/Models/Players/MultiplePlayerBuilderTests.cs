@@ -1,9 +1,10 @@
 ﻿using FootballSim.Models;
+using FootballSim.Models.Players;
 using FootballSim.Models.Positions;
 using Moq;
 using NUnit.Framework;
 
-namespace FootballSim.Tests.Models
+namespace FootballSim.Tests.Models.Players
 {
     [TestFixture]
     public class MultiplePlayerBuilderTests : BaseTestFixture
@@ -14,7 +15,7 @@ namespace FootballSim.Tests.Models
             var playerFactory = Mock<IPlayerBuilder>();
             var sut = new MultiplePlayerBuilder(
                 playerFactory.Object
-            );
+                );
             var position = Mock<IPosition>();
             playerFactory.Setup(p => p.Build(position.Object))
                 .Returns(It.IsAny<Player>());
@@ -30,7 +31,7 @@ namespace FootballSim.Tests.Models
             var playerFactory = Mock<IPlayerBuilder>();
             var sut = new MultiplePlayerBuilder(
                 playerFactory.Object
-            );
+                );
             var position = Mock<IPosition>();
             var team = Mock<ITeam>();
             playerFactory.Setup(p => p.Build(position.Object))

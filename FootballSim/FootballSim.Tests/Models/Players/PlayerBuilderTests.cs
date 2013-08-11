@@ -1,12 +1,29 @@
-﻿using FootballSim.Models;
+﻿using FootballSim.Models.Players;
 using FootballSim.Models.Positions;
 using NUnit.Framework;
 
-namespace FootballSim.Tests.Models
+namespace FootballSim.Tests.Models.Players
 {
     [TestFixture]
     public class PlayerBuilderTests : BaseTestFixture
     {
+        [Test]
+        public void Build_Player_With_1_Building_Block()
+        {
+            var factory = StrictMock<IPlayerFactory>();
+            var sut = new PlayerBuilder(factory.Object);
+            var block = StrictMock<IPlayerBuildingBlock>();
+            sut.AddBuildingBlock(block.Object);
+
+            var player = new Player();
+            var position = new Quarterback();
+            factory.Setup(f => f.Create()).Returns(player);
+            block.Setup(b => b.Build(player, position));
+
+            var result = sut.Build(position);
+            Assert.That(result, Is.EqualTo(player));
+        }
+
         [Test]
         public void Build_Player_With_2_Building_Blocks()
         {
@@ -22,23 +39,6 @@ namespace FootballSim.Tests.Models
             factory.Setup(f => f.Create()).Returns(player);
             block1.Setup(b => b.Build(player, position));
             block2.Setup(b => b.Build(player, position));
-
-            var result = sut.Build(position);
-            Assert.That(result, Is.EqualTo(player));
-        }
-
-        [Test]
-        public void Build_Player_With_1_Building_Block()
-        {
-            var factory = StrictMock<IPlayerFactory>();
-            var sut = new PlayerBuilder(factory.Object);
-            var block = StrictMock<IPlayerBuildingBlock>();
-            sut.AddBuildingBlock(block.Object);
-
-            var player = new Player();
-            var position = new Quarterback();
-            factory.Setup(f => f.Create()).Returns(player);
-            block.Setup(b => b.Build(player, position));
 
             var result = sut.Build(position);
             Assert.That(result, Is.EqualTo(player));

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using FootballSim.Models.Players;
 
 namespace FootballSim.Models.Positions
 {
@@ -8,10 +9,10 @@ namespace FootballSim.Models.Positions
 
     public class PositionRepository : IPositionRepository
     {
-        private readonly IRandomNumberService _randomService;
+        private readonly IPosition _emptyPosition = new EmptyPosition();
         private readonly IMeasurablesGenerator _measurablesGenerator;
         private readonly IList<IPosition> _positions = new List<IPosition>();
-        private readonly IPosition _emptyPosition = new EmptyPosition();
+        private readonly IRandomNumberService _randomService;
 
         public PositionRepository(IRandomNumberService randomService, IMeasurablesGenerator measurablesGenerator)
         {
@@ -19,17 +20,21 @@ namespace FootballSim.Models.Positions
             _measurablesGenerator = measurablesGenerator;
         }
 
-        public void AddPosition(IPosition positionClass)
-        {
-            _positions.Add(positionClass);
-        }
+        #region IPositionRepository Members
 
-        public void Build(Player player, IPosition position = null)
+        public void Build(Players.Player player, IPosition position = null)
         {
             player.Position = position ?? (_positions.Count == 0
                                                ? _emptyPosition
-                                               : _positions[_randomService.GetRandomInt(0, _positions.Count)]);
+                                               : _positions[_randomService.GetRandomInt(_positions.Count)]);
             player.Measurables = _measurablesGenerator.GetRandomMeasurables(player.Position);
+        }
+
+        #endregion
+
+        public void AddPosition(IPosition positionClass)
+        {
+            _positions.Add(positionClass);
         }
     }
 }

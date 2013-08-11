@@ -7,27 +7,9 @@ namespace FootballSim.Tests.Models.Positions
     public class TackleTests : BaseTestFixture
     {
         [Test]
-        public void Name_Is_Tackle()
+        public void Max_Height_Is_86()
         {
-            Assert.That(new Tackle().Name, Is.EqualTo("Tackle"));
-        }
-
-        [Test]
-        public void Type_Is_Tackle()
-        {
-            Assert.That(new Tackle().Type, Is.EqualTo(PositionType.Tackle));
-        }
-
-        [Test]
-        public void Side_Is_Offense()
-        {
-            Assert.That(new Tackle().Side, Is.EqualTo(Side.Offense));
-        }
-
-        [Test]
-        public void Min_Weight_Is_260()
-        {
-            Assert.That(new Tackle().MinWeight, Is.EqualTo(260));
+            Assert.That(new Tackle().MaxHeight, Is.EqualTo(86));
         }
 
         [Test]
@@ -43,9 +25,27 @@ namespace FootballSim.Tests.Models.Positions
         }
 
         [Test]
-        public void Max_Height_Is_86()
+        public void Min_Weight_Is_260()
         {
-            Assert.That(new Tackle().MaxHeight, Is.EqualTo(86));
+            Assert.That(new Tackle().MinWeight, Is.EqualTo(260));
+        }
+
+        [Test]
+        public void Name_Is_Tackle()
+        {
+            Assert.That(new Tackle().Name, Is.EqualTo("Tackle"));
+        }
+
+        [Test]
+        public void Side_Is_Offense()
+        {
+            Assert.That(new Tackle().Side, Is.EqualTo(Side.Offense));
+        }
+
+        [Test]
+        public void Type_Is_Tackle()
+        {
+            Assert.That(new Tackle().Type, Is.EqualTo(PositionType.Tackle));
         }
     }
 }

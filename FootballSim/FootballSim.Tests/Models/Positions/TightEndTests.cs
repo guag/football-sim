@@ -7,27 +7,9 @@ namespace FootballSim.Tests.Models.Positions
     public class TightEndTests : BaseTestFixture
     {
         [Test]
-        public void Name_Is_Tight_End()
+        public void Max_Height_Is_84()
         {
-            Assert.That(new TightEnd().Name, Is.EqualTo("Tight End"));
-        }
-
-        [Test]
-        public void Type_Is_Tight_End()
-        {
-            Assert.That(new TightEnd().Type, Is.EqualTo(PositionType.TightEnd));
-        }
-
-        [Test]
-        public void Side_Is_Offense()
-        {
-            Assert.That(new TightEnd().Side, Is.EqualTo(Side.Offense));
-        }
-
-        [Test]
-        public void Min_Weight_Is_220()
-        {
-            Assert.That(new TightEnd().MinWeight, Is.EqualTo(220));
+            Assert.That(new TightEnd().MaxHeight, Is.EqualTo(84));
         }
 
         [Test]
@@ -43,9 +25,27 @@ namespace FootballSim.Tests.Models.Positions
         }
 
         [Test]
-        public void Max_Height_Is_84()
+        public void Min_Weight_Is_220()
         {
-            Assert.That(new TightEnd().MaxHeight, Is.EqualTo(84));
+            Assert.That(new TightEnd().MinWeight, Is.EqualTo(220));
+        }
+
+        [Test]
+        public void Name_Is_Tight_End()
+        {
+            Assert.That(new TightEnd().Name, Is.EqualTo("Tight End"));
+        }
+
+        [Test]
+        public void Side_Is_Offense()
+        {
+            Assert.That(new TightEnd().Side, Is.EqualTo(Side.Offense));
+        }
+
+        [Test]
+        public void Type_Is_Tight_End()
+        {
+            Assert.That(new TightEnd().Type, Is.EqualTo(PositionType.TightEnd));
         }
     }
 }

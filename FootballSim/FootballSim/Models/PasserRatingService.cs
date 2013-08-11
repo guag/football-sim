@@ -13,6 +13,8 @@ namespace FootballSim.Models
     {
         private const Double Max = 2.375;
 
+        #region IPasserRatingService Members
+
         /// <summary>
         /// Calculates a passer (QB) rating based on the g iven inputs.
         /// </summary>
@@ -29,15 +31,17 @@ namespace FootballSim.Models
                 return 0;
             }
             var calcs = new List<double>
-            {
-                (comps / atts - .3) * 5, // Percentage of completions.
-                (yds / atts - 3) / 4, // Average yards gained per attempt.
-                (tds / atts) * 20, // Percentage of touchdown passes.
-                Max - (((ints / atts) * 100) / 4) // Percentage of interceptions.
-            };
-            var result = (calcs.Sum(c => GetVal(c)) * 100) / 6;
+                            {
+                                (comps/atts - .3)*5, // Percentage of completions.
+                                (yds/atts - 3)/4, // Average yards gained per attempt.
+                                (tds/atts)*20, // Percentage of touchdown passes.
+                                Max - (((ints/atts)*100)/4) // Percentage of interceptions.
+                            };
+            double result = (calcs.Sum(c => GetVal(c))*100)/6;
             return Math.Round(result, 1); // Round to 1 decimal place.
         }
+
+        #endregion
 
         /// <summary>
         /// Retrieves the given value within a certain range.

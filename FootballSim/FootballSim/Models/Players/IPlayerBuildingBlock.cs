@@ -1,6 +1,6 @@
 ﻿using FootballSim.Models.Positions;
 
-namespace FootballSim.Models
+namespace FootballSim.Models.Players
 {
     public interface IPlayerBuildingBlock
     {

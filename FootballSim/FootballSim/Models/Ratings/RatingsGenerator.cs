@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using FootballSim.Models.Players;
 using FootballSim.Models.Positions;
 
 namespace FootballSim.Models.Ratings
@@ -10,6 +11,7 @@ namespace FootballSim.Models.Ratings
     public class RatingsGenerator : IRatingsGenerator
     {
         private readonly IGeneralRatingsGenerator _generalRatings;
+
         private readonly IDictionary<PositionType, IPositionRatingsGenerator> _ratingsGenerators =
             new Dictionary<PositionType, IPositionRatingsGenerator>();
 
@@ -18,12 +20,9 @@ namespace FootballSim.Models.Ratings
             _generalRatings = generalRatings;
         }
 
-        public void AddRatingsGenerator(PositionType type, IPositionRatingsGenerator ratingsGenerator)
-        {
-            _ratingsGenerators.Add(type, ratingsGenerator);
-        }
+        #region IRatingsGenerator Members
 
-        public void Build(Player player, IPosition position = null)
+        public void Build(Players.Player player, IPosition position = null)
         {
             _generalRatings.Generate(player);
 
@@ -36,6 +35,13 @@ namespace FootballSim.Models.Ratings
             {
                 player.Ratings.Add(rating);
             }
+        }
+
+        #endregion
+
+        public void AddRatingsGenerator(PositionType type, IPositionRatingsGenerator ratingsGenerator)
+        {
+            _ratingsGenerators.Add(type, ratingsGenerator);
         }
     }
 }

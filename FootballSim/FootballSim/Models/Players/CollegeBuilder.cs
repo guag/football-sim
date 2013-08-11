@@ -1,6 +1,6 @@
 ﻿using FootballSim.Models.Positions;
 
-namespace FootballSim.Models
+namespace FootballSim.Models.Players
 {
     public interface ICollegeBuilder : IPlayerBuildingBlock
     {
@@ -8,9 +8,9 @@ namespace FootballSim.Models
 
     public class CollegeBuilder : ICollegeBuilder
     {
-        private readonly IRandomCollegeRetriever _colleges;
+        private readonly ICollegeCache _colleges;
 
-        public CollegeBuilder(IRandomCollegeRetriever colleges)
+        public CollegeBuilder(ICollegeCache colleges)
         {
             _colleges = colleges;
         }

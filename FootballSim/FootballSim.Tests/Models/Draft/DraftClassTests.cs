@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
 using FootballSim.Models;
+using FootballSim.Models.Draft;
+using FootballSim.Models.Player;
 using NUnit.Framework;
 
-namespace FootballSim.Tests.Models
+namespace FootballSim.Tests.Models.Draft
 {
     [TestFixture]
     public class DraftClassTests : BaseTestFixture
@@ -10,8 +12,8 @@ namespace FootballSim.Tests.Models
         [Test]
         public void Players_Test()
         {
-            var players = new List<Player> { new Player(), new Player() };
-            var sut = new DraftClass { Players = players };
+            var players = new List<Player> {new Player(), new Player()};
+            var sut = new DraftClass {Players = players};
             Assert.That(sut.Players, Is.EquivalentTo(players));
         }
 
@@ -19,7 +21,7 @@ namespace FootballSim.Tests.Models
         public void Year_Test()
         {
             const int year = 2013;
-            var sut = new DraftClass { Year = year };
+            var sut = new DraftClass {Year = year};
             Assert.That(sut.Year, Is.EqualTo(year));
         }
     }

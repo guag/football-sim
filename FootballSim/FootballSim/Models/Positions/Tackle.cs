@@ -2,6 +2,8 @@
 {
     public class Tackle : IPosition
     {
+        #region IPosition Members
+
         public PositionType Type
         {
             get { return PositionType.Tackle; }
@@ -36,5 +38,7 @@
         {
             get { return 86; }
         }
+
+        #endregion
     }
 }

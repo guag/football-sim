@@ -7,27 +7,9 @@ namespace FootballSim.Tests.Models.Positions
     public class WideReceiverTests : BaseTestFixture
     {
         [Test]
-        public void Name_Is_Wide_Receiver()
+        public void Max_Height_Is_80()
         {
-            Assert.That(new WideReceiver().Name, Is.EqualTo("Wide Receiver"));
-        }
-
-        [Test]
-        public void Type_Is_Wide_Receiver()
-        {
-            Assert.That(new WideReceiver().Type, Is.EqualTo(PositionType.WideReceiver));
-        }
-
-        [Test]
-        public void Side_Is_Offense()
-        {
-            Assert.That(new WideReceiver().Side, Is.EqualTo(Side.Offense));
-        }
-
-        [Test]
-        public void Min_Weight_Is_155()
-        {
-            Assert.That(new WideReceiver().MinWeight, Is.EqualTo(155));
+            Assert.That(new WideReceiver().MaxHeight, Is.EqualTo(80));
         }
 
         [Test]
@@ -43,9 +25,27 @@ namespace FootballSim.Tests.Models.Positions
         }
 
         [Test]
-        public void Max_Height_Is_80()
+        public void Min_Weight_Is_155()
         {
-            Assert.That(new WideReceiver().MaxHeight, Is.EqualTo(80));
+            Assert.That(new WideReceiver().MinWeight, Is.EqualTo(155));
+        }
+
+        [Test]
+        public void Name_Is_Wide_Receiver()
+        {
+            Assert.That(new WideReceiver().Name, Is.EqualTo("Wide Receiver"));
+        }
+
+        [Test]
+        public void Side_Is_Offense()
+        {
+            Assert.That(new WideReceiver().Side, Is.EqualTo(Side.Offense));
+        }
+
+        [Test]
+        public void Type_Is_Wide_Receiver()
+        {
+            Assert.That(new WideReceiver().Type, Is.EqualTo(PositionType.WideReceiver));
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace FootballSim.Models
+﻿using FootballSim.Models.Players;
+
+namespace FootballSim.Models.Draft
 {
     public interface IDraftClassFactory
     {
@@ -14,13 +16,17 @@
             _playerBuilder = playerBuilder;
         }
 
+        #region IDraftClassFactory Members
+
         public IDraftClass Create(int year, int numPlayers)
         {
             return new DraftClass
-            {
-                Players = _playerBuilder.Build(numPlayers),
-                Year = year
-            };
+                       {
+                           Players = _playerBuilder.Build(numPlayers),
+                           Year = year
+                       };
         }
+
+        #endregion
     }
 }

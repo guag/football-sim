@@ -2,6 +2,8 @@
 {
     public class Center : IPosition
     {
+        #region IPosition Members
+
         public PositionType Type
         {
             get { return PositionType.Center; }
@@ -15,7 +17,7 @@
         public Side Side
         {
             get { return Side.Offense; }
-        } 
+        }
 
         public int MinWeight
         {
@@ -36,5 +38,7 @@
         {
             get { return 84; }
         }
+
+        #endregion
     }
 }

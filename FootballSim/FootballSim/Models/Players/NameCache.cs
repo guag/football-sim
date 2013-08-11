@@ -1,14 +1,14 @@
 ﻿using System.Collections.Generic;
 
-namespace FootballSim.Models
+namespace FootballSim.Models.Players
 {
-    public interface IRandomNameRetriever
+    public interface INameCache
     {
         string GetRandomFirstName();
         string GetRandomLastName();
     }
 
-    public class RandomNameRetriever : IRandomNameRetriever
+    public class NameCache : INameCache
     {
         public static string EmptyName = "Empty";
         private readonly ICsvFileLoader _loader;
@@ -16,13 +16,13 @@ namespace FootballSim.Models
         private IList<string> _firstNameCache = new List<string>();
         private IList<string> _lastNameCache = new List<string>();
 
-        public RandomNameRetriever(ICsvFileLoader loader, IRandomNumberService randomService)
+        public NameCache(ICsvFileLoader loader, IRandomNumberService randomService)
         {
             _loader = loader;
             _randomService = randomService;
         }
 
-        #region INameRetriever Members
+        #region INameCache Members
 
         public string GetRandomFirstName()
         {
@@ -46,7 +46,7 @@ namespace FootballSim.Models
 
         private string GetRandomName(IList<string> names)
         {
-            return names.Count == 0 ? EmptyName : names[_randomService.GetRandomInt(0, names.Count)];
+            return names.Count == 0 ? EmptyName : names[_randomService.GetRandomInt(names.Count)];
         }
     }
 }

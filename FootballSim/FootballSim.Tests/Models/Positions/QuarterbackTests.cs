@@ -7,27 +7,9 @@ namespace FootballSim.Tests.Models.Positions
     public class QuarterbackTests : BaseTestFixture
     {
         [Test]
-        public void Name_Is_Quarterback()
+        public void Max_Height_Is_82()
         {
-            Assert.That(new Quarterback().Name, Is.EqualTo("Quarterback"));
-        }
-
-        [Test]
-        public void Type_Is_Quarterback()
-        {
-            Assert.That(new Quarterback().Type, Is.EqualTo(PositionType.Quarterback));
-        }
-
-        [Test]
-        public void Side_Is_Offense()
-        {
-            Assert.That(new Quarterback().Side, Is.EqualTo(Side.Offense));
-        }
-
-        [Test]
-        public void Min_Weight_Is_155()
-        {
-            Assert.That(new Quarterback().MinWeight, Is.EqualTo(155));
+            Assert.That(new Quarterback().MaxHeight, Is.EqualTo(82));
         }
 
         [Test]
@@ -43,9 +25,27 @@ namespace FootballSim.Tests.Models.Positions
         }
 
         [Test]
-        public void Max_Height_Is_82()
+        public void Min_Weight_Is_155()
         {
-            Assert.That(new Quarterback().MaxHeight, Is.EqualTo(82));
+            Assert.That(new Quarterback().MinWeight, Is.EqualTo(155));
+        }
+
+        [Test]
+        public void Name_Is_Quarterback()
+        {
+            Assert.That(new Quarterback().Name, Is.EqualTo("Quarterback"));
+        }
+
+        [Test]
+        public void Side_Is_Offense()
+        {
+            Assert.That(new Quarterback().Side, Is.EqualTo(Side.Offense));
+        }
+
+        [Test]
+        public void Type_Is_Quarterback()
+        {
+            Assert.That(new Quarterback().Type, Is.EqualTo(PositionType.Quarterback));
         }
     }
 }

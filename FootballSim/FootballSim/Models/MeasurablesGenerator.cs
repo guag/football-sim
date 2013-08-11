@@ -9,20 +9,24 @@ namespace FootballSim.Models
 
     public class MeasurablesGenerator : IMeasurablesGenerator
     {
-        private readonly IRandomNumberService _randomService;
+        private readonly IRandomNumberService _random;
 
-        public MeasurablesGenerator(IRandomNumberService randomService)
+        public MeasurablesGenerator(IRandomNumberService random)
         {
-            _randomService = randomService;
+            _random = random;
         }
+
+        #region IMeasurablesGenerator Members
 
         public Measurables GetRandomMeasurables(IPosition position)
         {
             return new Measurables
-            {
-                Height = _randomService.GetRandomInt(position.MinHeight, position.MaxHeight),
-                Weight = _randomService.GetRandomInt(position.MinWeight, position.MaxWeight)
-            };
+                       {
+                           Height = _random.GetRandomInt(position.MaxHeight),
+                           Weight = _random.GetRandomInt(position.MaxWeight)
+                       };
         }
+
+        #endregion
     }
 }

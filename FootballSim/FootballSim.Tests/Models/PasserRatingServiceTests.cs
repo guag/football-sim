@@ -7,10 +7,10 @@ namespace FootballSim.Tests.Models
     public class PasserRatingServiceTests : BaseTestFixture
     {
         [Test]
-        public void Rating_Is_112_Point_8_Because_Is_Steve_Young()
+        public void Rating_Is_103_Point_6_Because_Of_Very_High_Completion_Percentage()
         {
             var sut = new PasserRatingService();
-            Assert.That(sut.GetRating(461, 324, 3969, 35, 10), Is.EqualTo(112.8));
+            Assert.That(sut.GetRating(350, 325, 2500, 20, 10), Is.EqualTo(103.6));
         }
 
         [Test]
@@ -21,10 +21,17 @@ namespace FootballSim.Tests.Models
         }
 
         [Test]
-        public void Rating_Is_103_Point_6_Because_Of_Very_High_Completion_Percentage()
+        public void Rating_Is_112_Point_8_Because_Is_Steve_Young()
         {
             var sut = new PasserRatingService();
-            Assert.That(sut.GetRating(350, 325, 2500, 20, 10), Is.EqualTo(103.6));
+            Assert.That(sut.GetRating(461, 324, 3969, 35, 10), Is.EqualTo(112.8));
+        }
+
+        [Test]
+        public void Rating_Is_58_Point_9_Because_Of_Very_High_Interception_Percentage()
+        {
+            var sut = new PasserRatingService();
+            Assert.That(sut.GetRating(350, 200, 2500, 20, 350), Is.EqualTo(58.9));
         }
 
         [Test]
@@ -42,10 +49,10 @@ namespace FootballSim.Tests.Models
         }
 
         [Test]
-        public void Rating_Is_58_Point_9_Because_Of_Very_High_Interception_Percentage()
+        public void Rating_Is_Zero_Because_Attempts_Is_Negative()
         {
             var sut = new PasserRatingService();
-            Assert.That(sut.GetRating(350, 200, 2500, 20, 350), Is.EqualTo(58.9));
+            Assert.That(sut.GetRating(-1, 0, 0, 0, 0), Is.EqualTo(0));
         }
 
         [Test]
@@ -53,13 +60,6 @@ namespace FootballSim.Tests.Models
         {
             var sut = new PasserRatingService();
             Assert.That(sut.GetRating(0, 0, 0, 0, 0), Is.EqualTo(0));
-        }
-
-        [Test]
-        public void Rating_Is_Zero_Because_Attempts_Is_Negative()
-        {
-            var sut = new PasserRatingService();
-            Assert.That(sut.GetRating(-1, 0, 0, 0, 0), Is.EqualTo(0));
         }
     }
 }

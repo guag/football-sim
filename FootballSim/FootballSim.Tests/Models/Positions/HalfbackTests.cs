@@ -7,27 +7,9 @@ namespace FootballSim.Tests.Models.Positions
     public class HalfbackTests : BaseTestFixture
     {
         [Test]
-        public void Name_Is_Halfback()
+        public void Max_Height_Is_78()
         {
-            Assert.That(new Halfback().Name, Is.EqualTo("Halfback"));
-        }
-
-        [Test]
-        public void Type_Is_Halfback()
-        {
-            Assert.That(new Halfback().Type, Is.EqualTo(PositionType.Halfback));
-        }
-
-        [Test]
-        public void Side_Is_Offense()
-        {
-            Assert.That(new Halfback().Side, Is.EqualTo(Side.Offense));
-        }
-
-        [Test]
-        public void Min_Weight_Is_155()
-        {
-            Assert.That(new Halfback().MinWeight, Is.EqualTo(155));
+            Assert.That(new Halfback().MaxHeight, Is.EqualTo(78));
         }
 
         [Test]
@@ -43,9 +25,27 @@ namespace FootballSim.Tests.Models.Positions
         }
 
         [Test]
-        public void Max_Height_Is_78()
+        public void Min_Weight_Is_155()
         {
-            Assert.That(new Halfback().MaxHeight, Is.EqualTo(78));
+            Assert.That(new Halfback().MinWeight, Is.EqualTo(155));
+        }
+
+        [Test]
+        public void Name_Is_Halfback()
+        {
+            Assert.That(new Halfback().Name, Is.EqualTo("Halfback"));
+        }
+
+        [Test]
+        public void Side_Is_Offense()
+        {
+            Assert.That(new Halfback().Side, Is.EqualTo(Side.Offense));
+        }
+
+        [Test]
+        public void Type_Is_Halfback()
+        {
+            Assert.That(new Halfback().Type, Is.EqualTo(PositionType.Halfback));
         }
     }
 }

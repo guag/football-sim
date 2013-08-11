@@ -12,6 +12,5 @@ namespace FootballSim.Controllers
             // TODO: get Player from DB, send to View.
             return View();
         }
-
     }
 }

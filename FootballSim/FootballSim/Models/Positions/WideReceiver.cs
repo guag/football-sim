@@ -2,6 +2,8 @@
 {
     public struct WideReceiver : IPosition
     {
+        #region IPosition Members
+
         public PositionType Type
         {
             get { return PositionType.WideReceiver; }
@@ -36,5 +38,7 @@
         {
             get { return 80; }
         }
+
+        #endregion
     }
 }

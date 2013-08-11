@@ -1,10 +1,4 @@
-﻿using System.Diagnostics;
-using System.Web.Mvc;
-using FootballSim.Controllers;
-using FootballSim.Models;
-using NUnit.Framework;
-
-namespace FootballSim.Tests.Controllers
+﻿namespace FootballSim.Tests.Controllers
 {
     //[TestFixture]
     public class HomeControllerTests : BaseTestFixture

@@ -2,6 +2,8 @@
 {
     public struct Halfback : IPosition
     {
+        #region IPosition Members
+
         public PositionType Type
         {
             get { return PositionType.Halfback; }
@@ -36,5 +38,7 @@
         {
             get { return 78; }
         }
+
+        #endregion
     }
 }

@@ -34,6 +34,9 @@ namespace FootballSim.Models.Positions
 
     public enum Side
     {
-        None, Offense, Defense, SpecialTeams
+        None,
+        Offense,
+        Defense,
+        SpecialTeams
     }
 }

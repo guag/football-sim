@@ -2,7 +2,7 @@
 {
     public interface IGeneralRatingsGenerator
     {
-        void Generate(Player player);
+        void Generate(Players.Player player);
     }
 
     /// <summary>
@@ -17,14 +17,18 @@
             _randomService = randomService;
         }
 
-        public void Generate(Player player)
+        #region IGeneralRatingsGenerator Members
+
+        public void Generate(Players.Player player)
         {
-            var r1 = _randomService.GetRandomInt(50, 100);
+            int r1 = _randomService.GetRandomInt(100);
             player.Ratings.Add(
-                RatingType.Speed, new Rating { CurrentValue = r1, ProjectedValue = r1 });
-            var r2 = _randomService.GetRandomInt(50, 100);
+                RatingType.Speed, new Rating {CurrentValue = r1, ProjectedValue = r1});
+            int r2 = _randomService.GetRandomInt(100);
             player.Ratings.Add(
-                RatingType.Strength, new Rating { CurrentValue = r2, ProjectedValue = r2 });
+                RatingType.Strength, new Rating {CurrentValue = r2, ProjectedValue = r2});
         }
+
+        #endregion
     }
 }

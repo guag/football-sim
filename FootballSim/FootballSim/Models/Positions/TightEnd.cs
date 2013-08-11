@@ -2,6 +2,8 @@ namespace FootballSim.Models.Positions
 {
     public struct TightEnd : IPosition
     {
+        #region IPosition Members
+
         public PositionType Type
         {
             get { return PositionType.TightEnd; }
@@ -36,5 +38,7 @@ namespace FootballSim.Models.Positions
         {
             get { return 84; }
         }
+
+        #endregion
     }
 }

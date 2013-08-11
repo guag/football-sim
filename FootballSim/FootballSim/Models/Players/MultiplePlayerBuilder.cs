@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using FootballSim.Models.Positions;
 
-namespace FootballSim.Models
+namespace FootballSim.Models.Players
 {
     public interface IMultiplePlayerBuilder
     {
@@ -17,14 +17,18 @@ namespace FootballSim.Models
             _playerBuilder = playerBuilder;
         }
 
+        #region IMultiplePlayerBuilder Members
+
         public IEnumerable<Player> Build(int numPlayers, IPosition position = null)
         {
             IList<Player> result = new List<Player>();
-            for (var i = 0; i < numPlayers; i++)
+            for (int i = 0; i < numPlayers; i++)
             {
                 result.Add(_playerBuilder.Build(position));
             }
             return result;
         }
+
+        #endregion
     }
 }

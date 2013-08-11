@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Web;
@@ -13,6 +14,7 @@ namespace FootballSim.Models
         IList<string> FirstNames { get; }
         IList<string> LastNames { get; }
         IList<string> Colleges { get; }
+        IList<Location> Hometowns { get; }
     }
 
     public class CsvFileLoader : ICsvFileLoader
@@ -38,11 +40,20 @@ namespace FootballSim.Models
             get { return ReadFile(CollegesFileName, '|'); }
         }
 
+        public IList<Location> Hometowns
+        {
+            get
+            {
+                throw new NotImplementedException();
+                //return File.ReadAllLines(HttpContext.Current.Server.MapPath("~/Content/csv/{0}"));
+            }
+        }
+
         #endregion
 
         private static string[] ReadFile(string fileName, char separator = ',')
         {
-            var path = string.Format("~/Content/csv/{0}", fileName);
+            string path = string.Format("~/Content/csv/{0}", fileName);
             try
             {
                 return File.ReadAllText(
@@ -50,7 +61,7 @@ namespace FootballSim.Models
             }
             catch
             {
-                var msg = string.Format("ERROR: File '{0}' could not be read", path);
+                string msg = string.Format("ERROR: File '{0}' could not be read", path);
                 Debug.WriteLine(msg);
                 return new[] {msg};
             }

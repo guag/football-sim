@@ -2,6 +2,8 @@
 {
     public struct Quarterback : IPosition
     {
+        #region IPosition Members
+
         public PositionType Type
         {
             get { return PositionType.Quarterback; }
@@ -36,5 +38,7 @@
         {
             get { return 82; }
         }
+
+        #endregion
     }
 }

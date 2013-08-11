@@ -1,12 +1,15 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using FootballSim.Models.Positions;
 using FootballSim.Models.Ratings;
-using System.Linq;
 
-namespace FootballSim.Models
+namespace FootballSim.Models.Players
 {
     public class Player
     {
+        private readonly IDictionary<RatingType, Rating> _ratings =
+            new Dictionary<RatingType, Rating>();
+
         public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -16,9 +19,6 @@ namespace FootballSim.Models
         public Location Hometown { get; set; }
         public string College { get; set; }
         public Measurables Measurables { get; set; }
-
-        private readonly IDictionary<RatingType, Rating> _ratings = 
-            new Dictionary<RatingType, Rating>();
 
         public IDictionary<RatingType, Rating> Ratings
         {
@@ -30,17 +30,12 @@ namespace FootballSim.Models
         /// </summary>
         public int CurrentOverallRating
         {
-            get
-            {
-                return (int)Ratings.Values.Average(r => r.CurrentValue);
-            }
+            get { return (int) Ratings.Values.Average(r => r.CurrentValue); }
         }
+
         public int ProjectedOverallRating
         {
-            get
-            {
-                return (int)Ratings.Values.Average(r => r.ProjectedValue);
-            }
+            get { return (int) Ratings.Values.Average(r => r.ProjectedValue); }
         }
     }
 }

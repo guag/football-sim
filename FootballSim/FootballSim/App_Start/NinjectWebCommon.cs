@@ -1,20 +1,22 @@
+using System;
+using System.Web;
+using FootballSim.App_Start;
 using FootballSim.Models;
+using FootballSim.Models.Draft;
+using FootballSim.Models.Player;
+using FootballSim.Models.Players;
 using FootballSim.Models.Positions;
 using FootballSim.Models.Ratings;
+using Microsoft.Web.Infrastructure.DynamicModuleHelper;
+using Ninject;
+using Ninject.Web.Common;
+using WebActivator;
 
-[assembly: WebActivator.PreApplicationStartMethod(typeof(FootballSim.App_Start.NinjectWebCommon), "Start")]
-[assembly: WebActivator.ApplicationShutdownMethodAttribute(typeof(FootballSim.App_Start.NinjectWebCommon), "Stop")]
+[assembly: WebActivator.PreApplicationStartMethod(typeof (NinjectWebCommon), "Start")]
+[assembly: ApplicationShutdownMethod(typeof (NinjectWebCommon), "Stop")]
 
 namespace FootballSim.App_Start
 {
-    using System;
-    using System.Web;
-
-    using Microsoft.Web.Infrastructure.DynamicModuleHelper;
-
-    using Ninject;
-    using Ninject.Web.Common;
-
     public static class NinjectWebCommon
     {
         private static readonly Bootstrapper Bootstrapper = new Bootstrapper();
@@ -24,8 +26,8 @@ namespace FootballSim.App_Start
         /// </summary>
         public static void Start()
         {
-            DynamicModuleUtility.RegisterModule(typeof(OnePerRequestHttpModule));
-            DynamicModuleUtility.RegisterModule(typeof(NinjectHttpModule));
+            DynamicModuleUtility.RegisterModule(typeof (OnePerRequestHttpModule));
+            DynamicModuleUtility.RegisterModule(typeof (NinjectHttpModule));
             Bootstrapper.Initialize(CreateKernel);
         }
 
@@ -59,10 +61,11 @@ namespace FootballSim.App_Start
             kernel.Bind<IPasserRatingService>().To<PasserRatingService>();
             kernel.Bind<IRandomNumberService>().To<RandomNumberService>();
             kernel.Bind<ICsvFileLoader>().To<CsvFileLoader>();
-            kernel.Bind<IRandomNameRetriever>().To<RandomNameRetriever>();
+            kernel.Bind<INameCache>().To<NameCache>();
             kernel.Bind<INameBuilder>().To<NameBuilder>();
+            kernel.Bind<IHometownCache>().To<HometownCache>();
             kernel.Bind<IHometownBuilder>().To<HometownBuilder>();
-            kernel.Bind<IRandomCollegeRetriever>().To<RandomCollegeRetriever>();
+            kernel.Bind<ICollegeCache>().To<CollegeCache>();
             kernel.Bind<ICollegeBuilder>().To<CollegeBuilder>();
             kernel.Bind<IMeasurablesGenerator>().To<MeasurablesGenerator>();
             kernel.Bind<IPlayerFactory>().To<PlayerFactory>();
@@ -99,7 +102,7 @@ namespace FootballSim.App_Start
             var factory = new PositionRepository(
                 kernel.Get<IRandomNumberService>(),
                 kernel.Get<IMeasurablesGenerator>()
-            );
+                );
             factory.AddPosition(new Quarterback());
             factory.AddPosition(new Halfback());
             factory.AddPosition(new WideReceiver());

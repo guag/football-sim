@@ -2,6 +2,8 @@
 {
     public class Guard : IPosition
     {
+        #region IPosition Members
+
         public PositionType Type
         {
             get { return PositionType.Guard; }
@@ -36,5 +38,7 @@
         {
             get { return 86; }
         }
+
+        #endregion
     }
 }

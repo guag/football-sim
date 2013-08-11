@@ -1,6 +1,9 @@
-﻿using System.Web.Mvc;
+﻿using System.Linq;
+using System.Web.Mvc;
 using FootballSim.Models;
-using System.Linq;
+using FootballSim.Models.Draft;
+using FootballSim.Models.Player;
+using FootballSim.Models.Players;
 using FootballSim.Models.ViewModels;
 
 namespace FootballSim.Controllers
@@ -23,18 +26,18 @@ namespace FootballSim.Controllers
         public ActionResult DraftClass(int year = 2013, int numPlayers = 500)
         {
             //  TODO: temporary. move to separate controller.
-            var draft = _draftFactory.Create(year, numPlayers);
+            IDraftClass draft = _draftFactory.Create(year, numPlayers);
 
-            var sortedPlayers = draft.Players
+            IOrderedEnumerable<Player> sortedPlayers = draft.Players
                 .OrderBy(p => p.Position.Type)
                 .ThenByDescending(p => p.CurrentOverallRating)
                 .ThenBy(p => p.LastName);
 
             return View(new DraftClassViewModel
-            {
-                Players = sortedPlayers,
-                Year = year
-            });
+                            {
+                                Players = sortedPlayers,
+                                Year = year
+                            });
         }
     }
 }

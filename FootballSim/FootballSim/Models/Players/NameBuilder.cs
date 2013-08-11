@@ -1,6 +1,6 @@
 ﻿using FootballSim.Models.Positions;
 
-namespace FootballSim.Models
+namespace FootballSim.Models.Players
 {
     public interface INameBuilder : IPlayerBuildingBlock
     {
@@ -8,17 +8,21 @@ namespace FootballSim.Models
 
     public class NameBuilder : INameBuilder
     {
-        private readonly IRandomNameRetriever _names;
+        private readonly INameCache _names;
 
-        public NameBuilder(IRandomNameRetriever names)
+        public NameBuilder(INameCache names)
         {
             _names = names;
         }
+
+        #region INameBuilder Members
 
         public void Build(Player player, IPosition position = null)
         {
             player.FirstName = _names.GetRandomFirstName();
             player.LastName = _names.GetRandomLastName();
         }
+
+        #endregion
     }
 }
