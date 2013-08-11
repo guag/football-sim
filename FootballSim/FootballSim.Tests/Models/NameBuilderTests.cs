@@ -9,7 +9,7 @@ namespace FootballSim.Tests.Models
         [Test]
         public void Build_Sets_First_Name()
         {
-            var names = Mock<INameRetriever>();
+            var names = Mock<IRandomNameRetriever>();
             var sut = new NameBuilder(names.Object);
             var player = new Player();
             names.Setup(n => n.GetRandomFirstName()).Returns("Gary");
@@ -22,7 +22,7 @@ namespace FootballSim.Tests.Models
         [Test]
         public void Build_Sets_Last_Name()
         {
-            var names = Mock<INameRetriever>();
+            var names = Mock<IRandomNameRetriever>();
             var sut = new NameBuilder(names.Object);
             var player = new Player();
             names.Setup(n => n.GetRandomLastName()).Returns("Guagliardo");

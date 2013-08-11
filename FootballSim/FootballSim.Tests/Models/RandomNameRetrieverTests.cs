@@ -5,14 +5,14 @@ using NUnit.Framework;
 namespace FootballSim.Tests.Models
 {
     [TestFixture]
-    public class NameRetrieverTests : BaseTestFixture
+    public class RandomNameRetrieverTests : BaseTestFixture
     {
         [Test]
         public void Get_Random_First_Name_Second_Item()
         {
-            var loader = Mock<INameFilesLoader>();
+            var loader = Mock<ICsvFileLoader>();
             var randomService = Mock<IRandomNumberService>();
-            var sut = new NameRetriever(loader.Object, randomService.Object);
+            var sut = new RandomNameRetriever(loader.Object, randomService.Object);
             var names = new[] { "Nicole", "Jacob", "Katie" };
             loader.Setup(l => l.FirstNames).Returns(names);
             randomService.Setup(r => r.GetRandomInt(0, 3)).Returns(1);
@@ -26,9 +26,9 @@ namespace FootballSim.Tests.Models
         [Test]
         public void Get_Random_First_Name_Third_Item()
         {
-            var loader = Mock<INameFilesLoader>();
+            var loader = Mock<ICsvFileLoader>();
             var randomService = Mock<IRandomNumberService>();
-            var sut = new NameRetriever(loader.Object, randomService.Object);
+            var sut = new RandomNameRetriever(loader.Object, randomService.Object);
             var names = new[] { "Nicole", "Jacob", "Katie" };
             loader.Setup(l => l.FirstNames).Returns(names);
             randomService.Setup(r => r.GetRandomInt(0, 3)).Returns(2);
@@ -42,21 +42,21 @@ namespace FootballSim.Tests.Models
         [Test]
         public void No_First_Names()
         {
-            var loader = Mock<INameFilesLoader>();
-            var sut = new NameRetriever(loader.Object, Mock<IRandomNumberService>().Object);
+            var loader = Mock<ICsvFileLoader>();
+            var sut = new RandomNameRetriever(loader.Object, Mock<IRandomNumberService>().Object);
             loader.Setup(l => l.FirstNames).Returns(new string[0]);
 
             var result = sut.GetRandomFirstName();
             loader.Verify(l => l.FirstNames);
-            Assert.That(result, Is.EqualTo(NameRetriever.EmptyName));
+            Assert.That(result, Is.EqualTo(RandomNameRetriever.EmptyName));
         }
 
         [Test]
         public void Get_Random_Last_Name_Second_Item()
         {
-            var loader = Mock<INameFilesLoader>();
+            var loader = Mock<ICsvFileLoader>();
             var randomService = Mock<IRandomNumberService>();
-            var sut = new NameRetriever(loader.Object, randomService.Object);
+            var sut = new RandomNameRetriever(loader.Object, randomService.Object);
             var names = new[] { "Paul", "Schmidt", "Guagliardo" };
             loader.Setup(l => l.LastNames).Returns(names);
             randomService.Setup(r => r.GetRandomInt(0, 3)).Returns(1);
@@ -70,9 +70,9 @@ namespace FootballSim.Tests.Models
         [Test]
         public void Get_Random_Last_Name_Third_Item()
         {
-            var loader = Mock<INameFilesLoader>();
+            var loader = Mock<ICsvFileLoader>();
             var randomService = Mock<IRandomNumberService>();
-            var sut = new NameRetriever(loader.Object, randomService.Object);
+            var sut = new RandomNameRetriever(loader.Object, randomService.Object);
             var names = new[] { "Paul", "Schmidt", "Guagliardo" };
             loader.Setup(l => l.LastNames).Returns(names);
             randomService.Setup(r => r.GetRandomInt(0, 3)).Returns(2);
@@ -86,20 +86,20 @@ namespace FootballSim.Tests.Models
         [Test]
         public void No_Last_Names()
         {
-            var loader = Mock<INameFilesLoader>();
-            var sut = new NameRetriever(loader.Object, Mock<IRandomNumberService>().Object);
+            var loader = Mock<ICsvFileLoader>();
+            var sut = new RandomNameRetriever(loader.Object, Mock<IRandomNumberService>().Object);
             loader.Setup(l => l.LastNames).Returns(new string[0]);
 
             var result = sut.GetRandomLastName();
             loader.Verify(l => l.LastNames);
-            Assert.That(result, Is.EqualTo(NameRetriever.EmptyName));
+            Assert.That(result, Is.EqualTo(RandomNameRetriever.EmptyName));
         }
 
         [Test]
         public void Do_Not_Load_First_Names_Twice_Because_Already_Loaded()
         {
-            var loader = StrictMock<INameFilesLoader>();
-            var sut = new NameRetriever(loader.Object, Mock<IRandomNumberService>().Object);
+            var loader = StrictMock<ICsvFileLoader>();
+            var sut = new RandomNameRetriever(loader.Object, Mock<IRandomNumberService>().Object);
             loader.Setup(l => l.FirstNames).Returns(new string[10]);
 
             sut.GetRandomFirstName();
@@ -110,8 +110,8 @@ namespace FootballSim.Tests.Models
         [Test]
         public void Do_Not_Load_Last_Names_Twice_Because_Already_Loaded()
         {
-            var loader = StrictMock<INameFilesLoader>();
-            var sut = new NameRetriever(loader.Object, Mock<IRandomNumberService>().Object);
+            var loader = StrictMock<ICsvFileLoader>();
+            var sut = new RandomNameRetriever(loader.Object, Mock<IRandomNumberService>().Object);
             loader.Setup(l => l.LastNames).Returns(new string[10]);
 
             sut.GetRandomLastName();

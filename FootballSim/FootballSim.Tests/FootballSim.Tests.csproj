@@ -99,11 +99,12 @@
   <ItemGroup>
     <Compile Include="BaseTestFixture.cs" />
     <Compile Include="Controllers\PlayerControllerTests.cs" />
-    <Compile Include="Models\CollegeRepositoryTests.cs" />
+    <Compile Include="Models\CollegeBuilderTests.cs" />
     <Compile Include="Models\DraftClassFactoryTests.cs" />
     <Compile Include="Models\DraftClassTests.cs" />
-    <Compile Include="Models\NameRetrieverTests.cs" />
-    <Compile Include="Models\HometownGeneratorServiceTests.cs" />
+    <Compile Include="Models\RandomCollegeRetrieverTests.cs" />
+    <Compile Include="Models\RandomNameRetrieverTests.cs" />
+    <Compile Include="Models\HometownBuilderTests.cs" />
     <Compile Include="Models\LocationTests.cs" />
     <Compile Include="Models\MeasurablesGeneratorTests.cs" />
     <Compile Include="Models\MeasurablesTests.cs" />

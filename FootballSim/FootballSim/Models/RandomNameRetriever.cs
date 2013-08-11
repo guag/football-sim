@@ -1,23 +1,22 @@
 ﻿using System.Collections.Generic;
-using System.Diagnostics;
 
 namespace FootballSim.Models
 {
-    public interface INameRetriever
+    public interface IRandomNameRetriever
     {
         string GetRandomFirstName();
         string GetRandomLastName();
     }
 
-    public class NameRetriever : INameRetriever
+    public class RandomNameRetriever : IRandomNameRetriever
     {
         public static string EmptyName = "Empty";
-        private readonly INameFilesLoader _loader;
+        private readonly ICsvFileLoader _loader;
         private readonly IRandomNumberService _randomService;
-        private IList<string> _firstNames = new List<string>();
-        private IList<string> _lastNames = new List<string>();
+        private IList<string> _firstNameCache = new List<string>();
+        private IList<string> _lastNameCache = new List<string>();
 
-        public NameRetriever(INameFilesLoader loader, IRandomNumberService randomService)
+        public RandomNameRetriever(ICsvFileLoader loader, IRandomNumberService randomService)
         {
             _loader = loader;
             _randomService = randomService;
@@ -27,20 +26,20 @@ namespace FootballSim.Models
 
         public string GetRandomFirstName()
         {
-            if (_firstNames.Count == 0)
+            if (_firstNameCache.Count == 0)
             {
-                _firstNames = _loader.FirstNames;
+                _firstNameCache = _loader.FirstNames;
             }
-            return GetRandomName(_firstNames);
+            return GetRandomName(_firstNameCache);
         }
 
         public string GetRandomLastName()
         {
-            if (_lastNames.Count == 0)
+            if (_lastNameCache.Count == 0)
             {
-                _lastNames = _loader.LastNames;
+                _lastNameCache = _loader.LastNames;
             }
-            return GetRandomName(_lastNames);
+            return GetRandomName(_lastNameCache);
         }
 
         #endregion

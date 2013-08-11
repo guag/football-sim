@@ -8,9 +8,9 @@ namespace FootballSim.Models
 
     public class NameBuilder : INameBuilder
     {
-        private readonly INameRetriever _names;
+        private readonly IRandomNameRetriever _names;
 
-        public NameBuilder(INameRetriever names)
+        public NameBuilder(IRandomNameRetriever names)
         {
             _names = names;
         }

@@ -3,18 +3,18 @@ using FootballSim.Models.Positions;
 
 namespace FootballSim.Models
 {
-    public interface IHometownRepository : IPlayerBuildingBlock
+    public interface IHometownBuilder : IPlayerBuildingBlock
     {
     }
 
     /// <summary>
     /// TODO: properly implement and test this class.
     /// </summary>
-    public class HometownRepository : IHometownRepository
+    public class HometownBuilder : IHometownBuilder
     {
         private readonly IRandomNumberService _randomService;
 
-        public HometownRepository(IRandomNumberService randomService)
+        public HometownBuilder(IRandomNumberService randomService)
         {
             _randomService = randomService;
         }

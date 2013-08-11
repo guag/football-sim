@@ -58,11 +58,12 @@ namespace FootballSim.App_Start
         {
             kernel.Bind<IPasserRatingService>().To<PasserRatingService>();
             kernel.Bind<IRandomNumberService>().To<RandomNumberService>();
-            kernel.Bind<INameFilesLoader>().To<NameFilesLoader>();
-            kernel.Bind<INameRetriever>().To<NameRetriever>();
+            kernel.Bind<ICsvFileLoader>().To<CsvFileLoader>();
+            kernel.Bind<IRandomNameRetriever>().To<RandomNameRetriever>();
             kernel.Bind<INameBuilder>().To<NameBuilder>();
-            kernel.Bind<IHometownRepository>().To<HometownRepository>();
-            kernel.Bind<ICollegeRepository>().To<CollegeRepository>();
+            kernel.Bind<IHometownBuilder>().To<HometownBuilder>();
+            kernel.Bind<IRandomCollegeRetriever>().To<RandomCollegeRetriever>();
+            kernel.Bind<ICollegeBuilder>().To<CollegeBuilder>();
             kernel.Bind<IMeasurablesGenerator>().To<MeasurablesGenerator>();
             kernel.Bind<IPlayerFactory>().To<PlayerFactory>();
             kernel.Bind<IGeneralRatingsGenerator>().To<GeneralRatingsGenerator>();
@@ -88,8 +89,8 @@ namespace FootballSim.App_Start
             builder.AddBuildingBlock(kernel.Get<INameBuilder>());
             builder.AddBuildingBlock(kernel.Get<IPositionRepository>());
             builder.AddBuildingBlock(kernel.Get<IRatingsGenerator>());
-            builder.AddBuildingBlock(kernel.Get<IHometownRepository>());
-            builder.AddBuildingBlock(kernel.Get<ICollegeRepository>());
+            builder.AddBuildingBlock(kernel.Get<IHometownBuilder>());
+            builder.AddBuildingBlock(kernel.Get<ICollegeBuilder>());
             kernel.Bind<IPlayerBuilder>().ToConstant(builder);
         }
 

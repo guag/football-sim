@@ -174,9 +174,10 @@
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\PlayerController.cs" />
-    <Compile Include="Models\NameFilesLoader.cs" />
+    <Compile Include="Models\CsvFileLoader.cs" />
+    <Compile Include="Models\RandomCollegeRetriever.cs" />
     <Compile Include="Models\ViewModels\DraftClassViewModel.cs" />
-    <Compile Include="Models\NameRetriever.cs" />
+    <Compile Include="Models\RandomNameRetriever.cs" />
     <Compile Include="Models\IPlayerBuildingBlock.cs" />
     <Compile Include="Models\Measurables.cs" />
     <Compile Include="Models\MeasurablesGenerator.cs" />
@@ -195,8 +196,8 @@
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\DraftClass.cs" />
     <Compile Include="Models\DraftClassFactory.cs" />
-    <Compile Include="Models\HometownRepository.cs" />
-    <Compile Include="Models\CollegeRepository.cs" />
+    <Compile Include="Models\HometownBuilder.cs" />
+    <Compile Include="Models\CollegeBuilder.cs" />
     <Compile Include="Models\ILeague.cs" />
     <Compile Include="Models\Location.cs" />
     <Compile Include="Models\MultiplePlayerBuilder.cs" />
@@ -296,6 +297,7 @@
     <Content Include="Content\csv\ln.csv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\csv\colleges.csv" />
     <None Include="Scripts\jquery-2.0.3.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
