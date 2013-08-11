@@ -3,7 +3,6 @@ using System.Web;
 using FootballSim.App_Start;
 using FootballSim.Models;
 using FootballSim.Models.Draft;
-using FootballSim.Models.Player;
 using FootballSim.Models.Players;
 using FootballSim.Models.Positions;
 using FootballSim.Models.Ratings;
@@ -59,7 +58,7 @@ namespace FootballSim.App_Start
         private static void RegisterServices(IKernel kernel)
         {
             kernel.Bind<IPasserRatingService>().To<PasserRatingService>();
-            kernel.Bind<IRandomNumberService>().To<RandomNumberService>();
+            kernel.Bind<IRandomService>().To<RandomService>();
             kernel.Bind<ICsvFileLoader>().To<CsvFileLoader>();
             kernel.Bind<INameCache>().To<NameCache>();
             kernel.Bind<INameBuilder>().To<NameBuilder>();
@@ -67,11 +66,12 @@ namespace FootballSim.App_Start
             kernel.Bind<IHometownBuilder>().To<HometownBuilder>();
             kernel.Bind<ICollegeCache>().To<CollegeCache>();
             kernel.Bind<ICollegeBuilder>().To<CollegeBuilder>();
-            kernel.Bind<IMeasurablesGenerator>().To<MeasurablesGenerator>();
+            kernel.Bind<IMeasurablesBuilder>().To<MeasurablesBuilder>();
             kernel.Bind<IPlayerFactory>().To<PlayerFactory>();
             kernel.Bind<IGeneralRatingsGenerator>().To<GeneralRatingsGenerator>();
             RegisterRatingsGenerator(kernel);
-            RegisterPositionFactory(kernel);
+            RegisterPositionRepository(kernel);
+            kernel.Bind<IPositionBuilder>().To<PositionBuilder>();
             RegisterPlayerBuilder(kernel);
             kernel.Bind<IMultiplePlayerBuilder>().To<MultiplePlayerBuilder>();
             kernel.Bind<IDraftClass>().To<DraftClass>();
@@ -90,27 +90,25 @@ namespace FootballSim.App_Start
         {
             var builder = new PlayerBuilder(kernel.Get<IPlayerFactory>());
             builder.AddBuildingBlock(kernel.Get<INameBuilder>());
-            builder.AddBuildingBlock(kernel.Get<IPositionRepository>());
+            builder.AddBuildingBlock(kernel.Get<IPositionBuilder>());
             builder.AddBuildingBlock(kernel.Get<IRatingsGenerator>());
             builder.AddBuildingBlock(kernel.Get<IHometownBuilder>());
             builder.AddBuildingBlock(kernel.Get<ICollegeBuilder>());
             kernel.Bind<IPlayerBuilder>().ToConstant(builder);
         }
 
-        private static void RegisterPositionFactory(IKernel kernel)
+        private static void RegisterPositionRepository(IKernel kernel)
         {
-            var factory = new PositionRepository(
-                kernel.Get<IRandomNumberService>(),
-                kernel.Get<IMeasurablesGenerator>()
-                );
-            factory.AddPosition(new Quarterback());
-            factory.AddPosition(new Halfback());
-            factory.AddPosition(new WideReceiver());
-            factory.AddPosition(new TightEnd());
-            factory.AddPosition(new Tackle());
-            factory.AddPosition(new Guard());
-            factory.AddPosition(new Center());
-            kernel.Bind<IPositionRepository>().ToConstant(factory);
+            var repository = new PositionRepository(kernel.Get<IRandomService>());
+            repository.AddPosition(PositionFactory.Create(PositionType.Quarterback));
+            repository.AddPosition(PositionFactory.Create(PositionType.Halfback));
+            repository.AddPosition(PositionFactory.Create(PositionType.WideReceiver));
+            repository.AddPosition(PositionFactory.Create(PositionType.TightEnd));
+            repository.AddPosition(PositionFactory.Create(PositionType.Tackle));
+            repository.AddPosition(PositionFactory.Create(PositionType.Guard));
+            repository.AddPosition(PositionFactory.Create(PositionType.Center));
+            // TODO: add defense!
+            kernel.Bind<IPositionRepository>().ToConstant(repository);
         }
     }
 }

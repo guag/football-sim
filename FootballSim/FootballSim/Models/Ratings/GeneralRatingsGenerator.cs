@@ -10,21 +10,21 @@
     /// </summary>
     public class GeneralRatingsGenerator : IGeneralRatingsGenerator
     {
-        private readonly IRandomNumberService _randomService;
+        private readonly IRandomService _random;
 
-        public GeneralRatingsGenerator(IRandomNumberService randomService)
+        public GeneralRatingsGenerator(IRandomService random)
         {
-            _randomService = randomService;
+            _random = random;
         }
 
         #region IGeneralRatingsGenerator Members
 
         public void Generate(Players.Player player)
         {
-            int r1 = _randomService.GetRandomInt(100);
+            int r1 = _random.GetRandom(100);
             player.Ratings.Add(
                 RatingType.Speed, new Rating {CurrentValue = r1, ProjectedValue = r1});
-            int r2 = _randomService.GetRandomInt(100);
+            int r2 = _random.GetRandom(100);
             player.Ratings.Add(
                 RatingType.Strength, new Rating {CurrentValue = r2, ProjectedValue = r2});
         }

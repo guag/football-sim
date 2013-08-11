@@ -12,14 +12,14 @@ namespace FootballSim.Models.Players
     {
         public static string EmptyName = "Empty";
         private readonly ICsvFileLoader _loader;
-        private readonly IRandomNumberService _randomService;
+        private readonly IRandomService _random;
         private IList<string> _firstNameCache = new List<string>();
         private IList<string> _lastNameCache = new List<string>();
 
-        public NameCache(ICsvFileLoader loader, IRandomNumberService randomService)
+        public NameCache(ICsvFileLoader loader, IRandomService random)
         {
             _loader = loader;
-            _randomService = randomService;
+            _random = random;
         }
 
         #region INameCache Members
@@ -46,7 +46,7 @@ namespace FootballSim.Models.Players
 
         private string GetRandomName(IList<string> names)
         {
-            return names.Count == 0 ? EmptyName : names[_randomService.GetRandomInt(names.Count)];
+            return names.Count == 0 ? EmptyName : names[_random.GetRandom(names.Count)];
         }
     }
 }

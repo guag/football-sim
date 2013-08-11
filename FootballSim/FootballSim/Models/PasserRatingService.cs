@@ -15,15 +15,6 @@ namespace FootballSim.Models
 
         #region IPasserRatingService Members
 
-        /// <summary>
-        /// Calculates a passer (QB) rating based on the g iven inputs.
-        /// </summary>
-        /// <param name="atts">The number of passing attempts</param>
-        /// <param name="comps">The number of passing completions</param>
-        /// <param name="yds">The number of passing yards</param>
-        /// <param name="tds">The number of passing touchdowns</param>
-        /// <param name="ints">The number of interceptions</param>
-        /// <returns>The passer rating as a double</returns>
         public double GetRating(double atts, double comps, double yds, double tds, double ints)
         {
             if (atts <= 0)

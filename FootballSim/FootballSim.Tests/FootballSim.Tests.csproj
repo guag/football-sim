@@ -107,7 +107,7 @@
     <Compile Include="Models\Players\NameCacheTests.cs" />
     <Compile Include="Models\Players\HometownBuilderTests.cs" />
     <Compile Include="Models\LocationTests.cs" />
-    <Compile Include="Models\MeasurablesGeneratorTests.cs" />
+    <Compile Include="Models\MeasurablesBuilderTests.cs" />
     <Compile Include="Models\MeasurablesTests.cs" />
     <Compile Include="Models\PasserRatingServiceTests.cs" />
     <Compile Include="Models\Players\PlayerBuilderTests.cs" />
@@ -118,13 +118,15 @@
     <Compile Include="Models\Positions\EmptyPositionTests.cs" />
     <Compile Include="Models\Positions\GuardTests.cs" />
     <Compile Include="Models\Positions\HalfbackTests.cs" />
+    <Compile Include="Models\Positions\PositionBuilderTests.cs" />
+    <Compile Include="Models\Positions\PositionFactoryTests.cs" />
     <Compile Include="Models\Positions\PositionRepositoryTests.cs" />
     <Compile Include="Models\Positions\QuarterbackTests.cs" />
     <Compile Include="Models\Players\MultiplePlayerBuilderTests.cs" />
     <Compile Include="Models\Positions\TackleTests.cs" />
     <Compile Include="Models\Positions\TightEndTests.cs" />
     <Compile Include="Models\Positions\WideReceiverTests.cs" />
-    <Compile Include="Models\RandomNumberServiceTests.cs" />
+    <Compile Include="Models\RandomServiceTests.cs" />
     <Compile Include="Models\Ratings\GeneralRatingsGeneratorTests.cs" />
     <Compile Include="Models\Ratings\QuarterbackRatingsGeneratorTests.cs" />
     <Compile Include="Models\Ratings\RatingsGeneratorTests.cs" />

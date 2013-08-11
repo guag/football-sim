@@ -10,12 +10,12 @@ namespace FootballSim.Models.Players
     public class CollegeCache : ICollegeCache
     {
         private readonly ICsvFileLoader _loader;
-        private readonly IRandomNumberService _randomService;
+        private readonly IRandomService _random;
         private IList<string> _collegeCache = new List<string>();
 
-        public CollegeCache(IRandomNumberService randomService, ICsvFileLoader loader)
+        public CollegeCache(IRandomService random, ICsvFileLoader loader)
         {
-            _randomService = randomService;
+            _random = random;
             _loader = loader;
         }
 
@@ -27,7 +27,7 @@ namespace FootballSim.Models.Players
             {
                 _collegeCache = _loader.Colleges;
             }
-            return _collegeCache[_randomService.GetRandomInt(_collegeCache.Count)];
+            return _collegeCache[_random.GetRandom(_collegeCache.Count)];
         }
 
         #endregion

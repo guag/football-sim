@@ -1,40 +1,37 @@
 ﻿using System.Collections.Generic;
-using FootballSim.Models.Players;
 
 namespace FootballSim.Models.Positions
 {
-    public interface IPositionRepository : IPlayerBuildingBlock
+    public interface IPositionRepository
     {
+        IPosition GetRandomPosition();
     }
 
     public class PositionRepository : IPositionRepository
     {
         private readonly IPosition _emptyPosition = new EmptyPosition();
-        private readonly IMeasurablesGenerator _measurablesGenerator;
         private readonly IList<IPosition> _positions = new List<IPosition>();
-        private readonly IRandomNumberService _randomService;
+        private readonly IRandomService _random;
 
-        public PositionRepository(IRandomNumberService randomService, IMeasurablesGenerator measurablesGenerator)
+        public PositionRepository(IRandomService random)
         {
-            _randomService = randomService;
-            _measurablesGenerator = measurablesGenerator;
+            _random = random;
         }
 
         #region IPositionRepository Members
 
-        public void Build(Players.Player player, IPosition position = null)
+        public IPosition GetRandomPosition()
         {
-            player.Position = position ?? (_positions.Count == 0
-                                               ? _emptyPosition
-                                               : _positions[_randomService.GetRandomInt(_positions.Count)]);
-            player.Measurables = _measurablesGenerator.GetRandomMeasurables(player.Position);
+            return (_positions.Count == 0
+                        ? _emptyPosition
+                        : _positions[_random.GetRandom(_positions.Count)]);
         }
 
         #endregion
 
-        public void AddPosition(IPosition positionClass)
+        public void AddPosition(IPosition position)
         {
-            _positions.Add(positionClass);
+            _positions.Add(position);
         }
     }
 }

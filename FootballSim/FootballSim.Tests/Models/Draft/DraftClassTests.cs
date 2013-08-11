@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
-using FootballSim.Models;
 using FootballSim.Models.Draft;
-using FootballSim.Models.Player;
+using FootballSim.Models.Players;
 using NUnit.Framework;
 
 namespace FootballSim.Tests.Models.Draft

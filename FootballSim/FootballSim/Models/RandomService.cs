@@ -2,18 +2,18 @@
 
 namespace FootballSim.Models
 {
-    public interface IRandomNumberService
+    public interface IRandomService
     {
-        int GetRandomInt(int max);
+        int GetRandom(int max);
     }
 
-    public class RandomNumberService : IRandomNumberService
+    public class RandomService : IRandomService
     {
         private static readonly Random Random = new Random();
 
         #region IRandomNumberService Members
 
-        public int GetRandomInt(int max)
+        public int GetRandom(int max)
         {
             return Random.Next(0, max);
         }
