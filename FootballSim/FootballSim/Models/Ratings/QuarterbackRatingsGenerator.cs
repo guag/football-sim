@@ -3,9 +3,13 @@ using System.Collections.Generic;
 
 namespace FootballSim.Models.Ratings
 {
-    public class QuarterbackRatingsGenerator : IPositionRatingsGenerator
+    public interface IQuarterbackRatingsGenerator : IPositionRatingsGenerator
     {
-        #region IPositionRatingsGenerator Members
+    }
+
+    public class QuarterbackRatingsGenerator : IQuarterbackRatingsGenerator
+    {
+        #region IQuarterbackRatingsGenerator Members
 
         public IDictionary<RatingType, Rating> Generate()
         {

@@ -10,23 +10,13 @@ namespace FootballSim.Models.Ratings
 
     public class RatingsGenerator : IRatingsGenerator
     {
-        private readonly IGeneralRatingsGenerator _generalRatings;
-
         private readonly IDictionary<PositionType, IPositionRatingsGenerator> _ratingsGenerators =
             new Dictionary<PositionType, IPositionRatingsGenerator>();
-
-        public RatingsGenerator(IGeneralRatingsGenerator generalRatings)
-        {
-            _generalRatings = generalRatings;
-        }
 
         #region IRatingsGenerator Members
 
         public void Build(Players.Player player, IPosition position = null)
         {
-            _generalRatings.Generate(player);
-
-            // Add position-specific ratings
             if (!_ratingsGenerators.ContainsKey(player.Position.Type))
             {
                 return;

@@ -26,7 +26,7 @@
 
         public int MaxWeight
         {
-            get { return 250; }
+            get { return 240; }
         }
 
         public int MinHeight

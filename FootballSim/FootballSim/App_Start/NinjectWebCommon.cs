@@ -67,8 +67,6 @@ namespace FootballSim.App_Start
             kernel.Bind<ICollegeCache>().To<CollegeCache>();
             kernel.Bind<ICollegeBuilder>().To<CollegeBuilder>();
             kernel.Bind<IMeasurablesBuilder>().To<MeasurablesBuilder>();
-            kernel.Bind<IPlayerFactory>().To<PlayerFactory>();
-            kernel.Bind<IGeneralRatingsGenerator>().To<GeneralRatingsGenerator>();
             RegisterRatingsGenerator(kernel);
             RegisterPositionRepository(kernel);
             kernel.Bind<IPositionBuilder>().To<PositionBuilder>();
@@ -80,10 +78,18 @@ namespace FootballSim.App_Start
 
         private static void RegisterRatingsGenerator(IKernel kernel)
         {
-            var generator = new RatingsGenerator(kernel.Get<IGeneralRatingsGenerator>());
+            RegisterPositionRatingsGenerators(kernel);
+            var generator = new RatingsGenerator();
+            generator.AddRatingsGenerator(PositionType.None, kernel.Get<IGeneralRatingsGenerator>());
             // TODO: add position-specific ratings generator classes here.
-            //generator.AddRatingsGenerator(PositionType.Quarterback, new QuarterbackRatingsGenerator());
+            //generator.AddRatingsGenerator(PositionType.Quarterback, kernel.Get<IQuarterbackRatingsGenerator>());
             kernel.Bind<IRatingsGenerator>().ToConstant(generator);
+        }
+
+        private static void RegisterPositionRatingsGenerators(IKernel kernel)
+        {
+            kernel.Bind<IGeneralRatingsGenerator>().To<GeneralRatingsGenerator>();
+            kernel.Bind<IQuarterbackRatingsGenerator>().To<QuarterbackRatingsGenerator>();
         }
 
         private static void RegisterPlayerBuilder(IKernel kernel)
