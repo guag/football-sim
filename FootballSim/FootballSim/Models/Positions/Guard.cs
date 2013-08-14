@@ -1,6 +1,6 @@
 ﻿namespace FootballSim.Models.Positions
 {
-    public class Guard : IPosition
+    public struct Guard : IPosition
     {
         #region IPosition Members
 

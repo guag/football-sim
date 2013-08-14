@@ -1,6 +1,6 @@
 ﻿namespace FootballSim.Models.Positions
 {
-    public class EmptyPosition : IPosition
+    public struct EmptyPosition : IPosition
     {
         #region IPosition Members
 

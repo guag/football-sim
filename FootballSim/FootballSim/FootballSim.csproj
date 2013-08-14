@@ -177,8 +177,17 @@
     <Compile Include="Models\CsvFileLoader.cs" />
     <Compile Include="Models\Players\CollegeCache.cs" />
     <Compile Include="Models\Players\HometownCache.cs" />
+    <Compile Include="Models\Positions\Cornerback.cs" />
+    <Compile Include="Models\Positions\DefensiveEnd.cs" />
+    <Compile Include="Models\Positions\DefensiveTackle.cs" />
+    <Compile Include="Models\Positions\FreeSafety.cs" />
+    <Compile Include="Models\Positions\InsideLinebacker.cs" />
+    <Compile Include="Models\Positions\Kicker.cs" />
+    <Compile Include="Models\Positions\OutsideLinebacker.cs" />
     <Compile Include="Models\Positions\PositionFactory.cs" />
     <Compile Include="Models\Positions\PositionRepository.cs" />
+    <Compile Include="Models\Positions\Punter.cs" />
+    <Compile Include="Models\Positions\StrongSafety.cs" />
     <Compile Include="Models\ViewModels\DraftClassViewModel.cs" />
     <Compile Include="Models\Players\NameCache.cs" />
     <Compile Include="Models\Players\IPlayerBuildingBlock.cs" />

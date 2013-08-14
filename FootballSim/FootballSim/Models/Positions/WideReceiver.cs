@@ -21,17 +21,17 @@
 
         public int MinWeight
         {
-            get { return 155; }
+            get { return 170; }
         }
 
         public int MaxWeight
         {
-            get { return 265; }
+            get { return 260; }
         }
 
         public int MinHeight
         {
-            get { return 65; }
+            get { return 69; }
         }
 
         public int MaxHeight

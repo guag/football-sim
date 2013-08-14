@@ -1,22 +1,22 @@
 ﻿namespace FootballSim.Models.Positions
 {
-    public struct Tackle : IPosition
+    public struct DefensiveEnd : IPosition
     {
         #region IPosition Members
 
         public PositionType Type
         {
-            get { return PositionType.Tackle; }
+            get { return PositionType.DefensiveEnd; }
         }
 
         public string Name
         {
-            get { return "Tackle"; }
+            get { return "Defensive End"; }
         }
 
         public Side Side
         {
-            get { return Side.Offense; }
+            get { return Side.Defense; }
         }
 
         public int MinWeight
@@ -26,7 +26,7 @@
 
         public int MaxWeight
         {
-            get { return 400; }
+            get { return 330; }
         }
 
         public int MinHeight
@@ -36,7 +36,7 @@
 
         public int MaxHeight
         {
-            get { return 86; }
+            get { return 84; }
         }
 
         #endregion

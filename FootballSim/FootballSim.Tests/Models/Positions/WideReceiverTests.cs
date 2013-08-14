@@ -13,21 +13,21 @@ namespace FootballSim.Tests.Models.Positions
         }
 
         [Test]
-        public void Max_Weight_Is_265()
+        public void Max_Weight_Is_260()
         {
-            Assert.That(new WideReceiver().MaxWeight, Is.EqualTo(265));
+            Assert.That(new WideReceiver().MaxWeight, Is.EqualTo(260));
         }
 
         [Test]
-        public void Min_Height_Is_65()
+        public void Min_Height_Is_69()
         {
-            Assert.That(new WideReceiver().MinHeight, Is.EqualTo(65));
+            Assert.That(new WideReceiver().MinHeight, Is.EqualTo(69));
         }
 
         [Test]
-        public void Min_Weight_Is_155()
+        public void Min_Weight_Is_170()
         {
-            Assert.That(new WideReceiver().MinWeight, Is.EqualTo(155));
+            Assert.That(new WideReceiver().MinWeight, Is.EqualTo(170));
         }
 
         [Test]

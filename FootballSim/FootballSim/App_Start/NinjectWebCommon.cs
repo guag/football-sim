@@ -107,7 +107,15 @@ namespace FootballSim.App_Start
             repository.AddPosition(PositionFactory.Create(PositionType.Tackle));
             repository.AddPosition(PositionFactory.Create(PositionType.Guard));
             repository.AddPosition(PositionFactory.Create(PositionType.Center));
-            // TODO: add defense!
+            repository.AddPosition(PositionFactory.Create(PositionType.DefensiveEnd));
+            repository.AddPosition(PositionFactory.Create(PositionType.DefensiveTackle));
+            repository.AddPosition(PositionFactory.Create(PositionType.OutsideLinebacker));
+            repository.AddPosition(PositionFactory.Create(PositionType.InsideLinebacker));
+            repository.AddPosition(PositionFactory.Create(PositionType.Cornerback));
+            repository.AddPosition(PositionFactory.Create(PositionType.FreeSafety));
+            repository.AddPosition(PositionFactory.Create(PositionType.StrongSafety));
+            repository.AddPosition(PositionFactory.Create(PositionType.Kicker));
+            repository.AddPosition(PositionFactory.Create(PositionType.Punter));
             kernel.Bind<IPositionRepository>().ToConstant(repository);
         }
     }

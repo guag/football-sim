@@ -4,8 +4,6 @@ namespace FootballSim.Models.Positions
 {
     public class PositionFactory
     {
-        #region IPositionFactory Members
-
         public static IPosition Create(PositionType type)
         {
             switch (type)
@@ -27,29 +25,26 @@ namespace FootballSim.Models.Positions
                 case PositionType.Center:
                     return new Center();
                 case PositionType.DefensiveEnd:
-                    break;
+                    return new DefensiveEnd();
                 case PositionType.DefensiveTackle:
-                    break;
+                    return new DefensiveTackle();
                 case PositionType.OutsideLinebacker:
-                    break;
+                    return new OutsideLinebacker();
                 case PositionType.InsideLinebacker:
-                    break;
+                    return new InsideLinebacker();
                 case PositionType.Cornerback:
-                    break;
+                    return new Cornerback();
                 case PositionType.FreeSafety:
-                    break;
+                    return new FreeSafety();
                 case PositionType.StrongSafety:
-                    break;
+                    return new StrongSafety();
                 case PositionType.Kicker:
-                    break;
+                    return new Kicker();
                 case PositionType.Punter:
-                    break;
+                    return new Punter();
                 default:
                     throw new ArgumentOutOfRangeException("type");
             }
-            throw new ArgumentOutOfRangeException("type");
         }
-
-        #endregion
     }
 }
