@@ -1,44 +1,35 @@
 namespace FootballSim.Models.Positions
 {
-    public struct TightEnd : IPosition
+    public class TightEnd : PassCatcher
     {
-        #region IPosition Members
-
-        public PositionType Type
+        public override PositionType Type
         {
             get { return PositionType.TightEnd; }
         }
 
-        public string Name
+        public override string Name
         {
             get { return "Tight End"; }
         }
 
-        public Side Side
-        {
-            get { return Side.Offense; }
-        }
-
-        public int MinWeight
+        public override int MinWeight
         {
             get { return 220; }
         }
 
-        public int MaxWeight
+        public override int MaxWeight
         {
             get { return 280; }
         }
 
-        public int MinHeight
+        public override int MinHeight
         {
             get { return 70; }
         }
 
-        public int MaxHeight
+        public override int MaxHeight
         {
             get { return 84; }
         }
-
-        #endregion
     }
 }

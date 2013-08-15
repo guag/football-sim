@@ -1,44 +1,43 @@
-﻿namespace FootballSim.Models.Positions
+﻿using System.Collections.Generic;
+using FootballSim.Models.Ratings;
+
+namespace FootballSim.Models.Positions
 {
-    public struct Kicker : IPosition
+    public abstract class Kicker : Position
     {
-        #region IPosition Members
-
-        public PositionType Type
-        {
-            get { return PositionType.Kicker; }
-        }
-
-        public string Name
-        {
-            get { return "Kicker"; }
-        }
-
-        public Side Side
+        public override Side Side
         {
             get { return Side.SpecialTeams; }
         }
 
-        public int MinWeight
+        public override int MinWeight
         {
             get { return 160; }
         }
 
-        public int MaxWeight
+        public override int MaxWeight
         {
             get { return 240; }
         }
 
-        public int MinHeight
+        public override int MinHeight
         {
             get { return 68; }
         }
 
-        public int MaxHeight
+        public override int MaxHeight
         {
             get { return 76; }
         }
 
-        #endregion
+        public override ISet<RatingType> RatingTypes
+        {
+            get
+            {
+                base.RatingTypes.Add(RatingType.KickingAccuracy);
+                base.RatingTypes.Add(RatingType.KickingPower);
+                return base.RatingTypes;
+            }
+        }
     }
 }

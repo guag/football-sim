@@ -16,10 +16,10 @@ namespace FootballSim.Tests.Models.Draft
             var playerFactory = Mock<IMultiplePlayerBuilder>();
             var sut = new DraftClassFactory(playerFactory.Object);
             var players = new List<Player> {new Player(), new Player()};
-            playerFactory.Setup(p => p.Build(1000, It.IsAny<IPosition>())).Returns(players);
+            playerFactory.Setup(p => p.Build(1000, It.IsAny<Position>())).Returns(players);
             var draft = sut.Create(0, 1000);
 
-            playerFactory.Verify(p => p.Build(1000, It.IsAny<IPosition>()));
+            playerFactory.Verify(p => p.Build(1000, It.IsAny<Position>()));
             Assert.That(draft.Players, Is.EquivalentTo(players));
         }
 
@@ -29,10 +29,10 @@ namespace FootballSim.Tests.Models.Draft
             var playerFactory = Mock<IMultiplePlayerBuilder>();
             var sut = new DraftClassFactory(playerFactory.Object);
             var players = new List<Player> {new Player(), new Player()};
-            playerFactory.Setup(p => p.Build(500, It.IsAny<IPosition>())).Returns(players);
+            playerFactory.Setup(p => p.Build(500, It.IsAny<Position>())).Returns(players);
             var draft = sut.Create(0, 500);
 
-            playerFactory.Verify(p => p.Build(500, It.IsAny<IPosition>()));
+            playerFactory.Verify(p => p.Build(500, It.IsAny<Position>()));
             Assert.That(draft.Players, Is.EquivalentTo(players));
         }
 

@@ -1,4 +1,5 @@
 ﻿using FootballSim.Models.Positions;
+using FootballSim.Models.Ratings;
 using NUnit.Framework;
 
 namespace FootballSim.Tests.Models.Positions
@@ -19,9 +20,9 @@ namespace FootballSim.Tests.Models.Positions
         }
 
         [Test]
-        public void Min_Height_Is_69()
+        public void Min_Height_Is_70()
         {
-            Assert.That(new Quarterback().MinHeight, Is.EqualTo(69));
+            Assert.That(new Quarterback().MinHeight, Is.EqualTo(70));
         }
 
         [Test]
@@ -34,6 +35,15 @@ namespace FootballSim.Tests.Models.Positions
         public void Name_Is_Quarterback()
         {
             Assert.That(new Quarterback().Name, Is.EqualTo("Quarterback"));
+        }
+
+        [Test]
+        public void Ratings_Test()
+        {
+            var sut = new Quarterback();
+            Assert.That(sut.RatingTypes, Contains.Item(RatingType.ThrowingAccuracy));
+            Assert.That(sut.RatingTypes, Contains.Item(RatingType.ThrowingPower));
+            Assert.That(sut.RatingTypes, Contains.Item(RatingType.Rushing));
         }
 
         [Test]

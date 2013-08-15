@@ -17,7 +17,7 @@ namespace FootballSim.Models.Players
 
         #region IHometownBuilder Members
 
-        public void Build(Player player, IPosition position = null)
+        public void Build(Player player, Position position = null)
         {
             player.Hometown = _hometowns.GetRandomHometown();
         }

@@ -1,44 +1,54 @@
-﻿namespace FootballSim.Models.Positions
-{
-    public struct Quarterback : IPosition
-    {
-        #region IPosition Members
+﻿using System.Collections.Generic;
+using FootballSim.Models.Ratings;
 
-        public PositionType Type
+namespace FootballSim.Models.Positions
+{
+    public class Quarterback : Position
+    {
+        public override PositionType Type
         {
             get { return PositionType.Quarterback; }
         }
 
-        public string Name
+        public override string Name
         {
             get { return "Quarterback"; }
         }
 
-        public Side Side
+        public override Side Side
         {
             get { return Side.Offense; }
         }
 
-        public int MinWeight
+        public override int MinWeight
         {
             get { return 175; }
         }
 
-        public int MaxWeight
+        public override int MaxWeight
         {
             get { return 265; }
         }
 
-        public int MinHeight
+        public override int MinHeight
         {
-            get { return 69; }
+            get { return 70; }
         }
 
-        public int MaxHeight
+        public override int MaxHeight
         {
             get { return 78; }
         }
 
-        #endregion
+        public override ISet<RatingType> RatingTypes
+        {
+            get
+            {
+                base.RatingTypes.Add(RatingType.ThrowingAccuracy);
+                base.RatingTypes.Add(RatingType.ThrowingPower);
+                base.RatingTypes.Add(RatingType.Rushing);
+                return base.RatingTypes;
+            }
+        }
     }
 }

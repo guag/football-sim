@@ -13,7 +13,7 @@ namespace FootballSim.Models.Players
         public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public IPosition Position { get; set; }
+        public Position Position { get; set; }
         public int JerseyNumber { get; set; }
         public ITeam Team { get; set; }
         public Location Hometown { get; set; }

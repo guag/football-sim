@@ -4,6 +4,6 @@ namespace FootballSim.Models.Players
 {
     public interface IPlayerBuildingBlock
     {
-        void Build(Player player, IPosition position = null);
+        void Build(Player player, Position position = null);
     }
 }

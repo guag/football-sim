@@ -4,7 +4,7 @@ namespace FootballSim.Models
 {
     public interface IMeasurablesBuilder
     {
-        Measurables GenerateMeasurables(IPosition position);
+        Measurables GenerateMeasurables(Position position);
     }
 
     public class MeasurablesBuilder : IMeasurablesBuilder
@@ -18,7 +18,7 @@ namespace FootballSim.Models
 
         #region IMeasurablesGenerator Members
 
-        public Measurables GenerateMeasurables(IPosition position)
+        public Measurables GenerateMeasurables(Position position)
         {
             return new Measurables
                        {

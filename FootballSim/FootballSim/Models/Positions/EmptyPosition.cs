@@ -1,29 +1,40 @@
 ﻿namespace FootballSim.Models.Positions
 {
-    public struct EmptyPosition : IPosition
+    public class EmptyPosition : Position
     {
-        #region IPosition Members
-
-        public PositionType Type
+        public override PositionType Type
         {
             get { return PositionType.None; }
         }
 
-        public string Name
+        public override string Name
         {
             get { return "None"; }
         }
 
-        public Side Side
+        public override Side Side
         {
             get { return Side.None; }
         }
 
-        public int MinWeight { get; set; }
-        public int MaxWeight { get; set; }
-        public int MinHeight { get; set; }
-        public int MaxHeight { get; set; }
+        public override int MinWeight
+        {
+            get { return 0; }
+        }
 
-        #endregion
+        public override int MaxWeight
+        {
+            get { return 0; }
+        }
+
+        public override int MinHeight
+        {
+            get { return 0; }
+        }
+
+        public override int MaxHeight
+        {
+            get { return 0; }
+        }
     }
 }

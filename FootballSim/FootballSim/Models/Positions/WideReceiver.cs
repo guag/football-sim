@@ -1,44 +1,38 @@
-﻿namespace FootballSim.Models.Positions
-{
-    public struct WideReceiver : IPosition
-    {
-        #region IPosition Members
+﻿using System.Collections.Generic;
+using FootballSim.Models.Ratings;
 
-        public PositionType Type
+namespace FootballSim.Models.Positions
+{
+    public class WideReceiver : PassCatcher
+    {
+        public override PositionType Type
         {
             get { return PositionType.WideReceiver; }
         }
 
-        public string Name
+        public override string Name
         {
             get { return "Wide Receiver"; }
         }
 
-        public Side Side
-        {
-            get { return Side.Offense; }
-        }
-
-        public int MinWeight
+        public override int MinWeight
         {
             get { return 170; }
         }
 
-        public int MaxWeight
+        public override int MaxWeight
         {
             get { return 260; }
         }
 
-        public int MinHeight
+        public override int MinHeight
         {
             get { return 69; }
         }
 
-        public int MaxHeight
+        public override int MaxHeight
         {
             get { return 80; }
         }
-
-        #endregion
     }
 }

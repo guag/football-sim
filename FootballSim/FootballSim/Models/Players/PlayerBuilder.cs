@@ -5,7 +5,7 @@ namespace FootballSim.Models.Players
 {
     public interface IPlayerBuilder
     {
-        Player Build(IPosition position = null);
+        Player Build(Position position = null);
     }
 
     public class PlayerBuilder : IPlayerBuilder
@@ -20,7 +20,7 @@ namespace FootballSim.Models.Players
 
         #region IPlayerBuilder Members
 
-        public Player Build(IPosition position = null)
+        public Player Build(Position position = null)
         {
             Player player = _playerFactory.Create();
             foreach (IPlayerBuildingBlock buildingBlock in _buildingBlocks)

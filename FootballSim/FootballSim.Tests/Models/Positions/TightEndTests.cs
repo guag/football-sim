@@ -37,12 +37,6 @@ namespace FootballSim.Tests.Models.Positions
         }
 
         [Test]
-        public void Side_Is_Offense()
-        {
-            Assert.That(new TightEnd().Side, Is.EqualTo(Side.Offense));
-        }
-
-        [Test]
         public void Type_Is_Tight_End()
         {
             Assert.That(new TightEnd().Type, Is.EqualTo(PositionType.TightEnd));

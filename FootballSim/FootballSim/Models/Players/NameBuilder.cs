@@ -17,7 +17,7 @@ namespace FootballSim.Models.Players
 
         #region INameBuilder Members
 
-        public void Build(Player player, IPosition position = null)
+        public void Build(Player player, Position position = null)
         {
             player.FirstName = _names.GetRandomFirstName();
             player.LastName = _names.GetRandomLastName();

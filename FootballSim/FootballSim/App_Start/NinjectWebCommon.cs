@@ -67,7 +67,8 @@ namespace FootballSim.App_Start
             kernel.Bind<ICollegeCache>().To<CollegeCache>();
             kernel.Bind<ICollegeBuilder>().To<CollegeBuilder>();
             kernel.Bind<IMeasurablesBuilder>().To<MeasurablesBuilder>();
-            RegisterRatingsGenerator(kernel);
+            kernel.Bind<IRatingsBuilder>().To<RatingsBuilder>();
+            kernel.Bind<IPlayerFactory>().To<PlayerFactory>();
             RegisterPositionRepository(kernel);
             kernel.Bind<IPositionBuilder>().To<PositionBuilder>();
             RegisterPlayerBuilder(kernel);
@@ -76,28 +77,12 @@ namespace FootballSim.App_Start
             kernel.Bind<IDraftClassFactory>().To<DraftClassFactory>();
         }
 
-        private static void RegisterRatingsGenerator(IKernel kernel)
-        {
-            RegisterPositionRatingsGenerators(kernel);
-            var generator = new RatingsGenerator();
-            generator.AddRatingsGenerator(PositionType.None, kernel.Get<IGeneralRatingsGenerator>());
-            // TODO: add position-specific ratings generator classes here.
-            //generator.AddRatingsGenerator(PositionType.Quarterback, kernel.Get<IQuarterbackRatingsGenerator>());
-            kernel.Bind<IRatingsGenerator>().ToConstant(generator);
-        }
-
-        private static void RegisterPositionRatingsGenerators(IKernel kernel)
-        {
-            kernel.Bind<IGeneralRatingsGenerator>().To<GeneralRatingsGenerator>();
-            kernel.Bind<IQuarterbackRatingsGenerator>().To<QuarterbackRatingsGenerator>();
-        }
-
         private static void RegisterPlayerBuilder(IKernel kernel)
         {
             var builder = new PlayerBuilder(kernel.Get<IPlayerFactory>());
             builder.AddBuildingBlock(kernel.Get<INameBuilder>());
             builder.AddBuildingBlock(kernel.Get<IPositionBuilder>());
-            builder.AddBuildingBlock(kernel.Get<IRatingsGenerator>());
+            builder.AddBuildingBlock(kernel.Get<IRatingsBuilder>());
             builder.AddBuildingBlock(kernel.Get<IHometownBuilder>());
             builder.AddBuildingBlock(kernel.Get<ICollegeBuilder>());
             kernel.Bind<IPlayerBuilder>().ToConstant(builder);
@@ -108,6 +93,7 @@ namespace FootballSim.App_Start
             var repository = new PositionRepository(kernel.Get<IRandomService>());
             repository.AddPosition(PositionFactory.Create(PositionType.Quarterback));
             repository.AddPosition(PositionFactory.Create(PositionType.Halfback));
+            repository.AddPosition(PositionFactory.Create(PositionType.Fullback));
             repository.AddPosition(PositionFactory.Create(PositionType.WideReceiver));
             repository.AddPosition(PositionFactory.Create(PositionType.TightEnd));
             repository.AddPosition(PositionFactory.Create(PositionType.Tackle));

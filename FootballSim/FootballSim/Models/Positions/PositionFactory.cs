@@ -4,7 +4,7 @@ namespace FootballSim.Models.Positions
 {
     public class PositionFactory
     {
-        public static IPosition Create(PositionType type)
+        public static Position Create(PositionType type)
         {
             switch (type)
             {
@@ -14,6 +14,8 @@ namespace FootballSim.Models.Positions
                     return new Quarterback();
                 case PositionType.Halfback:
                     return new Halfback();
+                case PositionType.Fullback:
+                    return new Fullback();
                 case PositionType.WideReceiver:
                     return new WideReceiver();
                 case PositionType.TightEnd:
@@ -39,7 +41,7 @@ namespace FootballSim.Models.Positions
                 case PositionType.StrongSafety:
                     return new StrongSafety();
                 case PositionType.Kicker:
-                    return new Kicker();
+                    return new Placekicker();
                 case PositionType.Punter:
                     return new Punter();
                 default:

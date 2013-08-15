@@ -4,13 +4,13 @@ namespace FootballSim.Models.Positions
 {
     public interface IPositionRepository
     {
-        IPosition GetRandomPosition();
+        Position GetRandomPosition();
     }
 
     public class PositionRepository : IPositionRepository
     {
-        private readonly IPosition _emptyPosition = new EmptyPosition();
-        private readonly IList<IPosition> _positions = new List<IPosition>();
+        private readonly Position _emptyPosition = new EmptyPosition();
+        private readonly IList<Position> _positions = new List<Position>();
         private readonly IRandomService _random;
 
         public PositionRepository(IRandomService random)
@@ -20,7 +20,7 @@ namespace FootballSim.Models.Positions
 
         #region IPositionRepository Members
 
-        public IPosition GetRandomPosition()
+        public Position GetRandomPosition()
         {
             return (_positions.Count == 0
                         ? _emptyPosition
@@ -29,7 +29,7 @@ namespace FootballSim.Models.Positions
 
         #endregion
 
-        public void AddPosition(IPosition position)
+        public void AddPosition(Position position)
         {
             _positions.Add(position);
         }

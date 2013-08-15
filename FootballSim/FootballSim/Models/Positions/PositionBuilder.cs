@@ -19,7 +19,7 @@ namespace FootballSim.Models.Positions
 
         #region IPositionBuilder Members
 
-        public void Build(Player player, IPosition position = null)
+        public void Build(Player player, Position position = null)
         {
             player.Position = position ?? _positions.GetRandomPosition();
             player.Measurables = _measurables.GenerateMeasurables(player.Position);

@@ -5,7 +5,7 @@ namespace FootballSim.Models.Players
 {
     public interface IMultiplePlayerBuilder
     {
-        IEnumerable<Player> Build(int numPlayers, IPosition position = null);
+        IEnumerable<Player> Build(int numPlayers, Position position = null);
     }
 
     public class MultiplePlayerBuilder : IMultiplePlayerBuilder
@@ -19,7 +19,7 @@ namespace FootballSim.Models.Players
 
         #region IMultiplePlayerBuilder Members
 
-        public IEnumerable<Player> Build(int numPlayers, IPosition position = null)
+        public IEnumerable<Player> Build(int numPlayers, Position position = null)
         {
             IList<Player> result = new List<Player>();
             for (int i = 0; i < numPlayers; i++)

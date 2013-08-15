@@ -1,44 +1,15 @@
 ﻿namespace FootballSim.Models.Positions
 {
-    public struct OutsideLinebacker : IPosition
+    public class OutsideLinebacker : Linebacker
     {
-        #region IPosition Members
-
-        public PositionType Type
+        public override PositionType Type
         {
             get { return PositionType.OutsideLinebacker; }
         }
 
-        public string Name
+        public override string Name
         {
             get { return "Outside Linebacker"; }
         }
-
-        public Side Side
-        {
-            get { return Side.Defense; }
-        }
-
-        public int MinWeight
-        {
-            get { return 225; }
-        }
-
-        public int MaxWeight
-        {
-            get { return 260; }
-        }
-
-        public int MinHeight
-        {
-            get { return 69; }
-        }
-
-        public int MaxHeight
-        {
-            get { return 76; }
-        }
-
-        #endregion
     }
 }

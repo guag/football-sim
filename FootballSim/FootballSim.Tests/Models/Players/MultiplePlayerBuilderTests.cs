@@ -16,7 +16,7 @@ namespace FootballSim.Tests.Models.Players
             var sut = new MultiplePlayerBuilder(
                 playerFactory.Object
                 );
-            var position = Mock<IPosition>();
+            var position = Mock<Position>();
             playerFactory.Setup(p => p.Build(position.Object))
                 .Returns(It.IsAny<Player>());
 
@@ -32,7 +32,7 @@ namespace FootballSim.Tests.Models.Players
             var sut = new MultiplePlayerBuilder(
                 playerFactory.Object
                 );
-            var position = Mock<IPosition>();
+            var position = Mock<Position>();
             var team = Mock<ITeam>();
             playerFactory.Setup(p => p.Build(position.Object))
                 .Returns(It.IsAny<Player>());

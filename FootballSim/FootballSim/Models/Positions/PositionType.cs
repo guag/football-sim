@@ -1,21 +1,11 @@
 namespace FootballSim.Models.Positions
 {
-    public interface IPosition
-    {
-        PositionType Type { get; }
-        string Name { get; }
-        Side Side { get; }
-        int MinWeight { get; }
-        int MaxWeight { get; }
-        int MinHeight { get; }
-        int MaxHeight { get; }
-    }
-
     public enum PositionType
     {
         None,
         Quarterback,
         Halfback,
+        Fullback,
         WideReceiver,
         TightEnd,
         Tackle,
@@ -30,13 +20,5 @@ namespace FootballSim.Models.Positions
         StrongSafety,
         Kicker,
         Punter
-    }
-
-    public enum Side
-    {
-        None,
-        Offense,
-        Defense,
-        SpecialTeams
     }
 }

@@ -17,7 +17,7 @@ namespace FootballSim.Models.Players
 
         #region ICollegeBuilder Members
 
-        public void Build(Player player, IPosition position = null)
+        public void Build(Player player, Position position = null)
         {
             player.College = _colleges.GetRandomCollege();
         }
