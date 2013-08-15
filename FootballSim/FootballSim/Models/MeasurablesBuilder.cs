@@ -16,14 +16,14 @@ namespace FootballSim.Models
             _random = random;
         }
 
-        #region IMeasurablesGenerator Members
+        #region IMeasurablesBuilder Members
 
         public Measurables GenerateMeasurables(Position position)
         {
             return new Measurables
                        {
-                           Height = _random.GetRandom(position.MinHeight, position.MaxHeight),
-                           Weight = _random.GetRandom(position.MinWeight, position.MaxWeight)
+                           Height = _random.GetRandomWeighted(position.MinHeight, position.MaxHeight),
+                           Weight = _random.GetRandomWeighted(position.MinWeight, position.MaxWeight)
                        };
         }
 

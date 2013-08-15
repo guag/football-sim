@@ -68,7 +68,7 @@ namespace FootballSim.Models
             {
                 string msg = string.Format("ERROR: File '{0}' could not be read", path);
                 Debug.WriteLine(msg);
-                return new[] { msg };
+                return new[] {msg};
             }
         }
     }

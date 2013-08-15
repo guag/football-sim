@@ -10,11 +10,6 @@ namespace FootballSim.Models.Positions
             get { return PositionType.Quarterback; }
         }
 
-        public override string Name
-        {
-            get { return "Quarterback"; }
-        }
-
         public override Side Side
         {
             get { return Side.Offense; }
@@ -37,7 +32,7 @@ namespace FootballSim.Models.Positions
 
         public override int MaxHeight
         {
-            get { return 78; }
+            get { return 79; }
         }
 
         public override ISet<RatingType> RatingTypes

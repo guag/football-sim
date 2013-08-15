@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
+using FootballSim.Models.Players;
 
 namespace FootballSim.Models.Draft
 {
     public interface IDraftClass
     {
         int Id { get; }
-        IEnumerable<Players.Player> Players { get; }
+        IEnumerable<Player> Players { get; }
         int Year { get; }
     }
 
@@ -14,7 +15,7 @@ namespace FootballSim.Models.Draft
         #region IDraftClass Members
 
         public int Id { get; set; }
-        public IEnumerable<Players.Player> Players { get; set; }
+        public IEnumerable<Player> Players { get; set; }
         public int Year { get; set; }
 
         #endregion

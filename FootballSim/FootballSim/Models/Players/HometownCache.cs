@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Diagnostics;
 
 namespace FootballSim.Models.Players
 {
@@ -10,9 +9,9 @@ namespace FootballSim.Models.Players
 
     public class HometownCache : IHometownCache
     {
+        private readonly IList<Location> _cache = new List<Location>();
         private readonly ICsvFileLoader _loader;
         private readonly IRandomService _random;
-        private readonly IList<Location> _cache = new List<Location>();
 
         public HometownCache(ICsvFileLoader loader, IRandomService random)
         {
@@ -26,9 +25,9 @@ namespace FootballSim.Models.Players
         {
             if (_cache.Count == 0)
             {
-                foreach (string[] loc in _loader.Hometowns)
+                foreach (var loc in _loader.Hometowns)
                 {
-                    _cache.Add(new Location { City = loc[0], State = loc[1] });
+                    _cache.Add(new Location {City = loc[0], State = loc[1]});
                 }
             }
             return _cache[_random.GetRandom(_cache.Count)];

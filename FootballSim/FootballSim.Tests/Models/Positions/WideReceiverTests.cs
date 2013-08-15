@@ -1,5 +1,4 @@
 ﻿using FootballSim.Models.Positions;
-using FootballSim.Models.Ratings;
 using NUnit.Framework;
 
 namespace FootballSim.Tests.Models.Positions
@@ -8,15 +7,15 @@ namespace FootballSim.Tests.Models.Positions
     public class WideReceiverTests : BaseTestFixture
     {
         [Test]
-        public void Max_Height_Is_80()
+        public void Max_Height_Is_78()
         {
-            Assert.That(new WideReceiver().MaxHeight, Is.EqualTo(80));
+            Assert.That(new WideReceiver().MaxHeight, Is.EqualTo(78));
         }
 
         [Test]
-        public void Max_Weight_Is_260()
+        public void Max_Weight_Is_250()
         {
-            Assert.That(new WideReceiver().MaxWeight, Is.EqualTo(260));
+            Assert.That(new WideReceiver().MaxWeight, Is.EqualTo(250));
         }
 
         [Test]

@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using FootballSim.Models.Ratings;
-
-namespace FootballSim.Models.Positions
+﻿namespace FootballSim.Models.Positions
 {
     public class WideReceiver : PassCatcher
     {
@@ -22,7 +19,7 @@ namespace FootballSim.Models.Positions
 
         public override int MaxWeight
         {
-            get { return 260; }
+            get { return 250; }
         }
 
         public override int MinHeight
@@ -32,7 +29,7 @@ namespace FootballSim.Models.Positions
 
         public override int MaxHeight
         {
-            get { return 80; }
+            get { return 78; }
         }
     }
 }

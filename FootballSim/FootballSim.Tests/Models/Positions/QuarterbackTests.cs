@@ -8,9 +8,9 @@ namespace FootballSim.Tests.Models.Positions
     public class QuarterbackTests : BaseTestFixture
     {
         [Test]
-        public void Max_Height_Is_78()
+        public void Max_Height_Is_79()
         {
-            Assert.That(new Quarterback().MaxHeight, Is.EqualTo(78));
+            Assert.That(new Quarterback().MaxHeight, Is.EqualTo(79));
         }
 
         [Test]
@@ -29,12 +29,6 @@ namespace FootballSim.Tests.Models.Positions
         public void Min_Weight_Is_175()
         {
             Assert.That(new Quarterback().MinWeight, Is.EqualTo(175));
-        }
-
-        [Test]
-        public void Name_Is_Quarterback()
-        {
-            Assert.That(new Quarterback().Name, Is.EqualTo("Quarterback"));
         }
 
         [Test]

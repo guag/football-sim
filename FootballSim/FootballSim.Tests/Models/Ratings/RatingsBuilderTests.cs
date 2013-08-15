@@ -11,7 +11,7 @@ namespace FootballSim.Tests.Models.Ratings
     public class RatingsBuilderTests : BaseTestFixture
     {
         [Test]
-        public void Build_With_Two_RatingTypes()
+        public void Build_Test()
         {
             var random = Mock<IRandomService>();
             var sut = new RatingsBuilder(random.Object);
