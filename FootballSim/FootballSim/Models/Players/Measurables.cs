@@ -1,4 +1,4 @@
-﻿namespace FootballSim.Models
+﻿namespace FootballSim.Models.Players
 {
     public struct Measurables
     {

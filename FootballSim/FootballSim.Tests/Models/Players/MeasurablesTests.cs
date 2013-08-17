@@ -1,7 +1,7 @@
-﻿using FootballSim.Models;
+﻿using FootballSim.Models.Players;
 using NUnit.Framework;
 
-namespace FootballSim.Tests.Models
+namespace FootballSim.Tests.Models.Players
 {
     [TestFixture]
     public class MeasurablesTests : BaseTestFixture

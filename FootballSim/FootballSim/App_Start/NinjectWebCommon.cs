@@ -67,12 +67,16 @@ namespace FootballSim.App_Start
             kernel.Bind<ICollegeCache>().To<CollegeCache>();
             kernel.Bind<ICollegeBuilder>().To<CollegeBuilder>();
             kernel.Bind<IMeasurablesBuilder>().To<MeasurablesBuilder>();
-            kernel.Bind<IRatingsBuilder>().To<RatingsBuilder>();
+            kernel.Bind<IRatingFactory>().To<RatingFactory>();
+            kernel.Bind<IRatingGenerator>().To<RatingGenerator>();
+            kernel.Bind<IPlayerRatingsBuilder>().To<PlayerRatingsBuilder>();
             kernel.Bind<IPlayerFactory>().To<PlayerFactory>();
+            kernel.Bind<IOutlookGenerator>().To<OutlookGenerator>();
+            kernel.Bind<IPlayerOutlookBuilder>().To<PlayerOutlookBuilder>();
             RegisterPositionRepository(kernel);
             kernel.Bind<IPositionBuilder>().To<PositionBuilder>();
             RegisterPlayerBuilder(kernel);
-            kernel.Bind<IMultiplePlayerBuilder>().To<MultiplePlayerBuilder>();
+            kernel.Bind<IDraftClassBuilder>().To<DraftClassBuilder>();
             kernel.Bind<IDraftClass>().To<DraftClass>();
             kernel.Bind<IDraftClassFactory>().To<DraftClassFactory>();
         }
@@ -80,9 +84,10 @@ namespace FootballSim.App_Start
         private static void RegisterPlayerBuilder(IKernel kernel)
         {
             var builder = new PlayerBuilder(kernel.Get<IPlayerFactory>());
-            builder.AddBuildingBlock(kernel.Get<INameBuilder>());
             builder.AddBuildingBlock(kernel.Get<IPositionBuilder>());
-            builder.AddBuildingBlock(kernel.Get<IRatingsBuilder>());
+            builder.AddBuildingBlock(kernel.Get<IPlayerOutlookBuilder>());
+            builder.AddBuildingBlock(kernel.Get<IPlayerRatingsBuilder>());
+            builder.AddBuildingBlock(kernel.Get<INameBuilder>());
             builder.AddBuildingBlock(kernel.Get<IHometownBuilder>());
             builder.AddBuildingBlock(kernel.Get<ICollegeBuilder>());
             kernel.Bind<IPlayerBuilder>().ToConstant(builder);

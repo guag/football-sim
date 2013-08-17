@@ -1,11 +1,10 @@
 using System.Collections.Generic;
-using FootballSim.Models.Positions;
 
 namespace FootballSim.Models.Players
 {
     public interface IPlayerBuilder
     {
-        Player Build(Position position = null);
+        Player Build();
     }
 
     public class PlayerBuilder : IPlayerBuilder
@@ -20,12 +19,12 @@ namespace FootballSim.Models.Players
 
         #region IPlayerBuilder Members
 
-        public Player Build(Position position = null)
+        public Player Build()
         {
             Player player = _playerFactory.Create();
             foreach (IPlayerBuildingBlock buildingBlock in _buildingBlocks)
             {
-                buildingBlock.Build(player, position);
+                buildingBlock.Build(player);
             }
             return player;
         }

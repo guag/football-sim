@@ -1,10 +1,10 @@
 ﻿using FootballSim.Models.Positions;
 
-namespace FootballSim.Models
+namespace FootballSim.Models.Players
 {
     public interface IMeasurablesBuilder
     {
-        Measurables GenerateMeasurables(Position position);
+        Measurables Build(Position position);
     }
 
     public class MeasurablesBuilder : IMeasurablesBuilder
@@ -18,7 +18,7 @@ namespace FootballSim.Models
 
         #region IMeasurablesBuilder Members
 
-        public Measurables GenerateMeasurables(Position position)
+        public Measurables Build(Position position)
         {
             return new Measurables
                        {

@@ -1,6 +1,4 @@
-﻿using FootballSim.Models.Positions;
-
-namespace FootballSim.Models.Players
+﻿namespace FootballSim.Models.Players
 {
     public interface ICollegeBuilder : IPlayerBuildingBlock
     {
@@ -17,7 +15,7 @@ namespace FootballSim.Models.Players
 
         #region ICollegeBuilder Members
 
-        public void Build(Player player, Position position = null)
+        public void Build(Player player)
         {
             player.College = _colleges.GetRandomCollege();
         }

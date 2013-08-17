@@ -99,6 +99,7 @@
   <ItemGroup>
     <Compile Include="BaseTestFixture.cs" />
     <Compile Include="Controllers\PlayerControllerTests.cs" />
+    <Compile Include="Models\Players\OutlookGeneratorTests.cs" />
     <Compile Include="Models\Players\CollegeBuilderTests.cs" />
     <Compile Include="Models\Draft\DraftClassFactoryTests.cs" />
     <Compile Include="Models\Draft\DraftClassTests.cs" />
@@ -107,9 +108,10 @@
     <Compile Include="Models\Players\NameCacheTests.cs" />
     <Compile Include="Models\Players\HometownBuilderTests.cs" />
     <Compile Include="Models\LocationTests.cs" />
-    <Compile Include="Models\MeasurablesBuilderTests.cs" />
-    <Compile Include="Models\MeasurablesTests.cs" />
+    <Compile Include="Models\Players\MeasurablesBuilderTests.cs" />
+    <Compile Include="Models\Players\MeasurablesTests.cs" />
     <Compile Include="Models\PasserRatingServiceTests.cs" />
+    <Compile Include="Models\Players\PlayerOutlookBuilderTests.cs" />
     <Compile Include="Models\Players\PlayerBuilderTests.cs" />
     <Compile Include="Models\Players\NameBuilderTests.cs" />
     <Compile Include="Models\Players\PlayerFactoryTests.cs" />
@@ -139,14 +141,16 @@
     <Compile Include="Models\Positions\PositionTests.cs" />
     <Compile Include="Models\Positions\PunterTests.cs" />
     <Compile Include="Models\Positions\QuarterbackTests.cs" />
-    <Compile Include="Models\Players\MultiplePlayerBuilderTests.cs" />
+    <Compile Include="Models\Draft\DraftClassBuilderTests.cs" />
     <Compile Include="Models\Positions\RunningbackTests.cs" />
     <Compile Include="Models\Positions\StrongSafetyTests.cs" />
     <Compile Include="Models\Positions\TackleTests.cs" />
     <Compile Include="Models\Positions\TightEndTests.cs" />
     <Compile Include="Models\Positions\WideReceiverTests.cs" />
     <Compile Include="Models\RandomServiceTests.cs" />
-    <Compile Include="Models\Ratings\RatingsBuilderTests.cs" />
+    <Compile Include="Models\Ratings\PlayerRatingsBuilderTests.cs" />
+    <Compile Include="Models\Ratings\RatingFactoryTests.cs" />
+    <Compile Include="Models\Ratings\RatingGeneratorTests.cs" />
     <Compile Include="Models\Ratings\RatingTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\HomeControllerTests.cs" />

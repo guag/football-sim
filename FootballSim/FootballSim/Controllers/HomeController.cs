@@ -8,11 +8,11 @@ namespace FootballSim.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IDraftClassFactory _draftFactory;
+        private readonly IDraftClassBuilder _draftBuilder;
 
-        public HomeController(IDraftClassFactory draftFactory)
+        public HomeController(IDraftClassBuilder draftBuilder)
         {
-            _draftFactory = draftFactory;
+            _draftBuilder = draftBuilder;
         }
 
         public ActionResult Index()
@@ -24,7 +24,7 @@ namespace FootballSim.Controllers
         public ActionResult DraftClass(int year = 2013, int numPlayers = 500)
         {
             //  TODO: temporary. move to separate controller.
-            IDraftClass draft = _draftFactory.Create(year, numPlayers);
+            IDraftClass draft = _draftBuilder.Build(year, numPlayers);
 
             IOrderedEnumerable<Player> sortedPlayers = draft.Players
                 .OrderBy(p => p.Position.Type)

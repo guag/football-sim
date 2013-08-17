@@ -1,8 +1,4 @@
-﻿using System.Collections.Generic;
-using FootballSim.Models.Draft;
-using FootballSim.Models.Players;
-using FootballSim.Models.Positions;
-using Moq;
+﻿using FootballSim.Models.Draft;
 using NUnit.Framework;
 
 namespace FootballSim.Tests.Models.Draft
@@ -11,37 +7,11 @@ namespace FootballSim.Tests.Models.Draft
     public class DraftClassFactoryTests : BaseTestFixture
     {
         [Test]
-        public void Create_1000_Players()
+        public void Create_Draft_Class()
         {
-            var playerFactory = Mock<IMultiplePlayerBuilder>();
-            var sut = new DraftClassFactory(playerFactory.Object);
-            var players = new List<Player> {new Player(), new Player()};
-            playerFactory.Setup(p => p.Build(1000, It.IsAny<Position>())).Returns(players);
-            var draft = sut.Create(0, 1000);
-
-            playerFactory.Verify(p => p.Build(1000, It.IsAny<Position>()));
-            Assert.That(draft.Players, Is.EquivalentTo(players));
-        }
-
-        [Test]
-        public void Create_500_Players()
-        {
-            var playerFactory = Mock<IMultiplePlayerBuilder>();
-            var sut = new DraftClassFactory(playerFactory.Object);
-            var players = new List<Player> {new Player(), new Player()};
-            playerFactory.Setup(p => p.Build(500, It.IsAny<Position>())).Returns(players);
-            var draft = sut.Create(0, 500);
-
-            playerFactory.Verify(p => p.Build(500, It.IsAny<Position>()));
-            Assert.That(draft.Players, Is.EquivalentTo(players));
-        }
-
-        [Test]
-        public void Date_Is_Set()
-        {
-            var sut = new DraftClassFactory(Mock<IMultiplePlayerBuilder>().Object);
+            var sut = new DraftClassFactory();
             const int year = 2013;
-            var draft = sut.Create(year, 10);
+            var draft = sut.Create(year);
 
             Assert.That(draft.Year, Is.EqualTo(year));
         }

@@ -1,8 +1,9 @@
 ﻿using FootballSim.Models;
+using FootballSim.Models.Players;
 using FootballSim.Models.Positions;
 using NUnit.Framework;
 
-namespace FootballSim.Tests.Models
+namespace FootballSim.Tests.Models.Players
 {
     [TestFixture]
     public class MeasurablesBuilderTests : BaseTestFixture
@@ -15,7 +16,7 @@ namespace FootballSim.Tests.Models
             var qb = new Quarterback();
             randomService.Setup(r => r.GetRandomWeighted(qb.MinHeight, qb.MaxHeight)).Returns(72);
             randomService.Setup(r => r.GetRandomWeighted(qb.MinWeight, qb.MaxWeight)).Returns(220);
-            var result = sut.GenerateMeasurables(qb);
+            var result = sut.Build(qb);
 
             randomService.Verify(r => r.GetRandomWeighted(qb.MinHeight, qb.MaxHeight));
             randomService.Verify(r => r.GetRandomWeighted(qb.MinWeight, qb.MaxWeight));
@@ -31,7 +32,7 @@ namespace FootballSim.Tests.Models
             var tackle = new Tackle();
             randomService.Setup(r => r.GetRandomWeighted(tackle.MinHeight, tackle.MaxHeight)).Returns(78);
             randomService.Setup(r => r.GetRandomWeighted(tackle.MinWeight, tackle.MaxWeight)).Returns(320);
-            var result = sut.GenerateMeasurables(tackle);
+            var result = sut.Build(tackle);
 
             randomService.Verify(r => r.GetRandomWeighted(tackle.MinHeight, tackle.MaxHeight));
             randomService.Verify(r => r.GetRandomWeighted(tackle.MinWeight, tackle.MaxWeight));

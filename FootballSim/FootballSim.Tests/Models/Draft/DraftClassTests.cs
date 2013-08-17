@@ -12,7 +12,11 @@ namespace FootballSim.Tests.Models.Draft
         public void Players_Test()
         {
             var players = new List<Player> {new Player(), new Player()};
-            var sut = new DraftClass {Players = players};
+            var sut = new DraftClass();
+            foreach (var player in players)
+            {
+                sut.Players.Add(player);
+            }
             Assert.That(sut.Players, Is.EquivalentTo(players));
         }
 

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using FootballSim.Models.Draft;
 using FootballSim.Models.Positions;
 using FootballSim.Models.Ratings;
 
@@ -19,6 +20,7 @@ namespace FootballSim.Models.Players
         public Location Hometown { get; set; }
         public string College { get; set; }
         public Measurables Measurables { get; set; }
+        public Caliber Caliber { get; set; }
 
         public IDictionary<RatingType, Rating> Ratings
         {
