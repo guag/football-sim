@@ -99,7 +99,10 @@
   <ItemGroup>
     <Compile Include="BaseTestFixture.cs" />
     <Compile Include="Controllers\PlayerControllerTests.cs" />
-    <Compile Include="Models\Players\OutlookGeneratorTests.cs" />
+    <Compile Include="Models\Ratings\AverageCaliberTests.cs" />
+    <Compile Include="Models\Ratings\HighCaliberTests.cs" />
+    <Compile Include="Models\Ratings\LowCaliberTests.cs" />
+    <Compile Include="Models\Ratings\PlayerCaliberFactoryTests.cs" />
     <Compile Include="Models\Players\CollegeBuilderTests.cs" />
     <Compile Include="Models\Draft\DraftClassFactoryTests.cs" />
     <Compile Include="Models\Draft\DraftClassTests.cs" />
@@ -111,7 +114,7 @@
     <Compile Include="Models\Players\MeasurablesBuilderTests.cs" />
     <Compile Include="Models\Players\MeasurablesTests.cs" />
     <Compile Include="Models\PasserRatingServiceTests.cs" />
-    <Compile Include="Models\Players\PlayerOutlookBuilderTests.cs" />
+    <Compile Include="Models\Players\PlayerCaliberBuilderTests.cs" />
     <Compile Include="Models\Players\PlayerBuilderTests.cs" />
     <Compile Include="Models\Players\NameBuilderTests.cs" />
     <Compile Include="Models\Players\PlayerFactoryTests.cs" />
@@ -148,7 +151,8 @@
     <Compile Include="Models\Positions\TightEndTests.cs" />
     <Compile Include="Models\Positions\WideReceiverTests.cs" />
     <Compile Include="Models\RandomServiceTests.cs" />
-    <Compile Include="Models\Ratings\PlayerRatingsBuilderTests.cs" />
+    <Compile Include="Models\Ratings\BlueChipCaliberTests.cs" />
+    <Compile Include="Models\Players\PlayerRatingsBuilderTests.cs" />
     <Compile Include="Models\Ratings\RatingFactoryTests.cs" />
     <Compile Include="Models\Ratings\RatingGeneratorTests.cs" />
     <Compile Include="Models\Ratings\RatingTests.cs" />

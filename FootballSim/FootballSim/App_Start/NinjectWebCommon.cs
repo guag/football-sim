@@ -71,8 +71,8 @@ namespace FootballSim.App_Start
             kernel.Bind<IRatingGenerator>().To<RatingGenerator>();
             kernel.Bind<IPlayerRatingsBuilder>().To<PlayerRatingsBuilder>();
             kernel.Bind<IPlayerFactory>().To<PlayerFactory>();
-            kernel.Bind<IOutlookGenerator>().To<OutlookGenerator>();
-            kernel.Bind<IPlayerOutlookBuilder>().To<PlayerOutlookBuilder>();
+            kernel.Bind<IPlayerCaliberFactory>().To<PlayerCaliberFactory>();
+            kernel.Bind<IPlayerCaliberBuilder>().To<PlayerCaliberBuilder>();
             RegisterPositionRepository(kernel);
             kernel.Bind<IPositionBuilder>().To<PositionBuilder>();
             RegisterPlayerBuilder(kernel);
@@ -85,7 +85,7 @@ namespace FootballSim.App_Start
         {
             var builder = new PlayerBuilder(kernel.Get<IPlayerFactory>());
             builder.AddBuildingBlock(kernel.Get<IPositionBuilder>());
-            builder.AddBuildingBlock(kernel.Get<IPlayerOutlookBuilder>());
+            builder.AddBuildingBlock(kernel.Get<IPlayerCaliberBuilder>());
             builder.AddBuildingBlock(kernel.Get<IPlayerRatingsBuilder>());
             builder.AddBuildingBlock(kernel.Get<INameBuilder>());
             builder.AddBuildingBlock(kernel.Get<IHometownBuilder>());

@@ -1,10 +1,8 @@
-﻿using FootballSim.Models.Draft;
-
-namespace FootballSim.Models.Ratings
+﻿namespace FootballSim.Models.Ratings
 {
     public interface IRatingGenerator
     {
-        Rating Generate(Caliber caliber);
+        Rating Generate(IPlayerCaliber caliber);
     }
 
     public class RatingGenerator : IRatingGenerator
@@ -20,26 +18,12 @@ namespace FootballSim.Models.Ratings
 
         #region IRatingGenerator Members
 
-        public Rating Generate(Caliber caliber)
+        public Rating Generate(IPlayerCaliber caliber)
         {
-            return _factory.Create(GetRandom(caliber));
+            var value = _random.GetRandom(caliber.MinValue, caliber.MaxValue);
+            return _factory.Create(value);
         }
 
         #endregion
-
-        private int GetRandom(Caliber caliber)
-        {
-            switch (caliber)
-            {
-                case Caliber.BlueChip:
-                    return _random.GetRandom(80, 100);
-                case Caliber.High:
-                    return _random.GetRandom(70, 90);
-                case Caliber.Average:
-                    return _random.GetRandom(50, 90);
-                default:
-                    return _random.GetRandom(50, 70);
-            }
-        }
     }
 }

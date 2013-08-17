@@ -13,7 +13,6 @@ namespace FootballSim.Models
     public class RandomService : IRandomService
     {
         private static readonly Random Random = new Random();
-        private static readonly Random RandomAlt = new Random();
 
         #region IRandomService Members
 
@@ -38,7 +37,7 @@ namespace FootballSim.Models
             var at25Per = min + (int) oneQuarter;
             int at75Per = max - (int)oneQuarter;
 
-            int rand = RandomAlt.Next(0, 6);
+            int rand = GetRandom(0, 6);
             if (rand > 0 && rand < 5)
             {
                 return GetRandom(at25Per + 1, at75Per);

@@ -1,6 +1,6 @@
-﻿using FootballSim.Models.Players;
+﻿using FootballSim.Models.Ratings;
 
-namespace FootballSim.Models.Ratings
+namespace FootballSim.Models.Players
 {
     public interface IPlayerRatingsBuilder : IPlayerBuildingBlock
     {

@@ -175,11 +175,10 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\PlayerController.cs" />
     <Compile Include="Models\CsvFileLoader.cs" />
-    <Compile Include="Models\Draft\Caliber.cs" />
-    <Compile Include="Models\Players\OutlookGenerator.cs" />
+    <Compile Include="Models\Ratings\PlayerCaliberFactory.cs" />
     <Compile Include="Models\Players\CollegeCache.cs" />
     <Compile Include="Models\Players\HometownCache.cs" />
-    <Compile Include="Models\Players\PlayerOutlookBuilder.cs" />
+    <Compile Include="Models\Players\PlayerCaliberBuilder.cs" />
     <Compile Include="Models\Positions\Cornerback.cs" />
     <Compile Include="Models\Positions\Defenseman.cs" />
     <Compile Include="Models\Positions\DefensiveBack.cs" />
@@ -202,6 +201,11 @@
     <Compile Include="Models\Positions\Runningback.cs" />
     <Compile Include="Models\Positions\Side.cs" />
     <Compile Include="Models\Positions\StrongSafety.cs" />
+    <Compile Include="Models\Ratings\AverageCaliber.cs" />
+    <Compile Include="Models\Ratings\BlueChipCaliber.cs" />
+    <Compile Include="Models\Ratings\HighCaliber.cs" />
+    <Compile Include="Models\Ratings\IPlayerCaliber.cs" />
+    <Compile Include="Models\Ratings\LowCaliber.cs" />
     <Compile Include="Models\Ratings\RatingFactory.cs" />
     <Compile Include="Models\Ratings\RatingGenerator.cs" />
     <Compile Include="Models\Ratings\RatingType.cs" />
@@ -242,7 +246,7 @@
     <Compile Include="Models\Positions\Quarterback.cs" />
     <Compile Include="Models\Positions\WideReceiver.cs" />
     <Compile Include="Models\RandomService.cs" />
-    <Compile Include="Models\Ratings\PlayerRatingsBuilder.cs" />
+    <Compile Include="Models\Players\PlayerRatingsBuilder.cs" />
     <Compile Include="Models\Ratings\Rating.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

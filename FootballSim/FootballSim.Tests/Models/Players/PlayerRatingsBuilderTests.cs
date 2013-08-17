@@ -1,11 +1,10 @@
-﻿using FootballSim.Models.Draft;
-using FootballSim.Models.Players;
+﻿using FootballSim.Models.Players;
 using FootballSim.Models.Positions;
 using FootballSim.Models.Ratings;
 using Moq;
 using NUnit.Framework;
 
-namespace FootballSim.Tests.Models.Ratings
+namespace FootballSim.Tests.Models.Players
 {
     [TestFixture]
     public class PlayerRatingsBuilderTests : BaseTestFixture
@@ -16,7 +15,7 @@ namespace FootballSim.Tests.Models.Ratings
             var ratings = StrictMock<IRatingGenerator>();
             var sut = new PlayerRatingsBuilder(ratings.Object);
             var position = new Quarterback();
-            const Caliber caliber = Caliber.Scrub;
+            var caliber = new LowCaliber();
             var player = new Player {Position = position, Caliber = caliber};
             ratings.Setup(r => r.Generate(caliber)).Returns(It.IsAny<Rating>());
 
