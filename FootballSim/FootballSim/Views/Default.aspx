@@ -1,39 +1,31 @@
 ﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="FootballSim.Views.Default" %>
 
-<asp:Content runat="server" ID="FeaturedContent" ContentPlaceHolderID="FeaturedContent">
-    <section class="featured">
-        <div class="content-wrapper">
-            <hgroup class="title">
-                <h1><%: Title %>.</h1>
-                <h2>Modify this template to jump-start your ASP.NET application.</h2>
-            </hgroup>
-            <p>
-                To learn more about ASP.NET, visit <a href="http://asp.net" title="ASP.NET Website">http://asp.net</a>.
-                The page features <mark>videos, tutorials, and samples</mark> to help you get the most from ASP.NET.
-                If you have any questions about ASP.NET visit
-                <a href="http://forums.asp.net/18.aspx" title="ASP.NET Forum">our forums</a>.
-            </p>
-        </div>
-    </section>
-</asp:Content>
+
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
-    <h3>We suggest the following:</h3>
-    <ol class="round">
-        <li class="one">
-            <h5>Getting Started</h5>
-            ASP.NET Web Forms lets you build dynamic websites using a familiar drag-and-drop, event-driven model.
-            A design surface and hundreds of controls and components let you rapidly build sophisticated, powerful UI-driven sites with data access.
-            <a href="http://go.microsoft.com/fwlink/?LinkId=245146">Learn more…</a>
-        </li>
-        <li class="two">
-            <h5>Add NuGet packages and jump-start your coding</h5>
-            NuGet makes it easy to install and update free libraries and tools.
-            <a href="http://go.microsoft.com/fwlink/?LinkId=245147">Learn more…</a>
-        </li>
-        <li class="three">
-            <h5>Find Web Hosting</h5>
-            You can easily find a web hosting company that offers the right mix of features and price for your applications.
-            <a href="http://go.microsoft.com/fwlink/?LinkId=245143">Learn more…</a>
-        </li>
-    </ol>
+
+    <asp:GridView ID="GrdPlayers" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" Width="387px">
+        <AlternatingRowStyle BackColor="White" />
+        <Columns>
+            <asp:BoundField DataField="LastName" HeaderText="Last Name" ReadOnly="True" SortExpression="LastName" />
+            <asp:BoundField DataField="FirstName" HeaderText="First Name" ReadOnly="True" SortExpression="FirstName" />
+            <asp:BoundField DataField="Position.Name" HeaderText="Position" ReadOnly="True" SortExpression="Position.Name" />
+            <asp:BoundField DataField="Caliber" HeaderText="Rating" ReadOnly="True" SortExpression="Rating" />
+            <asp:BoundField DataField="Measurables.HeightForDisplay" HeaderText="Height" />
+            <asp:BoundField DataField="Measurables.Weight" HeaderText="Weight" />
+            <asp:BoundField DataField="College" HeaderText="College" />
+            <asp:BoundField DataField="Hometown.City" HeaderText="City" />
+            <asp:BoundField DataField="Hometown.State" HeaderText="State" />
+        </Columns>
+        <EditRowStyle BackColor="#2461BF" />
+        <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+        <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+        <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+        <RowStyle BackColor="#EFF3FB" />
+        <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+        <SortedAscendingCellStyle BackColor="#F5F7FB" />
+        <SortedAscendingHeaderStyle BackColor="#6D95E1" />
+        <SortedDescendingCellStyle BackColor="#E9EBEF" />
+        <SortedDescendingHeaderStyle BackColor="#4870BE" />
+    </asp:GridView>   
+
 </asp:Content>

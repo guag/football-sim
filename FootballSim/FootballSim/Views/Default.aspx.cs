@@ -2,6 +2,7 @@
 using System.Web.UI;
 using FootballSim.Models.Draft;
 using Ninject;
+using System.Linq;
 
 namespace FootballSim.Views
 {
@@ -13,7 +14,11 @@ namespace FootballSim.Views
         protected void Page_Load(object sender, EventArgs e)
         {
             var draft = DraftBuilder.Build(2013, 500);
-            Response.Write("Number of players: " + draft.Players.Count);
+
+            GrdPlayers.DataSource = draft.Players
+                .OrderBy(p=>p.Position.Type)
+                .ThenByDescending(p=>p.CurrentOverallRating);
+            GrdPlayers.DataBind();
         }
     }
 }
