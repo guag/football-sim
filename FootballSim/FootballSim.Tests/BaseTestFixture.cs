@@ -1,6 +1,6 @@
 ﻿using Moq;
 
-namespace FootballSim.Tests
+namespace FootballSim.Models.Tests
 {
     public class BaseTestFixture
     {
@@ -15,6 +15,5 @@ namespace FootballSim.Tests
         {
             return new Mock<T>(MockBehavior.Strict);
         }
-
     }
 }

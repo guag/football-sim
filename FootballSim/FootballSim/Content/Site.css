@@ -90,7 +90,6 @@ h5, h6 {
         text-decoration: none;
     }
 
-
 /* main layout
 ----------------------------------------------------------*/
 .content-wrapper {
@@ -117,7 +116,7 @@ h5, h6 {
 header .content-wrapper {
     padding-top: 20px; 
 }
-
+    
 footer {
     clear: both;
     background-color: #e2e2e2;
@@ -162,8 +161,7 @@ footer {
 
     #login a.username {
         background: none;
-        margin: 0;
-        padding: 0;
+        margin-left: 0px;
         text-decoration: underline;
     }
 
@@ -340,28 +338,6 @@ aside {
         margin-left: 15px;
     }
 
-    #loginForm .validation-summary-errors ul {
-        margin: 0;
-        padding: 0;
-    }
-
-    #loginForm .validation-summary-errors li {
-        display: inline;
-        list-style: none;
-        margin: 0;
-    }
-
-    #loginForm input {
-        width: 250px;
-    }
-
-    #loginForm input[type="checkbox"],
-    #loginForm input[type="submit"],
-    #loginForm input[type="button"],
-    #loginForm button {
-        width: auto;
-    }
-
 #socialLoginForm {
     margin-left: 40px;
     float: left;
@@ -372,14 +348,14 @@ aside {
         margin-bottom:  5px;
     }
 
-#socialLoginList button {
-    margin-bottom: 12px;
+fieldset.open-auth-providers {
+    margin-top: 15px;
 }
 
-#logoutForm {
-    display: inline;
-}
-
+    fieldset.open-auth-providers button {
+        margin-bottom: 12px;
+    }
+    
 /* contact */
 .contact h3 {
     font-size: 1.2em;
@@ -404,7 +380,7 @@ fieldset {
     fieldset legend {
         display: none;
     }
-
+    
     fieldset ol {
         padding: 0;
         list-style: none;
@@ -414,41 +390,41 @@ fieldset {
             padding-bottom: 5px;
         }
 
-label {
-    display: block;
-    font-size: 1.2em;
-    font-weight: 600;
-}
-
-label.checkbox {
-    display: inline;
-}
-
-input, textarea {
-    border: 1px solid #e2e2e2;
-    background: #fff;
-    color: #333;
-    font-size: 1.2em;
-    margin: 5px 0 6px 0;
-    padding: 5px;
-    width: 300px;
-}
-
-textarea {
-    font-family: inherit;
-    width: 500px;
-}
-
-    input:focus, textarea:focus {
-        border: 1px solid #7ac0da;
+    label {
+        display: block;
+        font-size: 1.2em;
+        font-weight: 600;
     }
 
-    input[type="checkbox"] {
-        background: transparent;
-        border: inherit;
-        width: auto;
+    label.checkbox {
+        display: inline;
     }
 
+    input, textarea {
+        border: 1px solid #e2e2e2;
+        background: #fff;
+        color: #333;
+        font-size: 1.2em;
+        margin: 5px 0 6px 0;
+        padding: 5px;
+        width: 300px;
+    }
+
+    textarea {
+        font-family: inherit;
+        width: 500px;
+    }
+    
+        input:focus, textarea:focus {
+            border: 1px solid #7ac0da;
+        }
+
+        input[type="checkbox"] {
+            background: transparent;
+            border: inherit;
+            width: auto;
+        }
+        
     input[type="submit"],
     input[type="button"],
     button {
@@ -524,7 +500,6 @@ input[type="checkbox"].input-validation-error {
     display: none;
 }
 
-
 /* tables
 ----------------------------------------------------------*/
 table {
@@ -535,50 +510,51 @@ table {
 }
 
 th {
-    font-size: 1.2em;
+	font-size: 1.2em;
     text-align: left;
     border: none 0px;
-    padding: 0 8px;
+    padding-left: 0;
 }
 
     th a {
         display: block;
         position: relative;
+        
     }
 
-    th a:link, th a:visited, th a:active, th a:hover {
-        color: #333;
-        font-weight: 600;
-        text-decoration: none;
+	th a:link, th a:visited, th a:active, th a:hover {
+		color: #333;
+		font-weight: 600;
+		text-decoration: none;
         padding: 0;
-    }
+	}
 
-    th a:hover {
-        color: #000;
-    }
+	th a:hover {
+		color: #000;
+	}
 
     th.asc a, th.desc a {
         margin-right: .75em;
     }
-
+    
     th.asc a:after, th.desc a:after {
-        display: block;
+		display: block;
         position: absolute;
         right: 0em;
         top: 0;
         font-size: 0.75em;
-    }
+	}
 
-    th.asc a:after {
-        content: '▲';
-    }
+	th.asc a:after {
+		content: '▲';
+	}
 
-    th.desc a:after {
-        content: '▼';
-    }
+	th.desc a:after {
+		content: '▼';
+	}
 
 td {
-    padding: 0 8px;
+    padding: 0.25em 2em 0.25em 0em;
     border: 0 none;
 }
 
@@ -718,6 +694,8 @@ tr.pager td {
         width: 90%;
     }
 
+    
+    
     /* login page */
     #loginForm {
         border-right: none;
@@ -736,7 +714,6 @@ tr.pager td {
         width: auto;
     }
 
-
     /* footer
     ----------------------------------------------------------*/
     footer .float-left,
@@ -754,3 +731,4 @@ tr.pager td {
             margin: 0;
         }
 }
+/* END: Mobile Styles */

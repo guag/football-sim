@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{66698E79-EB41-4A92-A95A-0DF5914FDDDC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FootballSim.Models</RootNamespace>
+    <AssemblyName>FootballSim.Models</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Draft\DraftClass.cs" />
+    <Compile Include="Draft\DraftClassBuilder.cs" />
+    <Compile Include="Draft\DraftClassFactory.cs" />
+    <Compile Include="ICsvFileLoader.cs" />
+    <Compile Include="ILeague.cs" />
+    <Compile Include="ITeam.cs" />
+    <Compile Include="Location.cs" />
+    <Compile Include="PasserRatingService.cs" />
+    <Compile Include="Players\CollegeBuilder.cs" />
+    <Compile Include="Players\CollegeCache.cs" />
+    <Compile Include="Players\HometownBuilder.cs" />
+    <Compile Include="Players\HometownCache.cs" />
+    <Compile Include="Players\IPlayerBuildingBlock.cs" />
+    <Compile Include="Players\Measurables.cs" />
+    <Compile Include="Players\MeasurablesBuilder.cs" />
+    <Compile Include="Players\NameBuilder.cs" />
+    <Compile Include="Players\NameCache.cs" />
+    <Compile Include="Players\Player.cs" />
+    <Compile Include="Players\PlayerBuilder.cs" />
+    <Compile Include="Players\PlayerCaliberBuilder.cs" />
+    <Compile Include="Players\PlayerFactory.cs" />
+    <Compile Include="Players\PlayerRatingsBuilder.cs" />
+    <Compile Include="Positions\Center.cs" />
+    <Compile Include="Positions\Cornerback.cs" />
+    <Compile Include="Positions\Defenseman.cs" />
+    <Compile Include="Positions\DefensiveBack.cs" />
+    <Compile Include="Positions\DefensiveEnd.cs" />
+    <Compile Include="Positions\DefensiveLineman.cs" />
+    <Compile Include="Positions\DefensiveTackle.cs" />
+    <Compile Include="Positions\EmptyPosition.cs" />
+    <Compile Include="Positions\FreeSafety.cs" />
+    <Compile Include="Positions\Fullback.cs" />
+    <Compile Include="Positions\Guard.cs" />
+    <Compile Include="Positions\Halfback.cs" />
+    <Compile Include="Positions\InsideLinebacker.cs" />
+    <Compile Include="Positions\Kicker.cs" />
+    <Compile Include="Positions\Linebacker.cs" />
+    <Compile Include="Positions\OffensiveLineman.cs" />
+    <Compile Include="Positions\OutsideLinebacker.cs" />
+    <Compile Include="Positions\PassCatcher.cs" />
+    <Compile Include="Positions\Placekicker.cs" />
+    <Compile Include="Positions\Position.cs" />
+    <Compile Include="Positions\PositionBuilder.cs" />
+    <Compile Include="Positions\PositionFactory.cs" />
+    <Compile Include="Positions\PositionRepository.cs" />
+    <Compile Include="Positions\PositionType.cs" />
+    <Compile Include="Positions\Punter.cs" />
+    <Compile Include="Positions\Quarterback.cs" />
+    <Compile Include="Positions\Runningback.cs" />
+    <Compile Include="Positions\Side.cs" />
+    <Compile Include="Positions\StrongSafety.cs" />
+    <Compile Include="Positions\Tackle.cs" />
+    <Compile Include="Positions\TightEnd.cs" />
+    <Compile Include="Positions\WideReceiver.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RandomService.cs" />
+    <Compile Include="Ratings\AverageCaliber.cs" />
+    <Compile Include="Ratings\BlueChipCaliber.cs" />
+    <Compile Include="Ratings\HighCaliber.cs" />
+    <Compile Include="Ratings\IPlayerCaliber.cs" />
+    <Compile Include="Ratings\LowCaliber.cs" />
+    <Compile Include="Ratings\PlayerCaliberFactory.cs" />
+    <Compile Include="Ratings\Rating.cs" />
+    <Compile Include="Ratings\RatingFactory.cs" />
+    <Compile Include="Ratings\RatingGenerator.cs" />
+    <Compile Include="Ratings\RatingType.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

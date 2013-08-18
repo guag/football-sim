@@ -1,32 +1,31 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using Microsoft.Web.WebPages.OAuth;
-using FootballSim.Models;
+using System.Web;
+using Microsoft.AspNet.Membership.OpenAuth;
 
 namespace FootballSim
 {
-    public static class AuthConfig
+    internal static class AuthConfig
     {
-        public static void RegisterAuth()
+        public static void RegisterOpenAuth()
         {
-            // To let users of this site log in using their accounts from other sites such as Microsoft, Facebook, and Twitter,
-            // you must update this site. For more information visit http://go.microsoft.com/fwlink/?LinkID=252166
+            // See http://go.microsoft.com/fwlink/?LinkId=252803 for details on setting up this ASP.NET
+            // application to support logging in via external services.
 
-            //OAuthWebSecurity.RegisterMicrosoftClient(
-            //    clientId: "",
-            //    clientSecret: "");
+            //OpenAuth.AuthenticationClients.AddTwitter(
+            //    consumerKey: "your Twitter consumer key",
+            //    consumerSecret: "your Twitter consumer secret");
 
-            //OAuthWebSecurity.RegisterTwitterClient(
-            //    consumerKey: "",
-            //    consumerSecret: "");
+            //OpenAuth.AuthenticationClients.AddFacebook(
+            //    appId: "your Facebook app id",
+            //    appSecret: "your Facebook app secret");
 
-            //OAuthWebSecurity.RegisterFacebookClient(
-            //    appId: "",
-            //    appSecret: "");
+            //OpenAuth.AuthenticationClients.AddMicrosoft(
+            //    clientId: "your Microsoft account client id",
+            //    clientSecret: "your Microsoft account client secret");
 
-            //OAuthWebSecurity.RegisterGoogleClient();
+            //OpenAuth.AuthenticationClients.AddGoogle();
         }
     }
 }

@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{96561A49-E122-4E51-8723-0F6C4FAB8E86}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FootballSim.Models.Tests</RootNamespace>
+    <AssemblyName>FootballSim.Models.Tests</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+    <ReferencePath>$(ProgramFiles)\Common Files\microsoft shared\VSTT\$(VisualStudioVersion)\UITestExtensionPackages</ReferencePath>
+    <IsCodedUITest>False</IsCodedUITest>
+    <TestProjectType>UnitTest</TestProjectType>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Moq">
+      <HintPath>..\packages\Moq.4.0.10827\lib\NET40\Moq.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>..\packages\NUnit.2.6.2\lib\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+  </ItemGroup>
+  <Choose>
+    <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+      </ItemGroup>
+    </When>
+    <Otherwise />
+  </Choose>
+  <ItemGroup>
+    <Compile Include="BaseTestFixture.cs" />
+    <Compile Include="Draft\DraftClassBuilderTests.cs" />
+    <Compile Include="Draft\DraftClassFactoryTests.cs" />
+    <Compile Include="Draft\DraftClassTests.cs" />
+    <Compile Include="LocationTests.cs" />
+    <Compile Include="PasserRatingServiceTests.cs" />
+    <Compile Include="Players\CollegeBuilderTests.cs" />
+    <Compile Include="Players\CollegeCacheTests.cs" />
+    <Compile Include="Players\HometownBuilderTests.cs" />
+    <Compile Include="Players\HometownCacheTests.cs" />
+    <Compile Include="Players\MeasurablesBuilderTests.cs" />
+    <Compile Include="Players\MeasurablesTests.cs" />
+    <Compile Include="Players\NameBuilderTests.cs" />
+    <Compile Include="Players\NameCacheTests.cs" />
+    <Compile Include="Players\PlayerBuilderTests.cs" />
+    <Compile Include="Players\PlayerCaliberBuilderTests.cs" />
+    <Compile Include="Players\PlayerFactoryTests.cs" />
+    <Compile Include="Players\PlayerRatingsBuilderTests.cs" />
+    <Compile Include="Players\PlayerTests.cs" />
+    <Compile Include="Positions\CenterTests.cs" />
+    <Compile Include="Positions\CornerbackTests.cs" />
+    <Compile Include="Positions\DefensemanTests.cs" />
+    <Compile Include="Positions\DefensiveBackTests.cs" />
+    <Compile Include="Positions\DefensiveEndTests.cs" />
+    <Compile Include="Positions\DefensiveLinemanTests.cs" />
+    <Compile Include="Positions\DefensiveTackleTests.cs" />
+    <Compile Include="Positions\EmptyPositionTests.cs" />
+    <Compile Include="Positions\FreeSafetyTests.cs" />
+    <Compile Include="Positions\FullbackTests.cs" />
+    <Compile Include="Positions\GuardTests.cs" />
+    <Compile Include="Positions\HalfbackTests.cs" />
+    <Compile Include="Positions\InsideLinebackerTests.cs" />
+    <Compile Include="Positions\KickerTests.cs" />
+    <Compile Include="Positions\LinebackerTests.cs" />
+    <Compile Include="Positions\OffensiveLinemanTests.cs" />
+    <Compile Include="Positions\OutsideLinebackerTests.cs" />
+    <Compile Include="Positions\PassCatcherTests.cs" />
+    <Compile Include="Positions\PlacekickerTests.cs" />
+    <Compile Include="Positions\PositionBuilderTests.cs" />
+    <Compile Include="Positions\PositionFactoryTests.cs" />
+    <Compile Include="Positions\PositionRepositoryTests.cs" />
+    <Compile Include="Positions\PositionTests.cs" />
+    <Compile Include="Positions\PunterTests.cs" />
+    <Compile Include="Positions\QuarterbackTests.cs" />
+    <Compile Include="Positions\RunningbackTests.cs" />
+    <Compile Include="Positions\StrongSafetyTests.cs" />
+    <Compile Include="Positions\TackleTests.cs" />
+    <Compile Include="Positions\TightEndTests.cs" />
+    <Compile Include="Positions\WideReceiverTests.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RandomServiceTests.cs" />
+    <Compile Include="Ratings\AverageCaliberTests.cs" />
+    <Compile Include="Ratings\BlueChipCaliberTests.cs" />
+    <Compile Include="Ratings\HighCaliberTests.cs" />
+    <Compile Include="Ratings\LowCaliberTests.cs" />
+    <Compile Include="Ratings\PlayerCaliberFactoryTests.cs" />
+    <Compile Include="Ratings\RatingFactoryTests.cs" />
+    <Compile Include="Ratings\RatingGeneratorTests.cs" />
+    <Compile Include="Ratings\RatingTests.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FootballSim.Models\FootballSim.Models.csproj">
+      <Project>{66698E79-EB41-4A92-A95A-0DF5914FDDDC}</Project>
+      <Name>FootballSim.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Choose>
+    <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
+      <ItemGroup>
+        <Reference Include="Microsoft.VisualStudio.QualityTools.CodedUITestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Extension, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+        <Reference Include="Microsoft.VisualStudio.TestTools.UITesting, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+          <Private>False</Private>
+        </Reference>
+      </ItemGroup>
+    </When>
+  </Choose>
+  <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
