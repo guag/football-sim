@@ -54,5 +54,33 @@ namespace FootballSim.Models.Tests.Players
             sut.BirthDate = bd;
             Assert.That(sut.BirthDate, Is.EqualTo(bd));
         }
+
+        [Test]
+        public void FullName_Is_Guagliardo_Gary()
+        {
+            var sut = new Player {FirstName = "Gary", LastName = "Guagliardo"};
+            Assert.That(sut.FullName, Is.EqualTo("Guagliardo, Gary"));
+        }
+
+        [Test]
+        public void FullName_Is_Flores_Marcos()
+        {
+            var sut = new Player { FirstName = "Marcos", LastName = "Flores" };
+            Assert.That(sut.FullName, Is.EqualTo("Flores, Marcos"));
+        }
+
+        [Test]
+        public void BirthDateForDisplay_Is_5_20_1984()
+        {
+            var sut = new Player {BirthDate = new DateTime(1984, 5, 20)};
+            Assert.That(sut.BirthDateForDisplay, Is.EqualTo("5/20/1984"));
+        }
+
+        [Test]
+        public void BirthDateForDisplay_Is_6_23_1986()
+        {
+            var sut = new Player { BirthDate = new DateTime(1986, 6, 23) };
+            Assert.That(sut.BirthDateForDisplay, Is.EqualTo("6/23/1986"));
+        }
     }
 }

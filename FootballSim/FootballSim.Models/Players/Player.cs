@@ -23,9 +23,19 @@ namespace FootballSim.Models.Players
         public IPlayerCaliber Caliber { get; set; }
         public DateTime BirthDate { get; set; }
 
+        public string BirthDateForDisplay
+        {
+            get { return BirthDate.ToShortDateString(); }
+        }
+
         public IDictionary<RatingType, Rating> Ratings
         {
             get { return _ratings; }
+        }
+
+        public string FullName
+        {
+            get { return string.Format("{0}, {1}", LastName, FirstName); }
         }
 
         /// <summary>

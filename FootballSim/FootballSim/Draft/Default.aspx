@@ -6,8 +6,7 @@
     <asp:GridView ID="GrdPlayers" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" Width="387px">
         <AlternatingRowStyle BackColor="White" />
         <Columns>
-            <asp:BoundField DataField="LastName" HeaderText="Last Name" ReadOnly="True" SortExpression="LastName" />
-            <asp:BoundField DataField="FirstName" HeaderText="First Name" ReadOnly="True" SortExpression="FirstName" />
+            <asp:BoundField DataField="FullName" HeaderText="Name" ReadOnly="True" SortExpression="FullName" />
             <asp:BoundField DataField="Position.Name" HeaderText="Position" ReadOnly="True" SortExpression="Position.Name" />
             <asp:BoundField DataField="Caliber" HeaderText="Rating" ReadOnly="True" SortExpression="Rating" />
             <asp:BoundField DataField="Measurables.HeightForDisplay" HeaderText="Height" />
@@ -15,7 +14,7 @@
             <asp:BoundField DataField="College" HeaderText="College" />
             <asp:BoundField DataField="Hometown.City" HeaderText="City" />
             <asp:BoundField DataField="Hometown.State" HeaderText="State" />
-            <asp:BoundField DataField="BirthDate.Year" HeaderText="DOB" />
+            <asp:BoundField DataField="BirthDateForDisplay" HeaderText="DOB" />
         </Columns>
         <EditRowStyle BackColor="#2461BF" />
         <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
