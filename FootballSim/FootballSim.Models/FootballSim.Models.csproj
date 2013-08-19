@@ -57,6 +57,7 @@
     <Compile Include="Players\NameBuilder.cs" />
     <Compile Include="Players\NameCache.cs" />
     <Compile Include="Players\Player.cs" />
+    <Compile Include="Players\DraftBirthDateGenerator.cs" />
     <Compile Include="Players\PlayerBuilder.cs" />
     <Compile Include="Players\PlayerCaliberBuilder.cs" />
     <Compile Include="Players\PlayerFactory.cs" />

@@ -78,6 +78,7 @@ namespace FootballSim.App_Start
             RegisterPositionRepository(kernel);
             kernel.Bind<IPositionBuilder>().To<PositionBuilder>();
             RegisterPlayerBuilder(kernel);
+            kernel.Bind<IDraftBirthDateGenerator>().To<DraftBirthDateGenerator>();
             kernel.Bind<IDraftClassBuilder>().To<DraftClassBuilder>();
             kernel.Bind<IDraftClass>().To<DraftClass>();
             kernel.Bind<IDraftClassFactory>().To<DraftClassFactory>();

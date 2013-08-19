@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using FootballSim.Models.Positions;
 using FootballSim.Models.Ratings;
@@ -20,6 +21,7 @@ namespace FootballSim.Models.Players
         public string College { get; set; }
         public Measurables Measurables { get; set; }
         public IPlayerCaliber Caliber { get; set; }
+        public DateTime BirthDate { get; set; }
 
         public IDictionary<RatingType, Rating> Ratings
         {

@@ -66,6 +66,7 @@
     <Compile Include="Players\MeasurablesTests.cs" />
     <Compile Include="Players\NameBuilderTests.cs" />
     <Compile Include="Players\NameCacheTests.cs" />
+    <Compile Include="Players\DraftBirthDateGeneratorTests.cs" />
     <Compile Include="Players\PlayerBuilderTests.cs" />
     <Compile Include="Players\PlayerCaliberBuilderTests.cs" />
     <Compile Include="Players\PlayerFactoryTests.cs" />

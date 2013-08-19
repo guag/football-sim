@@ -1,4 +1,5 @@
-﻿using FootballSim.Models.Players;
+﻿using System;
+using FootballSim.Models.Players;
 using FootballSim.Models.Ratings;
 using NUnit.Framework;
 
@@ -43,6 +44,15 @@ namespace FootballSim.Models.Tests.Players
             sut.Ratings.Add(RatingType.ThrowingPower, new Rating {ProjectedValue = 0});
             sut.Ratings.Add(RatingType.RunDefense, new Rating {ProjectedValue = 100});
             Assert.That(sut.ProjectedOverallRating, Is.EqualTo(50));
+        }
+
+        [Test]
+        public void BirthDate_Test()
+        {
+            var sut = new Player();
+            var bd = new DateTime(1984, 5, 20);
+            sut.BirthDate = bd;
+            Assert.That(sut.BirthDate, Is.EqualTo(bd));
         }
     }
 }

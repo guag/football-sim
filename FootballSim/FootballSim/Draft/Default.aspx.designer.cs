@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace FootballSim.Views {
+namespace FootballSim.Draft {
     
     
     public partial class Default {

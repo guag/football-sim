@@ -10,12 +10,17 @@ namespace FootballSim.Models.Draft
     public class DraftClassBuilder : IDraftClassBuilder
     {
         private readonly IDraftClassFactory _draftFactory;
+        private readonly IDraftBirthDateGenerator _birthDate;
         private readonly IPlayerBuilder _playerBuilder;
 
-        public DraftClassBuilder(IPlayerBuilder playerBuilder, IDraftClassFactory draftFactory)
+        public DraftClassBuilder(
+            IPlayerBuilder playerBuilder, 
+            IDraftClassFactory draftFactory, 
+            IDraftBirthDateGenerator birthDate)
         {
             _playerBuilder = playerBuilder;
             _draftFactory = draftFactory;
+            _birthDate = birthDate;
         }
 
         #region IDraftClassBuilder Members
@@ -25,7 +30,9 @@ namespace FootballSim.Models.Draft
             IDraftClass draft = _draftFactory.Create(year);
             for (int i = 0; i < numPlayers; i++)
             {
-                draft.Players.Add(_playerBuilder.Build());
+                var player = _playerBuilder.Build();
+                player.BirthDate = _birthDate.Generate(2013);
+                draft.Players.Add(player);
             }
             return draft;
         }

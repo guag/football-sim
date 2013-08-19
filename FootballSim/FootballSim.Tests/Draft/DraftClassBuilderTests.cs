@@ -1,4 +1,5 @@
-﻿using FootballSim.Models.Draft;
+﻿using System;
+using FootballSim.Models.Draft;
 using FootballSim.Models.Players;
 using Moq;
 using NUnit.Framework;
@@ -13,7 +14,10 @@ namespace FootballSim.Models.Tests.Draft
         {
             var playerBuilder = Mock<IPlayerBuilder>();
             var draftFactory = Mock<IDraftClassFactory>();
-            var sut = new DraftClassBuilder(playerBuilder.Object, draftFactory.Object);
+            var sut = new DraftClassBuilder(
+                playerBuilder.Object,
+                draftFactory.Object,
+                Mock<IDraftBirthDateGenerator>().Object);
             playerBuilder.Setup(p => p.Build()).Returns(It.IsAny<Player>());
             var draft = new DraftClass();
             draftFactory.Setup(d => d.Create(2013)).Returns(draft);
@@ -30,7 +34,10 @@ namespace FootballSim.Models.Tests.Draft
         {
             var playerBuilder = Mock<IPlayerBuilder>();
             var draftFactory = Mock<IDraftClassFactory>();
-            var sut = new DraftClassBuilder(playerBuilder.Object, draftFactory.Object);
+            var sut = new DraftClassBuilder(
+                playerBuilder.Object,
+                draftFactory.Object,
+                Mock<IDraftBirthDateGenerator>().Object);
             playerBuilder.Setup(p => p.Build()).Returns(It.IsAny<Player>());
             var draft = new DraftClass();
             draftFactory.Setup(d => d.Create(2013)).Returns(draft);
@@ -40,6 +47,28 @@ namespace FootballSim.Models.Tests.Draft
             draftFactory.Verify(d => d.Create(2013));
             Assert.That(result, Is.EqualTo(draft));
             Assert.That(result.Players, Has.Count.EqualTo(500));
+        }
+
+        [Test]
+        public void Build_Sets_Player_BirthDates()
+        {
+            var generator = StrictMock<IDraftBirthDateGenerator>();
+            var factory = Mock<IDraftClassFactory>();
+            var builder = Mock<IPlayerBuilder>();
+            var sut = new DraftClassBuilder(
+                builder.Object,
+                factory.Object,
+                generator.Object);
+            var player = new Player();
+            builder.Setup(b => b.Build()).Returns(player);
+            var date = DateTime.Now;
+            generator.Setup(g => g.Generate(2013)).Returns(date);
+            var draft = new DraftClass();
+            factory.Setup(f => f.Create(2013)).Returns(draft);
+
+            sut.Build(2013, 1);
+            generator.Verify(g=>g.Generate(2013));
+            Assert.That(player.BirthDate, Is.EqualTo(date));
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="FootballSim.Views.Default" %>
+﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="FootballSim.Draft.Default" %>
 
 
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
@@ -15,6 +15,7 @@
             <asp:BoundField DataField="College" HeaderText="College" />
             <asp:BoundField DataField="Hometown.City" HeaderText="City" />
             <asp:BoundField DataField="Hometown.State" HeaderText="State" />
+            <asp:BoundField DataField="BirthDate.Year" HeaderText="DOB" />
         </Columns>
         <EditRowStyle BackColor="#2461BF" />
         <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
