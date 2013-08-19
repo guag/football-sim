@@ -22,5 +22,19 @@ namespace FootballSim.Models.Tests
 
             Assert.That(sut.State, Is.EqualTo(state));
         }
+
+        [Test]
+        public void ToString_Returns_Ronkonkoma_Ny()
+        {
+            var sut = new Location {City = "Ronkonkoma", State = "NY"};
+            Assert.That(sut.ToString(), Is.EqualTo("Ronkonkoma, NY"));
+        }
+
+        [Test]
+        public void ToString_Returns_Orlando_Fl()
+        {
+            var sut = new Location { City = "Orlando", State = "FL" };
+            Assert.That(sut.ToString(), Is.EqualTo("Orlando, FL"));
+        }
     }
 }

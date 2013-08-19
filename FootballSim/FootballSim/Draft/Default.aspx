@@ -3,7 +3,7 @@
 
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
 
-    <asp:GridView ID="GrdPlayers" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None" Width="387px">
+    <asp:GridView ID="GrdPlayers" runat="server" AutoGenerateColumns="False" CellPadding="5" ForeColor="#333333" GridLines="None" Width="100%" AllowPaging="True" AllowSorting="True" OnPageIndexChanging="GrdPlayers_PageIndexChanging" OnSorting="GrdPlayers_Sorting" PageSize="50">
         <AlternatingRowStyle BackColor="White" />
         <Columns>
             <asp:BoundField DataField="FullName" HeaderText="Name" ReadOnly="True" SortExpression="FullName" />
@@ -12,8 +12,7 @@
             <asp:BoundField DataField="Measurables.HeightForDisplay" HeaderText="Height" />
             <asp:BoundField DataField="Measurables.Weight" HeaderText="Weight" />
             <asp:BoundField DataField="College" HeaderText="College" />
-            <asp:BoundField DataField="Hometown.City" HeaderText="City" />
-            <asp:BoundField DataField="Hometown.State" HeaderText="State" />
+            <asp:BoundField DataField="Hometown" HeaderText="Hometown" />
             <asp:BoundField DataField="BirthDateForDisplay" HeaderText="DOB" />
         </Columns>
         <EditRowStyle BackColor="#2461BF" />
