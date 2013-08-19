@@ -6,5 +6,10 @@
         {
             get { return PositionType.Tackle; }
         }
+
+        public override string ShortName
+        {
+            get { return "T"; }
+        }
     }
 }

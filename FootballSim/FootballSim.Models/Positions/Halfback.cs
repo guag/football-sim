@@ -6,5 +6,10 @@
         {
             get { return PositionType.Halfback; }
         }
+
+        public override string ShortName
+        {
+            get { return "HB"; }
+        }
     }
 }

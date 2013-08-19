@@ -11,5 +11,10 @@
         {
             get { return "Defensive Tackle"; }
         }
+
+        public override string ShortName
+        {
+            get { return "DT"; }
+        }
     }
 }

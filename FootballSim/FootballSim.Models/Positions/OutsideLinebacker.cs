@@ -11,5 +11,10 @@
         {
             get { return "Outside Linebacker"; }
         }
+
+        public override string ShortName
+        {
+            get { return "OLB"; }
+        }
     }
 }

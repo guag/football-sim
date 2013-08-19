@@ -1,13 +1,12 @@
 ﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="FootballSim.Draft.Default" %>
 
-
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
 
     <asp:GridView ID="GrdPlayers" runat="server" AutoGenerateColumns="False" CellPadding="5" ForeColor="#333333" GridLines="None" Width="100%" AllowPaging="True" AllowSorting="True" OnPageIndexChanging="GrdPlayers_PageIndexChanging" OnSorting="GrdPlayers_Sorting" PageSize="50">
         <AlternatingRowStyle BackColor="White" />
         <Columns>
             <asp:BoundField DataField="FullName" HeaderText="Name" ReadOnly="True" SortExpression="FullName" />
-            <asp:BoundField DataField="Position.Name" HeaderText="Position" ReadOnly="True" SortExpression="Position.Name" />
+            <asp:BoundField DataField="Position.ShortName" HeaderText="Position" ReadOnly="True" SortExpression="Position.ShortName" />
             <asp:BoundField DataField="Caliber" HeaderText="Rating" ReadOnly="True" SortExpression="Rating" />
             <asp:BoundField DataField="Measurables.HeightForDisplay" HeaderText="Height" />
             <asp:BoundField DataField="Measurables.Weight" HeaderText="Weight" />

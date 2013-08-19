@@ -6,5 +6,10 @@
         {
             get { return PositionType.Fullback; }
         }
+
+        public override string ShortName
+        {
+            get { return "FB"; }
+        }
     }
 }

@@ -12,6 +12,11 @@
             get { return "Wide Receiver"; }
         }
 
+        public override string ShortName
+        {
+            get { return "WR"; }
+        }
+
         public override int MinWeight
         {
             get { return 170; }

@@ -12,6 +12,11 @@ namespace FootballSim.Models.Positions
             get { return "Tight End"; }
         }
 
+        public override string ShortName
+        {
+            get { return "TE"; }
+        }
+
         public override int MinWeight
         {
             get { return 220; }

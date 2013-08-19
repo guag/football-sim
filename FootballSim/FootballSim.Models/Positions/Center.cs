@@ -6,5 +6,10 @@
         {
             get { return PositionType.Center; }
         }
+
+        public override string ShortName
+        {
+            get { return "C"; }
+        }
     }
 }

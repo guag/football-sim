@@ -6,5 +6,10 @@
         {
             get { return PositionType.Kicker; }
         }
+
+        public override string ShortName
+        {
+            get { return "K"; }
+        }
     }
 }

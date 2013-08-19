@@ -11,5 +11,10 @@
         {
             get { return "Defensive End"; }
         }
+
+        public override string ShortName
+        {
+            get { return "DE"; }
+        }
     }
 }

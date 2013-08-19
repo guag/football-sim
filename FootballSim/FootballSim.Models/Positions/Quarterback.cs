@@ -45,5 +45,10 @@ namespace FootballSim.Models.Positions
                 return base.RatingTypes;
             }
         }
+
+        public override string ShortName
+        {
+            get { return "QB"; }
+        }
     }
 }

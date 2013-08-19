@@ -22,6 +22,11 @@ namespace FootballSim.Models.Positions
         public abstract int MinHeight { get; }
         public abstract int MaxHeight { get; }
 
+        public virtual string ShortName
+        {
+            get { return Name; }
+        }
+
         public virtual string Name
         {
             get { return Type.ToString(); }

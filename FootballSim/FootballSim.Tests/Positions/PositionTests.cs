@@ -52,11 +52,19 @@ namespace FootballSim.Models.Tests.Positions
         public void RatingTypes_Test()
         {
             var sut = new StubPosition();
+            Assert.That(sut.RatingTypes, Has.Count.EqualTo(5));
             Assert.That(sut.RatingTypes, Contains.Item(RatingType.Acceleration));
             Assert.That(sut.RatingTypes, Contains.Item(RatingType.Agility));
             Assert.That(sut.RatingTypes, Contains.Item(RatingType.Intelligence));
             Assert.That(sut.RatingTypes, Contains.Item(RatingType.Speed));
             Assert.That(sut.RatingTypes, Contains.Item(RatingType.Strength));
+        }
+
+        [Test]
+        public void ShortName_Returns_Name()
+        {
+            var sut = new StubPosition();
+            Assert.That(sut.ShortName, Is.EqualTo(sut.Name));
         }
     }
 }

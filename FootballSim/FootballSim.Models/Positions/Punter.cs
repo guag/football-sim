@@ -6,5 +6,10 @@
         {
             get { return PositionType.Punter; }
         }
+
+        public override string ShortName
+        {
+            get { return "P"; }
+        }
     }
 }

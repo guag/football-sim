@@ -6,5 +6,10 @@
         {
             get { return PositionType.Cornerback; }
         }
+
+        public override string ShortName
+        {
+            get { return "CB"; }
+        }
     }
 }

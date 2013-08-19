@@ -11,5 +11,10 @@
         {
             get { return "Strong Safety"; }
         }
+
+        public override string ShortName
+        {
+            get { return "SS"; }
+        }
     }
 }

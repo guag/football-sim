@@ -6,5 +6,10 @@
         {
             get { return PositionType.Guard; }
         }
+
+        public override string ShortName
+        {
+            get { return "G"; }
+        }
     }
 }
