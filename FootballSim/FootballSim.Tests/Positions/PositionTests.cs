@@ -8,6 +8,14 @@ namespace FootballSim.Models.Tests.Positions
     [TestFixture]
     public class PositionTests : BaseTestFixture
     {
+        private StubPosition _sut;
+
+        [SetUp]
+        public void SetUp()
+        {
+            _sut = new StubPosition();
+        }
+
         private class StubPosition : Position
         {
             public override PositionType Type
@@ -44,27 +52,30 @@ namespace FootballSim.Models.Tests.Positions
         [Test]
         public void Name_Returns_Type_As_String()
         {
-            var sut = new StubPosition();
-            Assert.That(sut.Name, Is.EqualTo(sut.Type.ToString()));
+            Assert.That(_sut.Name, Is.EqualTo(_sut.Type.ToString()));
         }
 
         [Test]
         public void RatingTypes_Test()
         {
-            var sut = new StubPosition();
-            Assert.That(sut.RatingTypes, Has.Count.EqualTo(5));
-            Assert.That(sut.RatingTypes, Contains.Item(RatingType.Acceleration));
-            Assert.That(sut.RatingTypes, Contains.Item(RatingType.Agility));
-            Assert.That(sut.RatingTypes, Contains.Item(RatingType.Intelligence));
-            Assert.That(sut.RatingTypes, Contains.Item(RatingType.Speed));
-            Assert.That(sut.RatingTypes, Contains.Item(RatingType.Strength));
+            Assert.That(_sut.RatingTypes, Has.Count.EqualTo(5));
+            Assert.That(_sut.RatingTypes, Contains.Item(RatingType.Acceleration));
+            Assert.That(_sut.RatingTypes, Contains.Item(RatingType.Agility));
+            Assert.That(_sut.RatingTypes, Contains.Item(RatingType.Intelligence));
+            Assert.That(_sut.RatingTypes, Contains.Item(RatingType.Speed));
+            Assert.That(_sut.RatingTypes, Contains.Item(RatingType.Strength));
         }
 
         [Test]
         public void ShortName_Returns_Name()
         {
-            var sut = new StubPosition();
-            Assert.That(sut.ShortName, Is.EqualTo(sut.Name));
+            Assert.That(_sut.ShortName, Is.EqualTo(_sut.Name));
+        }
+
+        [Test]
+        public void ToString_Returns_ShortName()
+        {
+            Assert.That(_sut.ToString(), Is.EqualTo(_sut.ShortName));
         }
     }
 }

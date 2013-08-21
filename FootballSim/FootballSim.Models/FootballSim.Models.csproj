@@ -42,6 +42,7 @@
     <Compile Include="Draft\DraftClass.cs" />
     <Compile Include="Draft\DraftClassBuilder.cs" />
     <Compile Include="Draft\DraftClassFactory.cs" />
+    <Compile Include="ExtensionMethods.cs" />
     <Compile Include="ICsvFileLoader.cs" />
     <Compile Include="ILeague.cs" />
     <Compile Include="ITeam.cs" />

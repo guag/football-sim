@@ -13,12 +13,21 @@ namespace FootballSim.Draft {
     public partial class Default {
         
         /// <summary>
-        /// GrdPlayers control.
+        /// grdPlayers control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GrdPlayers;
+        protected global::System.Web.UI.WebControls.GridView grdPlayers;
+        
+        /// <summary>
+        /// odsPlayers control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ObjectDataSource odsPlayers;
     }
 }

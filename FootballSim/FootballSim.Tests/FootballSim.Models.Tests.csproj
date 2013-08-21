@@ -56,6 +56,7 @@
     <Compile Include="Draft\DraftClassBuilderTests.cs" />
     <Compile Include="Draft\DraftClassFactoryTests.cs" />
     <Compile Include="Draft\DraftClassTests.cs" />
+    <Compile Include="ExtensionMethodsTests.cs" />
     <Compile Include="LocationTests.cs" />
     <Compile Include="PasserRatingServiceTests.cs" />
     <Compile Include="Players\CollegeBuilderTests.cs" />

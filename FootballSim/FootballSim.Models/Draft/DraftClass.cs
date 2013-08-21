@@ -21,7 +21,10 @@ namespace FootballSim.Models.Draft
 
         public IList<Player> Players
         {
-            get { return _players; }
+            get
+            {
+                return _players;
+            }
         }
 
         #endregion

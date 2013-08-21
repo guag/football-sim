@@ -37,5 +37,10 @@ namespace FootballSim.Models.Positions
         {
             get { return _ratingTypes; }
         }
+
+        public override string ToString()
+        {
+            return ShortName;
+        }
     }
 }
