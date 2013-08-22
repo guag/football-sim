@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 using FootballSim.Models;
 using FootballSim.Models.Draft;
 using FootballSim.Models.Players;
@@ -13,56 +12,30 @@ namespace FootballSim.Draft
     public partial class Default : Page
     {
         [Inject]
-        public IDraftClassBuilder DraftBuilder { get; set; }
+        public IDraftController DraftController { get; set; }
+
+        public IList<Player> Players
+        {
+            get { return (IList<Player>)ViewState["Players"]; }
+            set { ViewState["Players"] = value; }
+        }
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (IsPostBack)
+            if (!IsPostBack)
             {
                 return;
             }
-            IDraftClass draft = DraftBuilder.Build(2013, 250);
-            Session["Players"] = DefaultSorted(draft.Players);
+            IDraftClass draft = DraftController.CreateDraft(2006, 300);
+            Players = DraftController.SortPlayers(draft.Players);
         }
 
-        public IList<Player> GetPlayers(string sortExpr = "FullName")
+        /// <summary>
+        /// TODO: this logic can be moved to the controller.
+        /// </summary>
+        public IList<Player> GetPlayers(string sortExpr)
         {
-            var players = (IList<Player>) Session["Players"];
-
-            if (string.IsNullOrEmpty(sortExpr))
-            {
-                return DefaultSorted(players);
-            }
-
-            var split = sortExpr.Split(' ');
-            var expr = split[0];
-            var order = (split.Length == 1) ? string.Empty : split[1];
-            if (expr.Equals("FullName"))
-            {
-                return players.OrderBy(p => p.FullName, order).ToList();
-            }
-            if (expr.Equals("Position"))
-            {
-                return players.OrderBy(p => p.Position.Type, order).ToList();
-            }
-            if (expr.Equals("Caliber"))
-            {
-                return players.OrderBy(p => p.Caliber.MaxValue, order).ToList();
-            }
-            throw new ArgumentException("sortExpr");
-        }
-
-        private static List<Player> DefaultSorted(IEnumerable<Player> players)
-        {
-            return players.
-                OrderBy(p => p.Position.Type)
-                .ThenByDescending(p => p.CurrentOverallRating)
-                .ToList();
-        }
-
-        protected void GrdPlayers_Sorting(object sender, GridViewSortEventArgs e)
-        {
-            // TODO: do we need this?
+            return DraftController.SortPlayers(Players, sortExpr);
         }
     }
 }

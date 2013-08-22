@@ -2,13 +2,13 @@
 
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
 
-    <asp:GridView ID="grdPlayers" runat="server" AutoGenerateColumns="False" CellPadding="5" ForeColor="#333333" GridLines="None" Width="100%" AllowPaging="True" OnSorting="GrdPlayers_Sorting" PageSize="50" DataSourceID="odsPlayers" AllowSorting="True" ShowHeaderWhenEmpty="True">
+    <asp:GridView ID="grdPlayers" runat="server" AutoGenerateColumns="False" CellPadding="5" ForeColor="#333333" GridLines="None" Width="100%" AllowPaging="True" PageSize="50" DataSourceID="odsPlayers" AllowSorting="True" ShowHeaderWhenEmpty="True">
         <AlternatingRowStyle BackColor="White" />
         <Columns>
             <asp:BoundField DataField="FullName" HeaderText="Name" ReadOnly="True" SortExpression="FullName" />
             <asp:BoundField DataField="Position" HeaderText="Position" ReadOnly="True" SortExpression="Position" />
             <asp:BoundField DataField="Caliber" HeaderText="Rating" SortExpression="Caliber" />
-            <asp:BoundField DataField="College" HeaderText="College" ReadOnly="True" />
+            <asp:BoundField DataField="College" HeaderText="College" ReadOnly="True" SortExpression="College" />
             <asp:BoundField DataField="BirthDateForDisplay" HeaderText="DOB" ReadOnly="True" />
             <asp:BoundField DataField="Hometown" HeaderText="Hometown" ReadOnly="True" />
             <asp:BoundField DataField="CurrentOverallRating" Visible="false" HeaderText="Rating" ReadOnly="True" SortExpression="CurrentOverallRating" />
