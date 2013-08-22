@@ -4,7 +4,6 @@ using System.Linq;
 using FootballSim.Models;
 using FootballSim.Models.Draft;
 using FootballSim.Models.Players;
-using Ninject;
 
 namespace FootballSim.Draft
 {
@@ -16,8 +15,12 @@ namespace FootballSim.Draft
 
     public class DraftController : IDraftController
     {
-        [Inject]
-        public IDraftClassBuilder DraftBuilder { get; set; }
+        private readonly IDraftClassBuilder _draftBuilder;
+
+        public DraftController(IDraftClassBuilder draftBuilder)
+        {
+            _draftBuilder = draftBuilder;
+        }
 
         #region IDraftController Members
 
@@ -28,28 +31,32 @@ namespace FootballSim.Draft
         {
             if (string.IsNullOrEmpty(sortExpr))
             {
-                return players
-                    .OrderBy(p => p.Position.Type)
-                    .ThenByDescending(p => p.CurrentOverallRating)
-                    .ToList();
+                // TODO: move to separate class
+                //return players
+                //    .OrderBy(p => p.Position.Type)
+                //    .ThenByDescending(p => p.CurrentOverallRating)
+                //    .ToList();
             }
 
             string[] arrExpr = sortExpr.Split(' ');
             string order = (arrExpr.Length == 1) ? string.Empty : arrExpr[1];
-            Func<Player, object> func = GetSortingFunc(arrExpr[0]);
-            return players.OrderBy(func, order).ToList();
+            throw new NotImplementedException();
+            // TODO: move to separate class
+            //return players.OrderBy(GetSortingFunc(arrExpr[0]), order).ToList();
         }
 
-        /// <summary>
-        /// TODO: test this
-        /// </summary>
         public IDraftClass CreateDraft(int year, int numPlayers)
         {
-            return DraftBuilder.Build(year, numPlayers);
+            return _draftBuilder.Build(year, numPlayers);
         }
 
         #endregion
 
+        /// <summary>
+        /// TODO: move to separate class
+        /// </summary>
+        /// <param name="expr"></param>
+        /// <returns></returns>
         private static Func<Player, object> GetSortingFunc(string expr)
         {
             if (expr.Equals("FullName"))

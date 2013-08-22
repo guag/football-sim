@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Moq, Version=4.0.10827.0, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\FootballSim.Models.Tests\bin\Debug\Moq.dll</HintPath>
+    </Reference>
     <Reference Include="nunit.framework">
       <HintPath>..\FootballSim.Models.Tests\bin\Debug\nunit.framework.dll</HintPath>
     </Reference>
@@ -49,6 +53,14 @@
     <ProjectReference Include="..\FootballSim.Models.Tests\FootballSim.Models.Tests.csproj">
       <Project>{96561A49-E122-4E51-8723-0F6C4FAB8E86}</Project>
       <Name>FootballSim.Models.Tests</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FootballSim.Models\FootballSim.Models.csproj">
+      <Project>{66698E79-EB41-4A92-A95A-0DF5914FDDDC}</Project>
+      <Name>FootballSim.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FootballSim\FootballSim.csproj">
+      <Project>{ABD90FFC-36C0-48A1-AD32-89190A9E64DA}</Project>
+      <Name>FootballSim</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
