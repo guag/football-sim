@@ -55,6 +55,7 @@
     <Compile Include="BaseTestFixture.cs" />
     <Compile Include="Draft\DraftClassBuilderTests.cs" />
     <Compile Include="Draft\DraftClassFactoryTests.cs" />
+    <Compile Include="Draft\DraftClassPlayerSorterTests.cs" />
     <Compile Include="Draft\DraftClassTests.cs" />
     <Compile Include="ExtensionMethodsTests.cs" />
     <Compile Include="LocationTests.cs" />

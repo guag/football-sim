@@ -17,11 +17,9 @@ namespace FootballSim.Tests.Draft
         public void SetUp()
         {
             _draftBuilder = Mock<IDraftClassBuilder>();
-            _sut = new DraftController(_draftBuilder.Object);
-            _p1 = new Player();
-            _p2 = new Player();
-            _p3 = new Player();
-            _players = new[] {_p1, _p2, _p3};
+            _sorter = Mock<IDraftClassPlayerSorter>();
+            _sut = new DraftController(_draftBuilder.Object, _sorter.Object);
+            _players = new[] {new Player(), new Player(), new Player() };
         }
 
         #endregion
@@ -29,9 +27,7 @@ namespace FootballSim.Tests.Draft
         private DraftController _sut;
         private Mock<IDraftClassBuilder> _draftBuilder;
         private IList<Player> _players;
-        private Player _p1;
-        private Player _p2;
-        private Player _p3;
+        private Mock<IDraftClassPlayerSorter> _sorter;
 
         [Test]
         public void Create_Builds_New_Draft_Class()
@@ -47,7 +43,45 @@ namespace FootballSim.Tests.Draft
         [Test]
         public void Sort_Returns_Default_Sort()
         {
+            var expected = new[] {new Player(), new Player() };
+            _sorter.Setup(s => s.Sort(_players, null, null)).Returns(expected);
+
             var result = _sut.SortPlayers(_players);
+            _sorter.Verify(s => s.Sort(_players, null, null));
+            Assert.That(result, Is.EqualTo(expected));
+        }
+
+        [Test]
+        public void Sort_With_FullName_Desc_Expression()
+        {
+            var expected = new[] {new Player(), new Player()};
+            _sorter.Setup(s => s.Sort(_players, "FullName", "DESC")).Returns(expected);
+            
+            var result = _sut.SortPlayers(_players, "FullName DESC");
+            _sorter.Verify(s=>s.Sort(_players, "FullName", "DESC"));
+            Assert.That(result, Is.EqualTo(expected));
+        }
+
+        [Test]
+        public void Sort_With_College_Asc_Expression()
+        {
+            var expected = new[] { new Player(), new Player() };
+            _sorter.Setup(s => s.Sort(_players, "College", "ASC")).Returns(expected);
+
+            var result = _sut.SortPlayers(_players, "College ASC");
+            _sorter.Verify(s => s.Sort(_players, "College", "ASC"));
+            Assert.That(result, Is.EqualTo(expected));
+        }
+
+        [Test]
+        public void Sort_With_Caliber_Expression_And_No_Order_Specified()
+        {
+            var expected = new[] { new Player(), new Player() };
+            _sorter.Setup(s => s.Sort(_players, "Caliber", string.Empty)).Returns(expected);
+
+            var result = _sut.SortPlayers(_players, "Caliber");
+            _sorter.Verify(s => s.Sort(_players, "Caliber", string.Empty));
+            Assert.That(result, Is.EqualTo(expected));
         }
     }
 }

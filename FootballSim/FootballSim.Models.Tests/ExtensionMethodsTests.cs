@@ -25,6 +25,13 @@ namespace FootballSim.Models.Tests
         }
 
         [Test]
+        public void Ascending_Order_Because_Order_Is_Null()
+        {
+            var result = _strings.OrderBy(s => s, null);
+            Assert.That(result, Is.EqualTo(new[] {"Apples", "Gary", "Marcos", "Nicole"}));
+        }
+
+        [Test]
         public void Descending_Order()
         {
             var result = _strings.OrderBy(s => s, "DESC");

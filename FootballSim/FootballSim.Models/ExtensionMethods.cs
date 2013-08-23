@@ -18,7 +18,7 @@ namespace FootballSim.Models
             this IEnumerable<TSource> source, Func<TSource, TKey> keySelector,
             string order)
         {
-            return order.Equals("DESC")
+            return !string.IsNullOrEmpty(order) && order.Equals("DESC")
                        ? source.OrderByDescending(keySelector)
                        : source.OrderBy(keySelector);
         }

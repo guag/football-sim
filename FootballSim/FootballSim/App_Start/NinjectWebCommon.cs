@@ -84,6 +84,7 @@ namespace FootballSim.App_Start
             kernel.Bind<IDraftClassBuilder>().To<DraftClassBuilder>();
             kernel.Bind<IDraftClass>().To<DraftClass>();
             kernel.Bind<IDraftClassFactory>().To<DraftClassFactory>();
+            kernel.Bind<IDraftClassPlayerSorter>().To<DraftClassPlayerSorter>();
             RegisterControllers(kernel);
         }
 
