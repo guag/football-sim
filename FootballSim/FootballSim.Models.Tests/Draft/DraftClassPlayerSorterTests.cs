@@ -121,6 +121,30 @@ namespace FootballSim.Models.Tests.Draft
         }
 
         [Test]
+        public void Order_By_Dob()
+        {
+            _p1.BirthDate = new DateTime(1939, 9, 1);
+            _p2.BirthDate = new DateTime(1934, 9, 2);
+            _p3.BirthDate = new DateTime(1940, 1, 1);
+            var result = _sut.Sort(_players, "DOB", "DESC");
+            Assert.That(result[0], Is.SameAs(_p3));
+            Assert.That(result[1], Is.SameAs(_p1));
+            Assert.That(result[2], Is.SameAs(_p2));
+        }
+
+        [Test]
+        public void Order_By_Hometown()
+        {
+            _p1.Hometown = new Location {City = "Holbrook", State = "NY"};
+            _p2.Hometown = new Location { City = "Amityville", State = "NY" };
+            _p3.Hometown = new Location { City = "Wilmington", State = "DE" };
+            var result = _sut.Sort(_players, "Hometown");
+            Assert.That(result[0], Is.SameAs(_p2));
+            Assert.That(result[1], Is.SameAs(_p1));
+            Assert.That(result[2], Is.SameAs(_p3));
+        }
+
+        [Test]
         [ExpectedException(typeof (ArgumentException))]
         public void Throw_Because_Sort_Expression_Does_Not_Exist()
         {

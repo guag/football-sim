@@ -49,6 +49,14 @@ namespace FootballSim.Models.Draft
             {
                 return p => p.College;
             }
+            if (expr.Equals("DOB"))
+            {
+                return p => p.BirthDate;
+            }
+            if (expr.Equals("Hometown"))
+            {
+                return p => p.Hometown.ToString();
+            }
             throw new ArgumentException("expr");
         }
     }
