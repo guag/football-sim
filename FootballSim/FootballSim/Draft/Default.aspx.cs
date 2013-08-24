@@ -1,21 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Web.UI;
+using System.Globalization;
 using FootballSim.Models.Draft;
 using FootballSim.Models.Players;
-using Ninject;
 
 namespace FootballSim.Draft
 {
-    public partial class Default : Page
+    public partial class Default : View<IDraftController>
     {
-        [Inject]
-        public IDraftController DraftController
-        {
-            get { return (IDraftController) Session["DraftController"]; }
-            set { Session["DraftController"] = value; }
-        }
-
         public IList<Player> Players
         {
             get { return (IList<Player>) Session["Players"]; }
@@ -28,13 +20,16 @@ namespace FootballSim.Draft
             {
                 return;
             }
-            IDraftClass draft = DraftController.CreateDraft(2006, 300);
-            Players = DraftController.SortPlayers(draft.Players);
+            // TODO: replace this with a DB load
+            IDraftClass draft = Controller.CreateDraft(2006, 300);
+            Players = Controller.SortPlayers(draft.Players);
+
+            lblTitle.Text = draft.Year.ToString(CultureInfo.InvariantCulture);
         }
 
         public IList<Player> GetPlayers(string sortExpr)
         {
-            return DraftController.SortPlayers(Players, sortExpr);
+            return Controller.SortPlayers(Players, sortExpr);
         }
     }
 }

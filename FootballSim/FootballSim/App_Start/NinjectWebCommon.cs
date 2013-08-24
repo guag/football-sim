@@ -4,6 +4,7 @@ using FootballSim.Models.Draft;
 using FootballSim.Models.Players;
 using FootballSim.Models.Positions;
 using FootballSim.Models.Ratings;
+using FootballSim.Players;
 using Ninject.Syntax;
 
 [assembly: WebActivator.PreApplicationStartMethod(typeof(FootballSim.App_Start.NinjectWebCommon), "Start")]
@@ -91,6 +92,7 @@ namespace FootballSim.App_Start
         private static void RegisterControllers(IBindingRoot kernel)
         {
             kernel.Bind<IDraftController>().To<DraftController>();
+            kernel.Bind<IPlayersController>().To<PlayersController>();
         }
 
         private static void RegisterPlayerBuilder(IKernel kernel)

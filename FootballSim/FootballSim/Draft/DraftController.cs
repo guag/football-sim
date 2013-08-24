@@ -4,7 +4,7 @@ using FootballSim.Models.Players;
 
 namespace FootballSim.Draft
 {
-    public interface IDraftController
+    public interface IDraftController : IController
     {
         IDraftClass CreateDraft(int year, int numPlayers);
         IList<Player> SortPlayers(IEnumerable<Player> players, string sortExpr = null);

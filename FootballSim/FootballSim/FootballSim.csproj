@@ -216,6 +216,7 @@
     <Content Include="Content\csv\ln.csv" />
     <Content Include="Content\csv\loc.csv" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
+    <Content Include="Players\ViewPlayer.aspx" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
     <Content Include="Scripts\jquery-ui-1.8.24.js" />
@@ -304,6 +305,15 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="IController.cs" />
+    <Compile Include="Players\PlayersController.cs" />
+    <Compile Include="Players\ViewPlayer.aspx.cs">
+      <DependentUpon>ViewPlayer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Players\ViewPlayer.aspx.designer.cs">
+      <DependentUpon>ViewPlayer.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
@@ -318,6 +328,9 @@
     </Compile>
     <Compile Include="Site.Mobile.Master.designer.cs">
       <DependentUpon>Site.Mobile.Master</DependentUpon>
+    </Compile>
+    <Compile Include="View.cs">
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
