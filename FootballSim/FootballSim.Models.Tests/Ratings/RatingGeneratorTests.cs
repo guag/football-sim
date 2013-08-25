@@ -15,11 +15,12 @@ namespace FootballSim.Models.Tests.Ratings
             var cal = new AverageCaliber();
             random.Setup(r => r.GetRandom(cal.MinValue, cal.MaxValue)).Returns(70);
             var rating = new Rating();
-            factory.Setup(f => f.Create(70)).Returns(rating);
+            const RatingType type = RatingType.Agility;
+            factory.Setup(f => f.Create(type, 70)).Returns(rating);
 
-            var result = sut.Generate(cal);
+            var result = sut.Generate(cal, type);
             random.Verify(r => r.GetRandom(cal.MinValue, cal.MaxValue));
-            factory.Verify(f => f.Create(70));
+            factory.Verify(f => f.Create(type, 70));
             Assert.That(result, Is.EqualTo(rating));
         }
     }

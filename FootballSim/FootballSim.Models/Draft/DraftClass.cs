@@ -1,30 +1,25 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using FootballSim.Models.Players;
 
 namespace FootballSim.Models.Draft
 {
-    public interface IDraftClass
+    public class DraftClass
     {
-        int Id { get; }
-        IList<Player> Players { get; }
-        int Year { get; }
-    }
-
-    public class DraftClass : IDraftClass
-    {
-        private readonly IList<Player> _players = new List<Player>();
+        private IList<Player> _players = new List<Player>();
 
         #region IDraftClass Members
 
+        [Required]
         public int Id { get; set; }
+        
+        [Required]
         public int Year { get; set; }
 
-        public IList<Player> Players
+        public virtual IList<Player> Players
         {
-            get
-            {
-                return _players;
-            }
+            get { return _players; }
+            set { _players = value; }
         }
 
         #endregion

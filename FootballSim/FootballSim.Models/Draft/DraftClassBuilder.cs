@@ -4,7 +4,7 @@ namespace FootballSim.Models.Draft
 {
     public interface IDraftClassBuilder
     {
-        IDraftClass Build(int year, int numPlayers);
+        DraftClass Build(int year, int numPlayers);
     }
 
     public class DraftClassBuilder : IDraftClassBuilder
@@ -25,9 +25,9 @@ namespace FootballSim.Models.Draft
 
         #region IDraftClassBuilder Members
 
-        public IDraftClass Build(int year, int numPlayers)
+        public DraftClass Build(int year, int numPlayers)
         {
-            IDraftClass draft = _draftFactory.Create(year);
+            DraftClass draft = _draftFactory.Create(year);
             for (int i = 0; i < numPlayers; i++)
             {
                 var player = _playerBuilder.Build();

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using FootballSim.Models.Ratings;
 
 namespace FootballSim.Models.Positions
@@ -15,12 +16,32 @@ namespace FootballSim.Models.Positions
                                                                  RatingType.Strength
                                                              };
 
+        [Required]
+        public int Id { get; set; }
+
+        [Required]
         public abstract PositionType Type { get; }
+
+        [Required]
         public abstract Side Side { get; }
+
+        [Required]
         public abstract int MinWeight { get; }
+
+        [Required]
         public abstract int MaxWeight { get; }
+
+        [Required]
         public abstract int MinHeight { get; }
+
+        [Required]
         public abstract int MaxHeight { get; }
+
+        // Note: subclasses can override this to add their own position-specific ratings.
+        public virtual ISet<RatingType> RatingTypes
+        {
+            get { return _ratingTypes; }
+        }
 
         public virtual string ShortName
         {
@@ -30,12 +51,6 @@ namespace FootballSim.Models.Positions
         public virtual string Name
         {
             get { return Type.ToString(); }
-        }
-
-        // Note: subclasses can override this to add their own position-specific ratings.
-        public virtual ISet<RatingType> RatingTypes
-        {
-            get { return _ratingTypes; }
         }
 
         public override string ToString()

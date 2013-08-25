@@ -11,11 +11,13 @@ namespace FootballSim.Models.Tests.Ratings
         {
             var sut = new RatingFactory();
             const int val = 22;
-            var result = sut.Create(val);
+            const RatingType type = RatingType.Intelligence;
+            var result = sut.Create(type, val);
             Assert.That(result, Is.Not.Null);
             Assert.That(result, Is.TypeOf<Rating>());
             Assert.That(result.CurrentValue, Is.EqualTo(22));
             Assert.That(result.ProjectedValue, Is.EqualTo(22));
+            Assert.That(result.Type, Is.EqualTo(type));
         }
     }
 }

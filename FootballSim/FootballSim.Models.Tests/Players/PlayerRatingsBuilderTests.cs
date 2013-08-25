@@ -9,23 +9,39 @@ namespace FootballSim.Models.Tests.Players
     [TestFixture]
     public class PlayerRatingsBuilderTests : BaseTestFixture
     {
+        #region Setup/Teardown
+
+        [SetUp]
+        public void SetUp()
+        {
+            _ratings = Mock<IRatingGenerator>();
+            _sut = new PlayerRatingsBuilder(_ratings.Object);
+        }
+
+        #endregion
+
+        private Mock<IRatingGenerator> _ratings;
+        private PlayerRatingsBuilder _sut;
+
         [Test]
         public void Build_Test()
         {
-            var ratings = StrictMock<IRatingGenerator>();
-            var sut = new PlayerRatingsBuilder(ratings.Object);
             var position = new Quarterback();
             var caliber = new LowCaliber();
             var player = new Player {Position = position, Caliber = caliber};
-            ratings.Setup(r => r.Generate(caliber)).Returns(It.IsAny<Rating>());
-
-            sut.Build(player);
-            ratings.Verify(r => r.Generate(caliber), Times.Exactly(position.RatingTypes.Count));
-            Assert.That(player.Ratings.Count, Is.EqualTo(position.RatingTypes.Count));
-            foreach (var rating in player.Ratings)
+            foreach (var type in position.RatingTypes)
             {
-                Assert.That(position.RatingTypes, Contains.Item(rating.Key));
+                RatingType t = type;
+                _ratings.Setup(r => r.Generate(caliber, t)).Returns(new Rating());
             }
+
+            _sut.Build(player);
+            foreach (var type in position.RatingTypes)
+            {
+                RatingType t = type;
+                _ratings.Verify(r => r.Generate(caliber, t));
+            }
+            Assert.That(player.Ratings, Has.Count.EqualTo(position.RatingTypes.Count));
         }
     }
 }

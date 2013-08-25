@@ -21,7 +21,8 @@ namespace FootballSim.Models.Players
         {
             foreach (RatingType type in player.Position.RatingTypes)
             {
-                player.Ratings.Add(type, _rating.Generate(player.Caliber));
+                Rating rating = _rating.Generate(player.Caliber, type);
+                player.Ratings.Add(rating);
             }
         }
 

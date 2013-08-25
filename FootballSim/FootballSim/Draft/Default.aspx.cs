@@ -21,9 +21,13 @@ namespace FootballSim.Draft
                 return;
             }
             // TODO: replace this with a DB load
-            IDraftClass draft = Controller.CreateDraft(2006, 300);
-            Players = Controller.SortPlayers(draft.Players);
+            //DraftClass draft = Controller.CreateDraft(2006, 400);
+            //Controller.SaveDraft(draft);
+            // </TODO>
+            const int id = 1; // TODO: get this from the request
+            DraftClass draft = Controller.GetDraft(id);
 
+            Players = Controller.SortPlayers(draft.Players);
             lblTitle.Text = draft.Year.ToString(CultureInfo.InvariantCulture);
         }
 

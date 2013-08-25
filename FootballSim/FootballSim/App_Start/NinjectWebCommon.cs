@@ -1,3 +1,6 @@
+using System;
+using System.Web;
+using FootballSim.App_Start;
 using FootballSim.Draft;
 using FootballSim.Models;
 using FootballSim.Models.Draft;
@@ -5,21 +8,17 @@ using FootballSim.Models.Players;
 using FootballSim.Models.Positions;
 using FootballSim.Models.Ratings;
 using FootballSim.Players;
+using Microsoft.Web.Infrastructure.DynamicModuleHelper;
+using Ninject;
 using Ninject.Syntax;
+using Ninject.Web.Common;
+using WebActivator;
 
-[assembly: WebActivator.PreApplicationStartMethod(typeof(FootballSim.App_Start.NinjectWebCommon), "Start")]
-[assembly: WebActivator.ApplicationShutdownMethodAttribute(typeof(FootballSim.App_Start.NinjectWebCommon), "Stop")]
+[assembly: WebActivator.PreApplicationStartMethod(typeof (NinjectWebCommon), "Start")]
+[assembly: ApplicationShutdownMethod(typeof (NinjectWebCommon), "Stop")]
 
 namespace FootballSim.App_Start
 {
-    using System;
-    using System.Web;
-
-    using Microsoft.Web.Infrastructure.DynamicModuleHelper;
-
-    using Ninject;
-    using Ninject.Web.Common;
-
     public static class NinjectWebCommon
     {
         private static readonly Bootstrapper Bootstrapper = new Bootstrapper();
@@ -62,6 +61,9 @@ namespace FootballSim.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
+            kernel.Bind<IFootballSimContext>().To<FootballSimContext>();
+            kernel.Bind<IPlayerRepository>().To<PlayerRepository>();
+            kernel.Bind<IDraftClassRepository>().To<DraftClassRepository>();
             kernel.Bind<IPasserRatingService>().To<PasserRatingService>();
             kernel.Bind<IRandomService>().To<RandomService>();
             kernel.Bind<ICsvFileLoader>().To<CsvFileLoader>();
@@ -83,7 +85,6 @@ namespace FootballSim.App_Start
             RegisterPlayerBuilder(kernel);
             kernel.Bind<IDraftBirthDateGenerator>().To<DraftBirthDateGenerator>();
             kernel.Bind<IDraftClassBuilder>().To<DraftClassBuilder>();
-            kernel.Bind<IDraftClass>().To<DraftClass>();
             kernel.Bind<IDraftClassFactory>().To<DraftClassFactory>();
             kernel.Bind<IDraftClassPlayerSorter>().To<DraftClassPlayerSorter>();
             RegisterControllers(kernel);

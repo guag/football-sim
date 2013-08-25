@@ -1,14 +1,30 @@
-﻿namespace FootballSim.Models.Ratings
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace FootballSim.Models.Ratings
 {
-    public struct Rating
+    public class Rating
     {
-        public Rating(int rating) : this()
+        public Rating(RatingType type, int rating)
         {
+            Type = type;
             CurrentValue = rating;
             ProjectedValue = rating;
         }
 
+        public Rating()
+        {
+        }
+
+        [Required]
+        public int Id { get; set; }
+
+        [Required]
         public int CurrentValue { get; set; }
+
+        [Required]
         public int ProjectedValue { get; set; }
+
+        [Required]
+        public RatingType Type { get; set; }
     }
 }

@@ -2,7 +2,7 @@
 {
     public interface IRatingGenerator
     {
-        Rating Generate(IPlayerCaliber caliber);
+        Rating Generate(IPlayerCaliber caliber, RatingType type);
     }
 
     public class RatingGenerator : IRatingGenerator
@@ -18,10 +18,10 @@
 
         #region IRatingGenerator Members
 
-        public Rating Generate(IPlayerCaliber caliber)
+        public Rating Generate(IPlayerCaliber caliber, RatingType type)
         {
             var value = _random.GetRandom(caliber.MinValue, caliber.MaxValue);
-            return _factory.Create(value);
+            return _factory.Create(type, value);
         }
 
         #endregion
