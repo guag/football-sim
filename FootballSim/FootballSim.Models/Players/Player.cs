@@ -12,7 +12,7 @@ namespace FootballSim.Models.Players
         private readonly ISet<Rating> _ratings =
             new HashSet<Rating>();
 
-        [Required]
+        [Key]
         public int Id { get; set; }
 
         [Required]
@@ -30,19 +30,40 @@ namespace FootballSim.Models.Players
         public virtual ITeam Team { get; set; }
 
         [Required]
-        public Location Hometown { get; set; }
+        public string City { get; set; }
+
+        [Required]
+        public string State { get; set; }
 
         [Required]
         public string College { get; set; }
 
         [Required]
-        public Measurables Measurables { get; set; }
-
-        [Required]
-        public virtual IPlayerCaliber Caliber { get; set; }
+        public virtual PlayerCaliber Caliber { get; set; }
 
         [Required]
         public DateTime BirthDate { get; set; }
+
+        [Required]
+        public int Height { get; set; }
+
+        [Required]
+        public int Weight { get; set; }
+
+        public string HeightForDisplay
+        {
+            get { return string.Format("{0}'{1}\"", Height/12, Height%12); }
+        }
+
+        public string HeightAndWeight
+        {
+            get { return string.Format("{0} {1}", HeightForDisplay, Weight); }
+        }
+
+        public string CityAndState
+        {
+            get { return string.Format("{0}, {1}", City, State); }
+        }
 
         public virtual ISet<Rating> Ratings
         {

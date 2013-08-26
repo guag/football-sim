@@ -117,7 +117,7 @@
     <Compile Include="Ratings\BlueChipCaliberTests.cs" />
     <Compile Include="Ratings\HighCaliberTests.cs" />
     <Compile Include="Ratings\LowCaliberTests.cs" />
-    <Compile Include="Ratings\PlayerCaliberFactoryTests.cs" />
+    <Compile Include="Ratings\PlayerCaliberRepositoryTests.cs" />
     <Compile Include="Ratings\RatingFactoryTests.cs" />
     <Compile Include="Ratings\RatingGeneratorTests.cs" />
     <Compile Include="Ratings\RatingTests.cs" />

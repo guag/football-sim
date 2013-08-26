@@ -17,7 +17,9 @@
 
         public void Build(Player player)
         {
-            player.Hometown = _hometowns.GetRandomHometown();
+            Location loc = _hometowns.GetRandomHometown();
+            player.City = loc.City;
+            player.State = loc.State;
         }
 
         #endregion

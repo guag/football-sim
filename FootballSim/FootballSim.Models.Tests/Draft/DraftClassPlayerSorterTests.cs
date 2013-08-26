@@ -126,10 +126,13 @@ namespace FootballSim.Models.Tests.Draft
         [Test]
         public void Order_By_Hometown()
         {
-            _p1.Hometown = new Location {City = "Holbrook", State = "NY"};
-            _p2.Hometown = new Location {City = "Amityville", State = "NY"};
-            _p3.Hometown = new Location {City = "Wilmington", State = "DE"};
-            var result = _sut.Sort(_players, "Hometown");
+            _p1.City = "Holbrook";
+            _p1.State = "NY";
+            _p2.City = "Amityville";
+            _p2.State = "NY";
+            _p3.City = "Wilmington";
+            _p3.State = "DE";
+            var result = _sut.Sort(_players, "CityAndState");
             Assert.That(result[0], Is.SameAs(_p2));
             Assert.That(result[1], Is.SameAs(_p1));
             Assert.That(result[2], Is.SameAs(_p3));

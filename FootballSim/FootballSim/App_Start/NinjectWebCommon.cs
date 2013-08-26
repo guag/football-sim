@@ -78,7 +78,7 @@ namespace FootballSim.App_Start
             kernel.Bind<IRatingGenerator>().To<RatingGenerator>();
             kernel.Bind<IPlayerRatingsBuilder>().To<PlayerRatingsBuilder>();
             kernel.Bind<IPlayerFactory>().To<PlayerFactory>();
-            kernel.Bind<IPlayerCaliberFactory>().To<PlayerCaliberFactory>();
+            RegisterPlayerCalibers(kernel);
             kernel.Bind<IPlayerCaliberBuilder>().To<PlayerCaliberBuilder>();
             RegisterPositionRepository(kernel);
             kernel.Bind<IPositionBuilder>().To<PositionBuilder>();
@@ -88,6 +88,17 @@ namespace FootballSim.App_Start
             kernel.Bind<IDraftClassFactory>().To<DraftClassFactory>();
             kernel.Bind<IDraftClassPlayerSorter>().To<DraftClassPlayerSorter>();
             RegisterControllers(kernel);
+        }
+
+        private static void RegisterPlayerCalibers(IKernel kernel)
+        {
+            var repo = new PlayerCaliberRepository(kernel.Get<IRandomService>());
+            // TODO: add a PlayerCaliberFactory
+            repo.Add<BlueChipCaliber>(new BlueChipCaliber());
+            repo.Add<HighCaliber>(new HighCaliber());
+            repo.Add<AverageCaliber>(new AverageCaliber());
+            repo.Add<LowCaliber>(new LowCaliber());
+            kernel.Bind<IPlayerCaliberRepository>().ToConstant(repo);
         }
 
         private static void RegisterControllers(IBindingRoot kernel)

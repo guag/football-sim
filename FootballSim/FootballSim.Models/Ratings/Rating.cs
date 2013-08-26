@@ -15,7 +15,7 @@ namespace FootballSim.Models.Ratings
         {
         }
 
-        [Required]
+        [Key]
         public int Id { get; set; }
 
         [Required]

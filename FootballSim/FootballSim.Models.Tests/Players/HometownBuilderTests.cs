@@ -16,12 +16,12 @@ namespace FootballSim.Models.Tests.Players
             var cache = StrictMock<IHometownCache>();
             var sut = new HometownBuilder(cache.Object);
             var player = new Player();
-            var hometown = new Location();
+            var hometown = new Location {City = "Holbrook", State = "NY"};
             cache.Setup(c => c.GetRandomHometown()).Returns(hometown);
 
             sut.Build(player);
             cache.Verify(c => c.GetRandomHometown());
-            Assert.That(player.Hometown, Is.EqualTo(hometown));
+            Assert.That(player.CityAndState, Is.EqualTo("Holbrook, NY"));
         }
     }
 }

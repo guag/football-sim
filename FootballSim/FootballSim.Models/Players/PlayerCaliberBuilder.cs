@@ -8,9 +8,9 @@ namespace FootballSim.Models.Players
 
     public class PlayerCaliberBuilder : IPlayerCaliberBuilder
     {
-        private readonly IPlayerCaliberFactory _caliber;
+        private readonly IPlayerCaliberRepository _caliber;
 
-        public PlayerCaliberBuilder(IPlayerCaliberFactory caliber)
+        public PlayerCaliberBuilder(IPlayerCaliberRepository caliber)
         {
             _caliber = caliber;
         }
@@ -19,7 +19,7 @@ namespace FootballSim.Models.Players
 
         public void Build(Player player)
         {
-            player.Caliber = _caliber.CreateRandom();
+            player.Caliber = _caliber.GetRandom();
         }
 
         #endregion

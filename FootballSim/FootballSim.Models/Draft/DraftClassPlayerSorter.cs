@@ -53,9 +53,13 @@ namespace FootballSim.Models.Draft
             {
                 return p => p.BirthDate;
             }
-            if (expr.Equals("Hometown"))
+            if (expr.Equals("CityAndState"))
             {
-                return p => p.Hometown.ToString();
+                return p => p.CityAndState;
+            }
+            if (expr.Equals("HeightAndWeight"))
+            {
+                return p => p.HeightAndWeight;
             }
             throw new ArgumentException("expr");
         }

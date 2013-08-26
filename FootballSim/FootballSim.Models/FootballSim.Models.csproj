@@ -48,6 +48,9 @@
     <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
+    <Reference Include="Ninject">
+      <HintPath>..\FootballSim\bin\Ninject.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -125,9 +128,9 @@
     <Compile Include="Ratings\AverageCaliber.cs" />
     <Compile Include="Ratings\BlueChipCaliber.cs" />
     <Compile Include="Ratings\HighCaliber.cs" />
-    <Compile Include="Ratings\IPlayerCaliber.cs" />
+    <Compile Include="Ratings\PlayerCaliber.cs" />
     <Compile Include="Ratings\LowCaliber.cs" />
-    <Compile Include="Ratings\PlayerCaliberFactory.cs" />
+    <Compile Include="Ratings\PlayerCaliberRepository.cs" />
     <Compile Include="Ratings\Rating.cs" />
     <Compile Include="Ratings\RatingFactory.cs" />
     <Compile Include="Ratings\RatingGenerator.cs" />

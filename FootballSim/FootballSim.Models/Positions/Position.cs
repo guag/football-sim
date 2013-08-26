@@ -16,7 +16,7 @@ namespace FootballSim.Models.Positions
                                                                  RatingType.Strength
                                                              };
 
-        [Required]
+        [Key]
         public int Id { get; set; }
 
         [Required]
@@ -37,7 +37,6 @@ namespace FootballSim.Models.Positions
         [Required]
         public abstract int MaxHeight { get; }
 
-        // Note: subclasses can override this to add their own position-specific ratings.
         public virtual ISet<RatingType> RatingTypes
         {
             get { return _ratingTypes; }

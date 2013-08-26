@@ -1,22 +1,22 @@
 ﻿namespace FootballSim.Models.Ratings
 {
-    public class AverageCaliber : IPlayerCaliber
+    public class AverageCaliber : PlayerCaliber
     {
         #region IPlayerCaliber Members
 
-        public int MinValue
+        public override int MinValue
         {
             get { return 60; }
         }
 
-        public int MaxValue
+        public override int MaxValue
         {
             get { return 85; }
         }
 
-        public override string ToString()
+        public override string Name
         {
-            return "Average";
+            get { return "Average"; }
         }
 
         #endregion

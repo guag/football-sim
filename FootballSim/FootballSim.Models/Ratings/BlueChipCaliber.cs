@@ -1,24 +1,20 @@
 ﻿namespace FootballSim.Models.Ratings
 {
-    public struct BlueChipCaliber : IPlayerCaliber
+    public class BlueChipCaliber : PlayerCaliber
     {
-        #region IPlayerCaliber Members
-
-        public int MinValue
+        public override int MinValue
         {
             get { return 80; }
         }
 
-        public int MaxValue
+        public override int MaxValue
         {
             get { return 100; }
         }
 
-        public override string ToString()
+        public override string Name
         {
-            return "Blue Chip";
+            get { return "Blue Chip"; }
         }
-
-        #endregion
     }
 }

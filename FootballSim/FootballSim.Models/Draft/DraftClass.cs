@@ -10,7 +10,7 @@ namespace FootballSim.Models.Draft
 
         #region IDraftClass Members
 
-        [Required]
+        [Key]
         public int Id { get; set; }
         
         [Required]

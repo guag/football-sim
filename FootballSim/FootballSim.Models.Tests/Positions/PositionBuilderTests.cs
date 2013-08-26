@@ -21,7 +21,7 @@ namespace FootballSim.Models.Tests.Positions
 
             sut.Build(player);
             builder.Verify(b => b.Build(position));
-            Assert.That(player.Measurables, Is.EqualTo(measurables));
+            Assert.That(player.HeightAndWeight, Is.EqualTo("0'10 20"));
         }
 
         [Test]

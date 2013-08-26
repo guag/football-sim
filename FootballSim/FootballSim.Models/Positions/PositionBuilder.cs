@@ -22,7 +22,9 @@ namespace FootballSim.Models.Positions
         public void Build(Player player)
         {
             player.Position = _positions.GetRandomPosition();
-            player.Measurables = _measurables.Build(player.Position);
+            Measurables measurables = _measurables.Build(player.Position);
+            player.Height = measurables.Height;
+            player.Weight = measurables.Weight;
         }
 
         #endregion

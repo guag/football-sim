@@ -1,22 +1,22 @@
 ﻿namespace FootballSim.Models.Ratings
 {
-    public class LowCaliber : IPlayerCaliber
+    public class LowCaliber : PlayerCaliber
     {
         #region IPlayerCaliber Members
 
-        public int MinValue
+        public override int MinValue
         {
             get { return 50; }
         }
 
-        public int MaxValue
+        public override int MaxValue
         {
             get { return 75; }
         }
 
-        public override string ToString()
+        public override string Name
         {
-            return "Low";
+            get { return "Low"; }
         }
 
         #endregion

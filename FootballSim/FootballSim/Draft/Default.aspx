@@ -12,9 +12,10 @@
             <asp:BoundField DataField="FullName" HeaderText="Name" ReadOnly="True" SortExpression="FullName" />
             <asp:BoundField DataField="Position" HeaderText="Position" ReadOnly="True" SortExpression="Position" />
             <asp:BoundField DataField="Caliber" HeaderText="Rating" SortExpression="Caliber" />
+            <asp:BoundField DataField="HeightAndWeight" HeaderText="HT/WT" ReadOnly="True" SortExpression="HeightAndWeight" />
             <asp:BoundField DataField="College" HeaderText="College" ReadOnly="True" SortExpression="College" />
             <asp:BoundField DataField="BirthDateForDisplay" HeaderText="DOB" ReadOnly="True" SortExpression="DOB"/>
-            <asp:BoundField DataField="Hometown" HeaderText="Hometown" ReadOnly="True" SortExpression="Hometown" />
+            <asp:BoundField DataField="CityAndState" HeaderText="Hometown" ReadOnly="True" SortExpression="CityAndState" />
             <asp:BoundField DataField="CurrentOverallRating" Visible="false" HeaderText="Rating" ReadOnly="True" SortExpression="CurrentOverallRating" />
             <asp:BoundField DataField="Id" Visible="False" HeaderText="Id" ReadOnly="True" />
         </Columns>
