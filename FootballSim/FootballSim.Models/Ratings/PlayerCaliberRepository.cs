@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace FootballSim.Models.Ratings
 {
@@ -10,39 +10,64 @@ namespace FootballSim.Models.Ratings
 
     public class PlayerCaliberRepository : IPlayerCaliberRepository
     {
-        private readonly IDictionary<Type, PlayerCaliber> _cache =
-            new Dictionary<Type, PlayerCaliber>();
+        private readonly ISet<PlayerCaliber> _calibers = new HashSet<PlayerCaliber>();
 
+        private readonly IFootballSimContext _db;
         private readonly IRandomService _random;
 
-        public PlayerCaliberRepository(IRandomService random)
+        public PlayerCaliberRepository(IRandomService random, IFootballSimContext db)
         {
             _random = random;
+            _db = db;
         }
 
         #region IPlayerCaliberRepository Members
 
         public PlayerCaliber GetRandom()
         {
+            LoadCache();
             int rand = _random.GetRandom(0, 100);
             if (rand < 5)
             {
-                return _cache[typeof (BlueChipCaliber)];
+                return _calibers.First(c => c.GetType() == typeof (BlueChipCaliber));
             }
             if (rand < 21)
             {
-                return _cache[typeof (HighCaliber)];
+                return _calibers.First(c => c.GetType() == typeof (HighCaliber));
             }
             return (rand < 51)
-                       ? _cache[typeof (AverageCaliber)]
-                       : _cache[typeof (LowCaliber)];
+                       ? _calibers.First(c => c.GetType() == typeof (AverageCaliber))
+                       : _calibers.First(c => c.GetType() == typeof (LowCaliber));
         }
 
         #endregion
 
-        public void Add<T>(PlayerCaliber caliber) where T : PlayerCaliber
+        /// <summary>
+        /// TODO: test this
+        /// </summary>
+        private void LoadCache()
         {
-            _cache.Add(typeof(T), caliber);
+            if (_calibers.Count > 0)
+            {
+                return;
+            }
+
+            foreach (PlayerCaliber caliber in 
+                _db.Calibers.Where(caliber => !_calibers.Contains(caliber)))
+            {
+                _calibers.Add(caliber);
+            }
+
+            if (_calibers.Count > 0)
+            {
+                return;
+            }
+
+            // TODO: replace object creation here with a factory
+            _calibers.Add(new BlueChipCaliber());
+            _calibers.Add(new HighCaliber());
+            _calibers.Add(new AverageCaliber());
+            _calibers.Add(new LowCaliber());
         }
     }
 }

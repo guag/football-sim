@@ -92,13 +92,14 @@ namespace FootballSim.App_Start
 
         private static void RegisterPlayerCalibers(IKernel kernel)
         {
-            var repo = new PlayerCaliberRepository(kernel.Get<IRandomService>());
-            // TODO: add a PlayerCaliberFactory
-            repo.Add<BlueChipCaliber>(new BlueChipCaliber());
-            repo.Add<HighCaliber>(new HighCaliber());
-            repo.Add<AverageCaliber>(new AverageCaliber());
-            repo.Add<LowCaliber>(new LowCaliber());
-            kernel.Bind<IPlayerCaliberRepository>().ToConstant(repo);
+            //var repo = new PlayerCaliberRepository(kernel.Get<IRandomService>());
+            //// TODO: add a PlayerCaliberFactory
+            //repo.Add<BlueChipCaliber>(new BlueChipCaliber());
+            //repo.Add<HighCaliber>(new HighCaliber());
+            //repo.Add<AverageCaliber>(new AverageCaliber());
+            //repo.Add<LowCaliber>(new LowCaliber());
+            //kernel.Bind<IPlayerCaliberRepository>().ToConstant(repo);
+            kernel.Bind<IPlayerCaliberRepository>().To<PlayerCaliberRepository>();
         }
 
         private static void RegisterControllers(IBindingRoot kernel)

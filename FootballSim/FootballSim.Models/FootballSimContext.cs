@@ -12,6 +12,7 @@ namespace FootballSim.Models
         IDbSet<DraftClass> DraftClasses { get; set; }
         IDbSet<Position> Positions { get; set; }
         IDbSet<Rating> Ratings { get; set; }
+        IDbSet<PlayerCaliber> Calibers { get; set; } 
         int SaveChanges();
     }
 
@@ -23,6 +24,7 @@ namespace FootballSim.Models
         public IDbSet<DraftClass> DraftClasses { get; set; }
         public IDbSet<Position> Positions { get; set; }
         public IDbSet<Rating> Ratings { get; set; }
+        public IDbSet<PlayerCaliber> Calibers { get; set; }
 
         #endregion
     }

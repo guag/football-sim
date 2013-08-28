@@ -4,6 +4,11 @@ namespace FootballSim.Models.Ratings
 {
     public abstract class PlayerCaliber
     {
+        protected PlayerCaliber()
+        {
+            
+        }
+
         [Key]
         public int Id { get; set; }
 
