@@ -3,8 +3,9 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Web;
+using FootballSim.Models;
 
-namespace FootballSim.Models
+namespace FootballSim
 {
     public class CsvFileLoader : ICsvFileLoader
     {
