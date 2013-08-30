@@ -7,13 +7,17 @@ namespace FootballSim.Models.Tests.Positions
     [TestFixture]
     public class QuarterbackTests : BaseTestFixture
     {
-        private Quarterback _sut;
+        #region Setup/Teardown
 
         [SetUp]
         public void SetUp()
         {
             _sut = new Quarterback();
         }
+
+        #endregion
+
+        private Quarterback _sut;
 
         [Test]
         public void Max_Height_Is_79()
@@ -48,6 +52,12 @@ namespace FootballSim.Models.Tests.Positions
         }
 
         [Test]
+        public void ShortName_Is_Qb()
+        {
+            Assert.That(_sut.ShortName, Is.EqualTo("QB"));
+        }
+
+        [Test]
         public void Side_Is_Offense()
         {
             Assert.That(_sut.Side, Is.EqualTo(Side.Offense));
@@ -57,12 +67,6 @@ namespace FootballSim.Models.Tests.Positions
         public void Type_Is_Quarterback()
         {
             Assert.That(_sut.Type, Is.EqualTo(PositionType.Quarterback));
-        }
-
-        [Test]
-        public void ShortName_Is_Qb()
-        {
-            Assert.That(_sut.ShortName, Is.EqualTo("QB"));
         }
     }
 }

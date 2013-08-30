@@ -15,7 +15,7 @@ namespace FootballSim.Models.Players
             _caliber = caliber;
         }
 
-        #region IPlayerBuildingBlock Members
+        #region IPlayerCaliberBuilder Members
 
         public void Build(Player player)
         {

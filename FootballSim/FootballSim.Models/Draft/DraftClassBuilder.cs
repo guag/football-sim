@@ -9,13 +9,13 @@ namespace FootballSim.Models.Draft
 
     public class DraftClassBuilder : IDraftClassBuilder
     {
-        private readonly IDraftClassFactory _draftFactory;
         private readonly IDraftBirthDateGenerator _birthDate;
+        private readonly IDraftClassFactory _draftFactory;
         private readonly IPlayerBuilder _playerBuilder;
 
         public DraftClassBuilder(
-            IPlayerBuilder playerBuilder, 
-            IDraftClassFactory draftFactory, 
+            IPlayerBuilder playerBuilder,
+            IDraftClassFactory draftFactory,
             IDraftBirthDateGenerator birthDate)
         {
             _playerBuilder = playerBuilder;
@@ -30,7 +30,7 @@ namespace FootballSim.Models.Draft
             DraftClass draft = _draftFactory.Create(year);
             for (int i = 0; i < numPlayers; i++)
             {
-                var player = _playerBuilder.Build();
+                Player player = _playerBuilder.Build();
                 // TODO: remove the following line after adding the DB
                 player.Id = i + 1;
                 player.BirthDate = _birthDate.Generate(2013);

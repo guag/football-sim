@@ -35,12 +35,10 @@ namespace FootballSim.Models
         #endregion
 
         /// <summary>
-        /// Retrieves the given value within a certain range.
+        ///   Retrieves the given value within a certain range.
         /// </summary>
-        /// <param name="val">The value</param>
-        /// <returns>0 if val is less than 0, 
-        /// Max if val is greater than Max, 
-        /// otherwise 'val'.</returns>
+        /// <param name="val"> The value </param>
+        /// <returns> 0 if val is less than 0, Max if val is greater than Max, otherwise 'val'. </returns>
         private static double GetVal(double val)
         {
             return (val < 0) ? 0 : Math.Min(val, Max);

@@ -15,7 +15,7 @@ namespace FootballSim.Models.Players
             _rating = rating;
         }
 
-        #region IRatingsBuilder Members
+        #region IPlayerRatingsBuilder Members
 
         public void Build(Player player)
         {

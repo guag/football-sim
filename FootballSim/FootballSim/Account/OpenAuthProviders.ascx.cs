@@ -1,27 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Web;
+using System.Web.UI;
 using Microsoft.AspNet.Membership.OpenAuth;
 
 namespace FootballSim.Account
 {
-    public partial class OpenAuthProviders : System.Web.UI.UserControl
+    public partial class OpenAuthProviders : UserControl
     {
+        public string ReturnUrl { get; set; }
+
         protected void Page_Load(object sender, EventArgs e)
         {
-
             if (IsPostBack)
             {
-                var provider = Request.Form["provider"];
+                string provider = Request.Form["provider"];
                 if (provider == null)
                 {
                     return;
                 }
 
-                var redirectUrl = "~/Account/RegisterExternalLogin";
+                string redirectUrl = "~/Account/RegisterExternalLogin";
                 if (!String.IsNullOrEmpty(ReturnUrl))
                 {
-                    var resolvedReturnUrl = ResolveUrl(ReturnUrl);
+                    string resolvedReturnUrl = ResolveUrl(ReturnUrl);
                     redirectUrl += "?ReturnUrl=" + HttpUtility.UrlEncode(resolvedReturnUrl);
                 }
 
@@ -30,14 +32,9 @@ namespace FootballSim.Account
         }
 
 
-
-        public string ReturnUrl { get; set; }
-
-
         public IEnumerable<ProviderDetails> GetProviderNames()
         {
             return OpenAuth.AuthenticationClients.GetAll();
         }
-
     }
 }

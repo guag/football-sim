@@ -3,7 +3,7 @@
 namespace FootballSim.Models.Tests
 {
     /// <summary>
-    /// TODO: move this to a new common test project (FootballSim.Tests.Common?)
+    ///   TODO: move this to a new common test project (FootballSim.Tests.Common?)
     /// </summary>
     public class BaseTestFixture
     {

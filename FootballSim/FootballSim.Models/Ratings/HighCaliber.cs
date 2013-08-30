@@ -2,8 +2,6 @@
 {
     public class HighCaliber : PlayerCaliber
     {
-        #region IPlayerCaliber Members
-
         public override int MinValue
         {
             get { return 70; }
@@ -18,7 +16,5 @@
         {
             get { return "High"; }
         }
-
-        #endregion
     }
 }

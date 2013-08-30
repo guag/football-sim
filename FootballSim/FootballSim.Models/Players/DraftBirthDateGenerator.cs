@@ -20,9 +20,9 @@ namespace FootballSim.Models.Players
 
         public DateTime Generate(int draftYear)
         {
-            var year = _random.GetRandom(draftYear - 25, draftYear - 20);
-            var month = _random.GetRandom(1, 13);
-            var day = _random.GetRandom(1, DateTime.DaysInMonth(year, month) + 1);
+            int year = _random.GetRandom(draftYear - 25, draftYear - 20);
+            int month = _random.GetRandom(1, 13);
+            int day = _random.GetRandom(1, DateTime.DaysInMonth(year, month) + 1);
             return new DateTime(year, month, day);
         }
 

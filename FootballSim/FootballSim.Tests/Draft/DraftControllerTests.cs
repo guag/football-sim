@@ -3,8 +3,6 @@ using FootballSim.Draft;
 using FootballSim.Models.Draft;
 using FootballSim.Models.Players;
 using FootballSim.Models.Tests;
-using Moq;
-using NUnit.Framework;
 
 namespace FootballSim.Tests.Draft
 {
@@ -26,11 +24,11 @@ namespace FootballSim.Tests.Draft
 
         #endregion
 
-        private DraftController _sut;
         private Mock<IDraftClassBuilder> _draftBuilder;
         private IList<Player> _players;
-        private Mock<IDraftClassPlayerSorter> _sorter;
         private Mock<IDraftClassRepository> _repository;
+        private Mock<IDraftClassPlayerSorter> _sorter;
+        private DraftController _sut;
 
         [Test]
         public void Create_Builds_New_Draft_Class()

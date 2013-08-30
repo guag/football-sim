@@ -19,7 +19,7 @@ namespace FootballSim.Draft
         private readonly IDraftClassRepository _repository;
 
         public DraftController(IDraftClassBuilder draftBuilder, IDraftClassPlayerSorter playerSorter,
-            IDraftClassRepository repository)
+                               IDraftClassRepository repository)
         {
             _draftBuilder = draftBuilder;
             _playerSorter = playerSorter;
@@ -50,7 +50,7 @@ namespace FootballSim.Draft
         }
 
         /// <summary>
-        /// TODO: test this
+        ///   TODO: test this
         /// </summary>
         public void SaveDraft(DraftClass draft)
         {
@@ -58,7 +58,7 @@ namespace FootballSim.Draft
         }
 
         /// <summary>
-        /// TODO: test this 
+        ///   TODO: test this
         /// </summary>
         public DraftClass GetDraft(int id)
         {

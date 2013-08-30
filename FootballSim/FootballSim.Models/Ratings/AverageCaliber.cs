@@ -2,8 +2,6 @@
 {
     public class AverageCaliber : PlayerCaliber
     {
-        #region IPlayerCaliber Members
-
         public override int MinValue
         {
             get { return 60; }
@@ -18,7 +16,5 @@
         {
             get { return "Average"; }
         }
-
-        #endregion
     }
 }

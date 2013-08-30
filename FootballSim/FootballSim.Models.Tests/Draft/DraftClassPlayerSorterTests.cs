@@ -22,8 +22,9 @@ namespace FootballSim.Models.Tests.Draft
                           LastName = "Smith",
                           FirstName = "John",
                           Position = new Quarterback()
-                      };_p1.Ratings.Add(new Rating {CurrentValue = 60})
-            ;
+                      };
+            _p1.Ratings.Add(new Rating {CurrentValue = 60})
+                ;
             _p2 = new Player
                       {
                           LastName = "Doe",

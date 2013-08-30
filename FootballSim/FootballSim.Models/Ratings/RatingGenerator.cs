@@ -20,7 +20,7 @@
 
         public Rating Generate(PlayerCaliber caliber, RatingType type)
         {
-            var value = _random.GetRandom(caliber.MinValue, caliber.MaxValue);
+            int value = _random.GetRandom(caliber.MinValue, caliber.MaxValue);
             return _factory.Create(type, value);
         }
 

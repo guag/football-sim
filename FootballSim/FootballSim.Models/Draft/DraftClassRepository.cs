@@ -20,7 +20,7 @@ namespace FootballSim.Models.Draft
         #region IDraftClassRepository Members
 
         /// <summary>
-        /// TODO: test this
+        ///   TODO: test this
         /// </summary>
         public void AddDraft(DraftClass draft)
         {
@@ -29,7 +29,7 @@ namespace FootballSim.Models.Draft
         }
 
         /// <summary>
-        /// TODO: test this
+        ///   TODO: test this
         /// </summary>
         public DraftClass GetDraft(int id)
         {

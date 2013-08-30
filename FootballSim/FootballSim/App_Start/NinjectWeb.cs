@@ -1,19 +1,20 @@
-[assembly: WebActivator.PreApplicationStartMethod(typeof(FootballSim.App_Start.NinjectWeb), "Start")]
+using FootballSim.App_Start;
+using Microsoft.Web.Infrastructure.DynamicModuleHelper;
+using Ninject.Web;
+using WebActivator;
+
+[assembly: PreApplicationStartMethod(typeof (NinjectWeb), "Start")]
 
 namespace FootballSim.App_Start
 {
-    using Microsoft.Web.Infrastructure.DynamicModuleHelper;
-
-    using Ninject.Web;
-
-    public static class NinjectWeb 
+    public static class NinjectWeb
     {
         /// <summary>
-        /// Starts the application
+        ///   Starts the application
         /// </summary>
-        public static void Start() 
+        public static void Start()
         {
-            DynamicModuleUtility.RegisterModule(typeof(NinjectHttpModule));
+            DynamicModuleUtility.RegisterModule(typeof (NinjectHttpModule));
         }
     }
 }

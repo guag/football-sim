@@ -8,13 +8,17 @@ namespace FootballSim.Models.Tests.Positions
     [TestFixture]
     public class PositionTests : BaseTestFixture
     {
-        private StubPosition _sut;
+        #region Setup/Teardown
 
         [SetUp]
         public void SetUp()
         {
             _sut = new StubPosition();
         }
+
+        #endregion
+
+        private StubPosition _sut;
 
         private class StubPosition : Position
         {

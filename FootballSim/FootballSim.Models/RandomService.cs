@@ -33,9 +33,9 @@ namespace FootballSim.Models
         public int GetRandomWeighted(int min, int max)
         {
             int diff = max - min;
-            var oneQuarter = diff*0.25;
-            var at25Per = min + (int) oneQuarter;
-            int at75Per = max - (int)oneQuarter;
+            double oneQuarter = diff*0.25;
+            int at25Per = min + (int) oneQuarter;
+            int at75Per = max - (int) oneQuarter;
 
             int rand = GetRandom(0, 6);
             if (rand > 0 && rand < 5)

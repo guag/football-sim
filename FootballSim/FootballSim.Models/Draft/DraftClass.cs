@@ -8,11 +8,9 @@ namespace FootballSim.Models.Draft
     {
         private IList<Player> _players = new List<Player>();
 
-        #region IDraftClass Members
-
         [Key]
         public int Id { get; set; }
-        
+
         [Required]
         public int Year { get; set; }
 
@@ -21,7 +19,5 @@ namespace FootballSim.Models.Draft
             get { return _players; }
             set { _players = value; }
         }
-
-        #endregion
     }
 }

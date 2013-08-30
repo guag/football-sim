@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="Manage Account" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Manage.aspx.cs" Inherits="FootballSim.Account.Manage" %>
+<%@ Import Namespace="Microsoft.AspNet.Membership.OpenAuth" %>
 <%@ Register Src="~/Account/OpenAuthProviders.ascx" TagPrefix="uc" TagName="OpenAuthProviders" %>
 
 <asp:Content ContentPlaceHolderID="MainContent" runat="server">
@@ -107,13 +108,13 @@
             <ItemTemplate>
                 <tr>
                     
-                    <td><%#: Item.ProviderDisplayName %></td>
-                    <td><%#: Item.ProviderUserName %></td>
-                    <td><%#: ConvertToDisplayDateTime(Item.LastUsedUtc) %></td>
+                    <td><%#:Item.ProviderDisplayName %></td>
+                    <td><%#:Item.ProviderUserName %></td>
+                    <td><%#:                ConvertToDisplayDateTime(Item.LastUsedUtc) %></td>
                     <td>
                         <asp:Button runat="server" Text="Remove" CommandName="Delete" CausesValidation="false" 
-                            ToolTip='<%# "Remove this " + Item.ProviderDisplayName + " login from your account" %>'
-                            Visible="<%# CanRemoveExternalLogins %>" />
+                            ToolTip='<%#                "Remove this " + Item.ProviderDisplayName + " login from your account" %>'
+                            Visible="<%#CanRemoveExternalLogins %>" />
                     </td>
                     
                 </tr>

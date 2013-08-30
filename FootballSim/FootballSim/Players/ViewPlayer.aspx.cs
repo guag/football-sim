@@ -24,7 +24,7 @@ namespace FootballSim.Players
 
         private Player LoadPlayer()
         {
-            int id; 
+            int id;
             if (!int.TryParse(Request.QueryString["id"], out id))
             {
                 throw new Exception("'id' is not a valid number");

@@ -7,13 +7,10 @@ namespace FootballSim.Models
     public static class ExtensionMethods
     {
         /// <summary>
-        /// Orders the given enumerable either in ascending or
-        /// descending order, depending on which order is provided.
+        ///   Orders the given enumerable either in ascending or
+        ///   descending order, depending on which order is provided.
         /// </summary>
-        /// <returns>
-        /// The source collection in descending order if order param
-        /// is "DESC", otherwise in ascending order.
-        /// </returns>
+        /// <returns> The source collection in descending order if order param is "DESC", otherwise in ascending order. </returns>
         public static IOrderedEnumerable<TSource> OrderBy<TSource, TKey>(
             this IEnumerable<TSource> source, Func<TSource, TKey> keySelector,
             string order)

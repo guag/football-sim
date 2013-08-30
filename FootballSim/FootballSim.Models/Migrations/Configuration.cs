@@ -1,7 +1,4 @@
-using System.Data.Entity;
 using System.Data.Entity.Migrations;
-using FootballSim.Models.Draft;
-using Ninject;
 
 namespace FootballSim.Models.Migrations
 {

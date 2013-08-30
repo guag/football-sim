@@ -3,7 +3,7 @@ using System.Collections.Generic;
 namespace FootballSim.Models
 {
     /// <summary>
-    /// Ugly, untestable code.
+    ///   Ugly, untestable code.
     /// </summary>
     public interface ICsvFileLoader
     {

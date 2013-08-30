@@ -25,7 +25,7 @@ namespace FootballSim.Models.Players
         {
             if (_cache.Count == 0)
             {
-                foreach (var loc in _loader.Hometowns)
+                foreach (string[] loc in _loader.Hometowns)
                 {
                     _cache.Add(new Location {City = loc[0], State = loc[1]});
                 }
