@@ -29,9 +29,7 @@ namespace FootballSim.Players
             {
                 throw new Exception("'id' is not a valid number");
             }
-            // TODO: implement DbContext and do this!
-            //return DbContext.Players.FirstOrDefault(p => p.Id == id);
-            return new Player {LastName = "Guagliardo", FirstName = "Gary"};
+            return Controller.GetPlayer(id);
         }
     }
 }

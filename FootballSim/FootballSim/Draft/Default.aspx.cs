@@ -21,16 +21,14 @@ namespace FootballSim.Draft
                 return;
             }
             // TODO: remove me
-            DraftClass draft = Controller.CreateDraft(2013, 1000);
-            Controller.SaveDraft(draft);
-            // </TODO>
+            //Controller.SaveDraft(Controller.CreateDraft(2013, 1000));
 
-            //int id;
-            //if (!int.TryParse(Request.QueryString["id"], out id))
-            //{
-            //    throw new Exception("id param not found");
-            //}
-            //draft = Controller.GetDraft(id);
+            int id;
+            if (!int.TryParse(Request.QueryString["id"], out id))
+            {
+                throw new Exception("id param not found");
+            }
+            DraftClass draft = Controller.GetDraft(id);
 
             Players = Controller.SortPlayers(draft.Players);
             lblTitle.Text = draft.Year.ToString(CultureInfo.InvariantCulture);

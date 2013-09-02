@@ -31,8 +31,6 @@ namespace FootballSim.Models.Draft
             for (int i = 0; i < numPlayers; i++)
             {
                 Player player = _playerBuilder.Build();
-                // TODO: remove the following line after adding the DB
-                player.Id = i + 1;
                 player.BirthDate = _birthDate.Generate(2013);
                 draft.Players.Add(player);
             }
